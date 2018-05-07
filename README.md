@@ -1,7 +1,7 @@
 本项目是cse-java-chassis开发指南。
 
 * 访问地址
-  https://huaweicse.github.io/cse-java-chassis
+  https://huaweicse.github.io/cse-java-chassis-doc/
 
 * 编辑
   1. Fork本项目代码
@@ -10,6 +10,6 @@
   4. 提交PR
 
 * 发布
-  1. 参考: https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md，安装gitbook
+  1. 参考[GitBook安装指南](https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md),安装gitbook
   2. cd docs-source
   3. gitbook build . ../docs
