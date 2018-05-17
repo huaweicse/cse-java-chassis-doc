@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>接入服务中心和配置中心 · GitBook</title>
+        <title>遗留系统快速接入 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -60,7 +60,7 @@
     <link rel="next" href="servicecomb-and-rpc.html" />
     
     
-    <link rel="prev" href="../spring-boot-modify-for-cse.html" />
+    <link rel="prev" href="spring-cloud-roadmap.html" />
     
 
     </head>
@@ -1207,9 +1207,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12" data-path="../spring-boot-modify-for-cse.html">
+        <li class="chapter " data-level="1.12" data-path="../spring-cloud-using-cse.html">
             
-                <a href="../spring-boot-modify-for-cse.html">
+                <a href="../spring-cloud-using-cse.html">
             
                     
                     Spring Cloud应用接入CSE
@@ -1221,12 +1221,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.12.1" data-path="quick-start.html">
+        <li class="chapter " data-level="1.12.1" data-path="spring-cloud-roadmap.html">
             
-                <a href="quick-start.html">
+                <a href="spring-cloud-roadmap.html">
             
                     
-                    接入服务中心和配置中心
+                    Spring Cloud应用演进路线图
             
                 </a>
             
@@ -1234,7 +1234,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.2" data-path="servicecomb-and-rpc.html">
+        <li class="chapter active" data-level="1.12.2" data-path="quick-start.html">
+            
+                <a href="quick-start.html">
+            
+                    
+                    遗留系统快速接入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="servicecomb-and-rpc.html">
             
                 <a href="servicecomb-and-rpc.html">
             
@@ -1482,7 +1495,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >接入服务中心和配置中心</a>
+        <a href=".." >遗留系统快速接入</a>
     </h1>
 </div>
 
@@ -1525,7 +1538,7 @@
             &lt;dependency&gt;
                 &lt;groupId&gt;com.huawei.paas.cse&lt;/groupId&gt;
                 &lt;artifactId&gt;cse-dependency&lt;/artifactId&gt;
-                &lt;version&gt;2.3.19&lt;/version&gt;
+                &lt;version&gt;2.3.20&lt;/version&gt;
                 &lt;type&gt;pom&lt;/type&gt;
                 &lt;scope&gt;import&lt;/scope&gt;
             &lt;/dependency&gt;
@@ -1557,22 +1570,33 @@
 <pre><code>helloprovider:
   ribbon:
     NIWSServerListClassName: org.apache.servicecomb.springboot.starter.discovery.ServiceCombServerList
-</code></pre><p>&#x7ECF;&#x8FC7;&#x4E0A;&#x9762;&#x6B65;&#x9AA4;&#xFF0C;&#x5C31;&#x5B8C;&#x6210;&#x4E86;Spring Cloud&#x5E94;&#x7528;&#x63A5;&#x5165;CSE&#x7684;&#x5168;&#x90E8;&#x6574;&#x6539;&#x3002;&#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x5C06;&#x5E94;&#x7528;&#x6253;&#x5305;&#x4E3A;&#x5BB9;&#x5668;&#x955C;&#x50CF;&#xFF0C;&#x5728;&#x534E;&#x4E3A;&#x4E91;&#x4E0A;&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#x3002;</p>
+</code></pre><p>&#x8FD9;&#x4E2A;&#x662F;ribbon&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x914D;&#x7F6E;&#x89C4;&#x5219;&#x662F;<clientid>.ribbon.NIWSServerListClassName&#xFF0C;&#x5176;&#x4E2D;helloprovider&#x662F;clientId&#xFF0C;&#x5373;&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x7684;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x540D;&#x79F0;&#x3002;</clientid></p>
+<p>&#x7ECF;&#x8FC7;&#x4E0A;&#x9762;&#x6B65;&#x9AA4;&#xFF0C;&#x5C31;&#x5B8C;&#x6210;&#x4E86;Spring Cloud&#x5E94;&#x7528;&#x63A5;&#x5165;CSE&#x7684;&#x5168;&#x90E8;&#x6574;&#x6539;&#x3002;&#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x5C06;&#x5E94;&#x7528;&#x6253;&#x5305;&#x4E3A;&#x5BB9;&#x5668;&#x955C;&#x50CF;&#xFF0C;&#x5728;&#x534E;&#x4E3A;&#x4E91;&#x4E0A;&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#x3002;</p>
 <h1 id="&#x8865;&#x5145;&#x8BF4;&#x660E;">&#x8865;&#x5145;&#x8BF4;&#x660E;</h1>
 <p>&#x5C06;&#x5E94;&#x7528;&#x5236;&#x4F5C;&#x4E3A;&#x955C;&#x50CF;&#xFF0C;&#x90E8;&#x7F72;&#x5230;&#x534E;&#x4E3A;&#x4E91;&#xFF0C;&#x90E8;&#x7F72;&#x5E73;&#x53F0;&#x4F1A;&#x5BF9;&#x5E94;&#x7528;&#x589E;&#x52A0;&#x4E00;&#x4E9B;&#x8BA4;&#x8BC1;&#x5173;&#x7CFB;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x4EE5;&#x5B8C;&#x6210;&#x5BF9;&#x4E8E;&#x5E94;&#x7528;&#x7684;&#x5B89;&#x5168;&#x8BA4;&#x8BC1;&#xFF0C;&#x8FD9;&#x4E9B;&#x8FC7;&#x7A0B;&#x662F;&#x7531;&#x90E8;&#x7F72;&#x5E73;&#x53F0;&#x81EA;&#x52A8;&#x5B8C;&#x6210;&#x7684;&#x3002;CSE&#x7684;&#x670D;&#x52A1;&#x4E2D;&#x5FC3;&#x548C;&#x914D;&#x7F6E;&#x4E2D;&#x5FC3;&#x63D0;&#x4F9B;api gateway&#x5F00;&#x653E;&#x4E86;REST&#x63A5;&#x53E3;&#xFF0C;&#x652F;&#x6301;&#x5F00;&#x53D1;&#x8005;&#x5728;&#x516C;&#x7F51;&#x73AF;&#x5883;&#x4F7F;&#x7528;&#x5176;&#x670D;&#x52A1;&#xFF0C;&#x8FD9;&#x6837;&#x7ED9;&#x5F00;&#x53D1;&#x8005;&#x7684;&#x7EBF;&#x4E0B;&#x5F00;&#x53D1;&#x5E26;&#x6765;&#x5927;&#x91CF;&#x7684;&#x4FBF;&#x5229;&#x3002;&#x4E3A;&#x4E86;&#x7EBF;&#x4E0B;&#x4F7F;&#x7528;CSE&#x7684;&#x670D;&#x52A1;&#x4E2D;&#x5FC3;&#x548C;&#x914D;&#x7F6E;&#x4E2D;&#x5FC3;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x9700;&#x8981;&#x5728;application.yml&#x4E2D;&#x589E;&#x52A0;&#x8BA4;&#x8BC1;&#x4FE1;&#x606F;&#xFF0C;&#x8BA4;&#x8BC1;&#x4FE1;&#x606F;&#x5305;&#x542B;AS/SK&#xFF0C;&#x53EF;&#x4EE5;&#x4ECE;&#x534E;&#x4E3A;&#x4E91;&#x8D26;&#x53F7;&#x7684;&quot;<a href="https://support.huaweicloud.com/usermanual-iam/zh-cn_topic_0079477318.html" target="_blank">&#x6211;&#x7684;&#x51ED;&#x8BC1;</a>&#x201D;&#x83B7;&#x53D6;&#x3002;</p>
-<pre><code>cse:
+<pre><code>servicecomb:
   credentials:
     accessKey: your access key
     secretKey: your secret key
     akskCustomCipher: default
 </code></pre><p>&#x6709;&#x4E9B;&#x5F00;&#x53D1;&#x8005;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x8BBF;&#x95EE;&#x534E;&#x4E3A;&#x4E91;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x4EE3;&#x7406;&#x6765;&#x5B9E;&#x73B0;&#xFF1A;</p>
-<pre><code>cse:
+<pre><code>servicecomb:
   proxy:
     enable: true
     host: your proxy server
     port: your proxy server port
     username: user name
     passwd: password for proxy
+</code></pre><p>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x6B65;&#x9AA4;&#x4E2D;&#xFF0C;&#x5B9E;&#x9645;&#x9690;&#x542B;&#x4E86;&#x5C06;&#x670D;&#x52A1;&#x4E2D;&#x5FC3;&#x7684;&#x5730;&#x5740;&#x8BBE;&#x7F6E;&#x4E3A;&#x534E;&#x5357;&#x533A;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x533A;&#x57DF;&#x7684;&#x670D;&#x52A1;&#x4E2D;&#x5FC3;&#x5730;&#x5740;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x663E;&#x793A;&#x7684;&#x6307;&#x5B9A;&#x5730;&#x5740;&#x548C;&#x533A;&#x57DF;</p>
+<pre><code>servicecomb:
+  service:
+    registry:
+      address: https://cse.cn-north-1.myhwclouds.com
+  config:
+    client:
+      serverUri: https://cse.cn-north-1.myhwclouds.com
+  credentials:
+    project: cn-north-1
 </code></pre>
                                 
                                 </section>
@@ -1600,7 +1624,7 @@
 
             
                 
-                <a href="../spring-boot-modify-for-cse.html" class="navigation navigation-prev " aria-label="Previous page: Spring Cloud应用接入CSE">
+                <a href="spring-cloud-roadmap.html" class="navigation navigation-prev " aria-label="Previous page: Spring Cloud应用演进路线图">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1616,7 +1640,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"接入服务中心和配置中心","level":"1.12.1","depth":2,"next":{"title":"在Spring Cloud中使用ServiceComb作为RPC框架","level":"1.12.2","depth":2,"path":"spring-cloudying-yong-jie-ru-cse/servicecomb-and-rpc.md","ref":"spring-cloudying-yong-jie-ru-cse/servicecomb-and-rpc.md","articles":[]},"previous":{"title":"Spring Cloud应用接入CSE","level":"1.12","depth":1,"path":"spring-boot-modify-for-cse.md","ref":"spring-boot-modify-for-cse.md","articles":[{"title":"接入服务中心和配置中心","level":"1.12.1","depth":2,"path":"spring-cloudying-yong-jie-ru-cse/quick-start.md","ref":"spring-cloudying-yong-jie-ru-cse/quick-start.md","articles":[]},{"title":"在Spring Cloud中使用ServiceComb作为RPC框架","level":"1.12.2","depth":2,"path":"spring-cloudying-yong-jie-ru-cse/servicecomb-and-rpc.md","ref":"spring-cloudying-yong-jie-ru-cse/servicecomb-and-rpc.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"spring-cloudying-yong-jie-ru-cse/quick-start.md","mtime":"2018-05-02T09:21:25.751Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-07T09:16:42.692Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"遗留系统快速接入","level":"1.12.2","depth":2,"next":{"title":"在Spring Cloud中使用ServiceComb作为RPC框架","level":"1.12.3","depth":2,"path":"spring-cloudying-yong-jie-ru-cse/servicecomb-and-rpc.md","ref":"spring-cloudying-yong-jie-ru-cse/servicecomb-and-rpc.md","articles":[]},"previous":{"title":"Spring Cloud应用演进路线图","level":"1.12.1","depth":2,"path":"spring-cloudying-yong-jie-ru-cse/spring-cloud-roadmap.md","ref":"spring-cloudying-yong-jie-ru-cse/spring-cloud-roadmap.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"spring-cloudying-yong-jie-ru-cse/quick-start.md","mtime":"2018-05-17T03:10:16.534Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-17T06:25:09.405Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1624,6 +1648,10 @@
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>

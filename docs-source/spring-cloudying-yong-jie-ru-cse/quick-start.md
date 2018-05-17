@@ -30,7 +30,7 @@ dependencyManagement不会往程序里面增加依赖关系，但是可以帮助
             <dependency>
                 <groupId>com.huawei.paas.cse</groupId>
                 <artifactId>cse-dependency</artifactId>
-                <version>2.3.19</version>
+                <version>2.3.20</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -75,6 +75,8 @@ helloprovider:
     NIWSServerListClassName: org.apache.servicecomb.springboot.starter.discovery.ServiceCombServerList
 ```
 
+这个是ribbon的配置，配置规则是<clientId>.ribbon.NIWSServerListClassName，其中helloprovider是clientId，即服务消费者需要访问的服务提供者的微服务名称。
+
 经过上面步骤，就完成了Spring Cloud应用接入CSE的全部整改。开发者可以将应用打包为容器镜像，在华为云上进行部署。
 
 
@@ -84,7 +86,7 @@ helloprovider:
 将应用制作为镜像，部署到华为云，部署平台会对应用增加一些认证关系的配置，以完成对于应用的安全认证，这些过程是由部署平台自动完成的。CSE的服务中心和配置中心提供api gateway开放了REST接口，支持开发者在公网环境使用其服务，这样给开发者的线下开发带来大量的便利。为了线下使用CSE的服务中心和配置中心，开发者需要在application.yml中增加认证信息，认证信息包含AS/SK，可以从华为云账号的"[我的凭证](https://support.huaweicloud.com/usermanual-iam/zh-cn_topic_0079477318.html)”获取。
 
 ```
-cse:
+servicecomb:
   credentials:
     accessKey: your access key
     secretKey: your secret key
@@ -94,7 +96,7 @@ cse:
 有些开发者需要通过代理服务器访问华为云，也可以通过设置代理来实现：
 
 ```
-cse:
+servicecomb:
   proxy:
     enable: true
     host: your proxy server
@@ -103,5 +105,16 @@ cse:
     passwd: password for proxy 
 ```
 
-
+在上面的步骤中，实际隐含了将服务中心的地址设置为华南区，如果需要使用其他区域的服务中心地址，还需要显示的指定地址和区域
+```
+servicecomb:
+  service:
+    registry:
+      address: https://cse.cn-north-1.myhwclouds.com
+  config:
+    client:
+      serverUri: https://cse.cn-north-1.myhwclouds.com
+  credentials:
+    project: cn-north-1
+```
 
