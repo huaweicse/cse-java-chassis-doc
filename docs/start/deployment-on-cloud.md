@@ -1,11 +1,26 @@
-本章节主要描述微服务发布到华为公有云上。上云配置的基本原则是：只需要对microservice.yaml进行适当的配置，以及在pom中添加额外的依赖，就可以使用相关的功能。
+CSE Java SDK 100%兼容ServiceComb Java Chassis，并对其进行更加友好的封装，以简化用户业务开发，更加专注于业务逻辑。将ServiceComb Java Chassis部署到CSE，并使用CSE提供的能力，只需要对microservice.yaml进行适当的配置，以及在pom中添加额外的依赖，不涉及任何代码修改。
 
 # 一键式配置
 
 公有云版本提供了一键式简化配置的方式，让基于开源版本开发的应用快速切换为云上应用，直接使用公有云提供的灰度发布、服务治理等功能。
 
-* 增加依赖关系\(pom.xml\)
+* 增加和管理依赖关系\(pom.xml\)
+增加依赖管理
+```
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.huawei.paas.cse</groupId>
+                <artifactId>cse-dependency</artifactId>
+                <version>2.3.20</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+```
 
+并引入依赖
 ```xml
 <dependency> 
   <groupId>com.huawei.paas.cse</groupId>  
@@ -46,7 +61,7 @@
 cse:
  service:
   registry:
-   address: https://cse.cn-north-1.myhwclouds.com:443    #根据实际地址配置服务中心地址
+   address: https://cse.cn-north-1.myhwclouds.com    #根据实际地址配置服务中心地址
 ```
 
 该配置项配置了服务中心的地址。其中，address可以在公有云“工具和案例”目录下查到对应的服务中心地址，修改协议（http/https）、主机名（可能使用域名）和端口号。
@@ -74,8 +89,8 @@ cse:
 
 ```xml
 <dependency> 
-  <groupId>com.huawei.paas.cse</groupId>  
-  <artifactId>foundation-config-cc</artifactId> 
+  <groupId>org.apache.servicecomb</groupId>
+  <artifactId>config-cc</artifactId>
 </dependency>
 ```
 
@@ -85,7 +100,7 @@ cse:
 cse:
  config:
   client:
-   serverUri: https://cse.cn-north-1.myhwclouds.com:443
+   serverUri: https://cse.cn-north-1.myhwclouds.com
 ```
 
 该配置项配置了配置中心的地址。其中，address可以在公有云“工具和案例”目录下查到对应的配置中心地址，修改协议（http/https）、主机名（可能使用域名）和端口号。
@@ -201,20 +216,6 @@ cse:
         default: bizkeeper-provider,perf-stats,tracing-provider,sla-provider
       Consumer:
         default: bizkeeper-consumer,loadbalance,perf-stats,tracing-consumer,sla-consumer
-```
-
-* 配置上报monitor地址
-
-TenantLB\_ADDRESS为共有云租户管理面接入地址，默认是100.125.1.34。
-
-```
-cse:
-  service:
-    registry:
-      address: https://${TenantLB_ADDRESS}:30100
-  monitor:
-    client:
-      serverUri: https://${TenantLB_ADDRESS}:30109
 ```
 
 ## 分布式事务: TCC
