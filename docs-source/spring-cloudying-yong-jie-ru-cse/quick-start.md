@@ -1,8 +1,6 @@
 本章节通过一个实际的案例，说明Spring Cloud应用如何经过少量的配置修改，快速接入CSE。
 
-* 原始Spring Cloud应用下载地址：
-
-[https://registry.cn-north-1.huaweicloud.com/swr/v2/domains/hwcse/namespaces/hwcse/repositories/default/packages/springcloud-demo/versions/0.0.1/file\_paths/springcloud-sample.zip](https://registry.cn-north-1.huaweicloud.com/swr/v2/domains/hwcse/namespaces/hwcse/repositories/default/packages/springcloud-demo/versions/0.0.1/file_paths/springcloud-sample.zip)
+* 原始Spring Cloud应用[下载地址](https://github.com/huaweicse/cse-java-chassis-samples/tree/master/springcloud-sample)
 
 该Spring Cloud应用提供了3个项目：
 
@@ -10,13 +8,13 @@
 * springcloud-provider 服务提供者，该服务提供了名称为HelloService的REST接口。
 * springcloud-consumer 服务消费者，该服务也提供了名称为HelloService的REST接口，其实现通过Feign调用springcloud-provider的REST接口。
 
-改造后的应用具备如下能力和变化：
+[改造后的应用](https://github.com/huaweicse/cse-java-chassis-samples/tree/master/springcloud-sample-cse-access)具备如下能力和变化：
 
 * 使用CSE提供的服务中心作为注册发现服务；
 * 使用CSE提供的配置中心作为动态配置服务，可以通过配置中心管理公共配置；
 * 业务的其他逻辑不发生任何变化，写代码的方式也不发生变化。开发者仍然可以按照原来的开发习惯书写业务代码。
 
-# 接入步骤
+# 接入步骤说明
 
 CSE为Spring Cloud应用提供了非常简单的接入方式，开发者只需要修改依赖关系和少量的配置，就可以启用服务中心和配置中心客户端连接功能，将Spring Cloud应用作为一个CSE的微服务注册到服务中心和使用动态配置能力。
 
@@ -79,7 +77,36 @@ helloprovider:
 
 经过上面步骤，就完成了Spring Cloud应用接入CSE的全部整改。开发者可以将应用打包为容器镜像，在华为云上进行部署。
 
+# 体验改造后的服务
+本地调试，可以通过: http://localhost:7211/hello?name=World 来访问服务。
 
+## 服务目录
+登录华为云，访问微服务引擎，可以在"微服务管理" > "服务目录" 查看到注册成功的两个服务以及实例信息。
+
+## 动态配置
+为了演示，在HelloService中增加了如下接口
+```
+  @Value(value = "${cse.dynamic.property:null}")
+  String value;
+
+  @RequestMapping(method = RequestMethod.GET)
+  public String dynamicProperty() {
+    String dynamicProperty = DynamicPropertyFactory.getInstance().getStringProperty("cse.dynamic.property", "").get();
+    return "@Value is " + value + "; Api read is " + dynamicProperty;
+  }
+```
+并通过微服务引擎的"动态配置"增加配置项，访问 http://localhost:7211/hello/dynamicProperty ，得到如下結果：
+```
+@Value is property; Api read is property
+```
+修改配置项的值为其他值，得到
+```
+@Value is property; Api read is propertyChanged
+```
+@Value注入的值不会动态变化，通过API获取的值会动态变化。Spring Cloud使用的大量组件，包括Hystrix, Ribbon等都是通过API读取的配置，这些配置项都能够动态读取到。
+
+## 其他功能
+该接入步骤完成了上云的第一步，只能使用服务目录和动态配置功能。经过进一步的改造Spring Cloud应用才能够使用仪表盘、服务治理等功能。
 
 # 补充说明
 

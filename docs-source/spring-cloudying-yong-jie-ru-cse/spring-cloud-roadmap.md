@@ -1,4 +1,4 @@
-CSE提供了非常丰富的开箱即用的微服务管控能力，这些能力通过CSE-java-chass的RPC框架集成。如果使用Spring Cloud，开发者需要组合非常多的三分组件来完成这些功能，下面列举了部分功能：
+CSE提供了非常丰富的开箱即用的微服务管控能力，这些能力通过CSE的RPC框架集成。如果使用Spring Cloud，开发者需要组合非常多的三方组件来完成这些功能，下面列举了部分功能：
 
 | CSE功能 | Spring Cloud实现方式 |
 | :--- | :--- |
@@ -14,9 +14,9 @@ CSE提供了非常丰富的开箱即用的微服务管控能力，这些能力�
 
 CSE还提供了非常友好的管理界面，帮助开发者在运行时管理和监控微服务。Spring Cloud开发者在使用CSE的过程中有非常多灵活的选择，下面是一个可选的技术路线：
 
-* 第一步：接入CSE，完成Spring Cloud应用的云上部署
+* 第一步：遗留系统快速接入，完成Spring Cloud应用的云上部署
 
-Spring Cloud开发者通过修改pom文件，就可以接入CSE提供的公共服务中心和配置中心服务，使用公共服务作为注册发现、动态配置功能，节省了开发、部署eureka、git等Spring Cloud提供的服务的工作量和机器成本。
+Spring Cloud开发者通过修改pom文件，就可以接入CSE提供的公共服务中心和配置中心服务，使用公共服务作为注册发现、动态配置功能，节省了开发、部署eureka、git等Spring Cloud提供的服务的时间和购买部署公共服务的机器成本。
 
 这个步骤一般在1小时内就可以完成开发和部署测试，提供了快速上云的通道。
 
@@ -24,6 +24,10 @@ Spring Cloud开发者通过修改pom文件，就可以接入CSE提供的公共�
 
 
 
-* 第二步：将Spring MVC REST Framework换为CSE java chassis
+* 第二步：将Spring MVC REST Framework改造为CSE
 
-这个步骤会在Spring Boot框架中集成CSE java chassis的REST框架。开始之前，开发者可以先体验[在Spring Boot中使用CSE](../using-cse-in-spring-boot.md)。基本原理和差异介绍都在这一章节进行介绍。通过这个步骤，CSE提供的所有微服务管理功能都可以开箱即用，业务可以专注于逻辑的开发。完成这个步骤，用户需要对CSE java chassis的设计原理，与Spring Boot集成原理和关系有一定了解，这样才能够快速解决文档中未提到的一些技术问题。
+这个步骤会在Spring Boot框架中集成CSE的REST框架。通过这个步骤，CSE提供的所有微服务管理功能都可以开箱即用，业务可以专注于逻辑的开发。完成这个步骤，用户需要对CSE的设计原理，与Spring Boot集成原理和关系有一定初步了解，这样才能够快速解决文档中未提到的一些技术问题。开始之前，建议开发者先进行如下准备工作，以更好的解决开发过程中可能遇到的问题。
+
+  1. 完成第一步，并体验CSE
+  2. 阅读[CSE的设计原理](http://servicecomb.incubator.apache.org/cn/docs/open-design/)，了解CSE框架的设计思路和组件组成
+  2. 体验[在Spring Boot中使用CSE](../using-cse-in-spring-boot.md)，理解在Spring Boot框架下使用CSE的基本原理。

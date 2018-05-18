@@ -2,5 +2,6 @@ CSE\(Cloud Service Engine\) Java SDK是华为推出的产品级微服务开发�
 
 CSE Java SDK 100% 兼容 [ServiceComb Java Chassis](https://github.com/apache/incubator-servicecomb-java-chassis)，开发者可以参考[ServiceComb Java Chassis开发指南](https://huaweicse.github.io/servicecomb-java-chassis-doc/zh_CN/)获取开发指导。本文主要描述CSE Java SDK的扩展和易用性增强内容，以及与其他开发框架集成，在华为云上部署等主题。
 
+为了描述简单，本文会使用CSE指代CSE Java SDK，使用ServiceComb指代ServiceComb Java Chassis。
 
 开发者可以通过[微服务引擎华为云官网](https://www.huaweicloud.com/product/cse.html)了解CSE。如有疑问，可通过[CSE论坛](http://forum.huaweicloud.com/forum.php?mod=forumdisplay&fid=622)进行咨询。
