@@ -105,6 +105,8 @@ helloprovider:
 ```
 @Value注入的值不会动态变化，通过API获取的值会动态变化。Spring Cloud使用的大量组件，包括Hystrix, Ribbon等都是通过API读取的配置，这些配置项都能够动态读取到。
 
+Spring Cloud还提供了@ConfigurationProperties简化配置，但它的工作原理和@Value以及API都不同，只能够读取到application.yml配置文件中的配置项，不支持动态配置。
+
 ## 其他功能
 该接入步骤完成了上云的第一步，只能使用服务目录和动态配置功能。经过进一步的改造Spring Cloud应用才能够使用仪表盘、服务治理等功能。
 
