@@ -1,4 +1,6 @@
-# 问题描述：如何自定义某个Java方法对应的REST接口里的HTTP Status Code？
+# 常见问题
+
+## 问题描述：如何自定义某个Java方法对应的REST接口里的HTTP Status Code？
 
 ** 解决方法：**
 
@@ -33,7 +35,7 @@ public int test(int x) {
     }
 ```
 
-# 问题描述： 如何定制自己微服务的日志配置
+## 问题描述： 如何定制自己微服务的日志配置
 
 ** 解决方法：**  
 ServiceComb不绑定日志器，只是使用了slf4j，用户可以自由选择log4j/log4j2/logback等等。ServiceComb提供了一个log4j的扩展，在标准log4j的基础上，支持log4j的properties文件的增量配置。
@@ -42,7 +44,7 @@ ServiceComb不绑定日志器，只是使用了slf4j，用户可以自由选择l
 * 实际会搜索出classpath中所有的`config/log4j.properties和config/log4j.*.properties`, 从搜索出的文件中切出`\*`的部分，进行alpha排序，然后按顺序加载，最后合成的文件作为log4j的配置文件。
 * 如果要使用ServiceComb的log4j扩展，则需要调用Log4jUtils.init，否则完全按标准的日志器的规则使用。
 
-# 问题描述： 当服务配置了多个transport的时候，在运行时是怎么选择使用哪个transport的？
+## 问题描述： 当服务配置了多个transport的时候，在运行时是怎么选择使用哪个transport的？
 
 ** 解决方法：**
 
@@ -80,7 +82,7 @@ servicecomb:
   * consumer进程只部署了RESTful transport jar，则正常使用RESTful访问
   * consumer进程同时部署了highway和RESTful transport jar，则正常使用RESTful访问
 
-# 问题描述： swagger body参数类型定义错误，导致服务中心注册的内容没有类型信息
+## 问题描述： swagger body参数类型定义错误，导致服务中心注册的内容没有类型信息
 
 **现象描述:**
 
@@ -144,76 +146,15 @@ Caused by: java.lang.ClassFormatError: Method "testInherate" in class ? has ille
             $ref: "#/definitions/ReponseImpl"
 ```
 
-# 问题描述：CSE微服务框架服务调用是否使用长连接
+## 问题描述：CSE微服务框架服务调用是否使用长连接
 
 ** 解决方法：**
 
 http使用的是长连接（有超时时间），highway方式使用的是长连接（一直保持）。
 
-# 问题描述：服务断连服务中心注册信息是否自动删除
 
-** 解决方法：**
 
-服务中心心跳检测到服务实例不可用，只会移除服务实例信息，服务的静态数据不会移除。
-
-# 问题描述：如果使用tomcat方式集成CSE微服务框架，如何实现服务注册
-
-** 解决方法：**
-
-如果使用cse sdk servlet方式（使用transport-rest-servlet依赖）制作为war包部署到tomcat，需要保证，服务描述文件（microservice.yaml）中rest端口配置和外置容器一致才能实现该服务的正确注册。否则无法感知tomcat开放端口。
-
-# 问题描述：如果使用tomcat方式集成CSE微服务框架，服务注册的时候如何将war包部署的上下文注册到服务中心
-
-** 解决方法：**
-
-发布服务接口的时候需要将war包部署的上下文（context）放在baseurl最前面，这样才能保证注册到服务中心的路径是完整的路径（包含了上下文）。实例：
-
-```java
-@path(/{context}/xxx)
-class ServiceA
-```
-
-# 问题描述：CSE微服务框架如何实现数据多个微服务间透传
-
-** 解决方法：**
-
-透传数据塞入：
-
-```java
-CseHttpEntity<xxxx.class> httpEntity = new CseHttpEntity<>(xxx);
-//透传内容
-httpEntity.addContext("contextKey","contextValue");
-ResponseEntity<String> responseEntity = RestTemplateBuilder.create().exchange("cse://springmvc/springmvchello/sayhello",HttpMethod.POST,httpEntity,String.class);
-```
-
-透传数据获取：
-
-```java
-@Override
-@RequestMapping(path="/sayhello",method = RequestMethod.POST)
-public String sayHello(@RequestBody Person person,InvocationContext context){
-    //透传数据获取
-    context.getContext();
-    return "Hello person " + person.getName();
-}
-```
-
-# 问题描述：CSE微服务框架服务如何自定义返回状态码
-
-** 解决方法：**
-
-```java
-@Override
-@RequestMapping(path = "/sayhello",method = RequestMethod.POST)
-public String sayHello(@RequestBody Person person){
-    InvocationContext context = ContextUtils.getInvocationContext();
-    //自定义状态码
-    context.setStatus(Status.CREATED);
-    return "Hello person "+person.getName();
-}
-```
-
-# 问题描述：CSE body Model部分暴露
+## 问题描述：CSE body Model部分暴露
 
 ** 解决方法：**
 
@@ -223,7 +164,7 @@ public String sayHello(@RequestBody Person person){
 @ApiModelProperty(hidden = true)
 ```
 
-# 问题描述：CSE框架获取远端consumer的地址
+## 问题描述：CSE框架获取远端consumer的地址
 
 ** 解决方法：**
 
@@ -236,147 +177,7 @@ String host = request.getRemoteHost();
 
 实际场景是拿最外层的地址，所以应该是LB传入到edgeservice，edgeService再放到context外下传递。
 
-# 问题描述：CSE不支持泛型
-
-** 解决方法：**
-
-明确不支持，需要修改接口，接口修改后需要修改版本号，以免consumer还是使用旧的版本。
-
-# 问题描述：CSE对handler描述
-
-** 解决方法：**
-
-consumer默认的handler是simpleLB，没有配置的时候handler链会使用这个，如果配置了handler，里面一定要包含lb的handler，否则调用报错，需要在文档里面进行说明。
-
-# 问题描述：CSE日志替换
-
-** 解决方法：**
-
-CSE java-chassis日志推荐方式是在启动的时候使用Log4jUtils.init\(\)，直接使用推荐的Log4j来做日志管理，但是有些场景不想用log4j，比如想使用log4j2或者logback，下面以log4j2为例简单介绍下步骤：
-
-1. 在代码里面不要使用Log4jUtils.init\(\)；
-2. 去掉log4j的配置文件（不删掉也没关系，因为不会使用）；
-3. exclude掉CSE框架引入的log4j，例如：
-   ```xml
-   <dependency>
-       <groupId>org.apache.servicecomb</groupId>
-       <artifactId>provider-springmvc</artifactId>
-       <exclusions>
-           <exclusion>
-               <groupId>log4j</groupId>
-               <artifactId>log4j</artifactId>
-           </exclusion>
-       </exclusions>
-   </dependency>
-   <dependency>
-       <groupId>com.huawei.paas.cse</groupId>
-       <artifactId>cse-handler-tcc</artifactId>
-       <exclusions>
-           <exclusion>
-               <groupId>log4j</groupId>
-               <artifactId>log4j</artifactId>
-           </exclusion>
-           <exclusion>
-               <groupId>org.slf4j</groupId>
-               <artifactId>slf4j-log4j12</artifactId>
-           </exclusion>
-       </exclusions>
-   </dependency>
-   ```
-4. 引入log4j2的依赖
-
-   ```xml
-   <dependency>    
-       <groupId>org.apache.logging.log4j</groupId>
-       <artifactId>log4j-slf4j-impl</artifactId>
-   </dependency>
-   <dependency>
-       <groupId>org.apache.logging.log4j</groupId>
-       <artifactId>log4j-api</artifactId>
-   </dependency>
-   <dependency>
-       <groupId>org.apache.logging.log4j</groupId>
-       <artifactId>log4j-core</artifactId>
-   </dependency>
-   ```
-
-   如果没有版本依赖管理，还需要填写上版本号。
-
-5. 加入log4j2的配置文件log4j2.xml，关于这个请查看官方说明，例如：
-
-   ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
-    <!--Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出-->
-    <!--monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数-->
-    <configuration status="WARN" monitorInterval="30">
-        <!--先定义所有的appender-->
-        <appenders>
-        <!--这个输出控制台的配置-->
-            <console name="Console" target="SYSTEM_OUT">
-            <!--输出日志的格式-->
-                <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
-            </console>
-            <!--文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，这个也挺有用的，适合临时测试用-->
-            <File name="log" fileName="log/test.log" append="false">
-               <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
-            </File>
-            <!-- 这个会打印出所有的info及以下级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
-            <RollingFile name="RollingFileInfo" fileName="${sys:user.home}/logs/info.log"
-                         filePattern="${sys:user.home}/logs/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
-                <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
-                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
-                <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
-                <Policies>
-                    <TimeBasedTriggeringPolicy/>
-                    <SizeBasedTriggeringPolicy size="100 MB"/>
-                </Policies>
-            </RollingFile>
-            <RollingFile name="RollingFileWarn" fileName="${sys:user.home}/logs/warn.log"
-                         filePattern="${sys:user.home}/logs/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log">
-                <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
-                <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
-                <Policies>
-                    <TimeBasedTriggeringPolicy/>
-                    <SizeBasedTriggeringPolicy size="100 MB"/>
-                </Policies>
-                <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
-                <DefaultRolloverStrategy max="20"/>
-            </RollingFile>
-            <RollingFile name="RollingFileError" fileName="${sys:user.home}/logs/error.log"
-                         filePattern="${sys:user.home}/logs/$${date:yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log">
-                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
-                <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
-                <Policies>
-                    <TimeBasedTriggeringPolicy/>
-                    <SizeBasedTriggeringPolicy size="100 MB"/>
-                </Policies>
-            </RollingFile>
-        </appenders>
-        <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
-        <loggers>
-            <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
-            <logger name="org.springframework" level="INFO"></logger>
-            <logger name="org.mybatis" level="INFO"></logger>
-            <root level="all">
-                <appender-ref ref="Console"/>
-                <appender-ref ref="RollingFileInfo"/>
-                <appender-ref ref="RollingFileWarn"/>
-                <appender-ref ref="RollingFileError"/>
-            </root>
-        </loggers>
-    </configuration>
-   ```
-
-6. 启动服务进行验证
-
-# 问题描述：netty版本问题
-
-** 解决方法：**
-
-netty3和netty4是完全不同的三方件，因为坐标跟package都不相同，所以可以共存，但是要注意小版本问题，小版本必须使用CSE的版本。
-
-# 问题描述：CSE服务超时设置
+## 问题描述：CSE服务超时设置
 
 ** 解决方法：**
 
@@ -388,7 +189,7 @@ cse:
     timeout: 30000
 ```
 
-# 问题描述：服务治理的处理链顺序是否有要求？
+## 问题描述：服务治理的处理链顺序是否有要求？
 
 **解决方法：**
 
@@ -416,7 +217,7 @@ Provider: tracing-provider, sla-provider, bizkeeper-provider
 
 这种顺序能够满足大多数场景，并且不容易出现不可理解的错误。
 
-# 问题描述：服务解析域名失败
+## 问题描述：服务解析域名失败
 
 **现象描述：**
 
@@ -444,8 +245,3 @@ addressResolver:
   searchDomains: default.svc.cluster.local,svc.cluster.local,cluster.local
   ndots: 1
 ```
-
-
-
-
-
