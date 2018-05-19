@@ -1,6 +1,8 @@
+# ServiceComb应用接入CSE
+
 CSE Java SDK 100%兼容ServiceComb Java Chassis，并对其进行更加友好的封装，以简化用户业务开发，更加专注于业务逻辑。将ServiceComb Java Chassis部署到CSE，并使用CSE提供的能力，只需要对microservice.yaml进行适当的配置，以及在pom中添加额外的依赖，不涉及任何代码修改。
 
-# 一键式配置
+## 一键式配置
 
 公有云版本提供了一键式简化配置的方式，让基于开源版本开发的应用快速切换为云上应用，直接使用公有云提供的灰度发布、服务治理等功能。
 
@@ -36,13 +38,13 @@ CSE Java SDK 100%兼容ServiceComb Java Chassis，并对其进行更加友好的
 
 可以通过查看pom内容，以及这个jar包里面的microservice.yaml文件查看引入的组件和增加的配置项。在下面的章节中，详细解释上云增加的组件以及他们的作用，让开发者更加深入的了解各种技术细节。
 
-## 连接服务中心
+### 连接服务中心
 
-### 功能描述
+#### 功能描述
 
 服务中心实现注册和发现，在FusionStage/ServiceStage查看微服务目录，都需要微服务连接上服务中心。
 
-### 配置参考
+#### 配置参考
 
 * 增加依赖关系\(pom.xml\)
 
@@ -66,13 +68,13 @@ cse:
 
 该配置项配置了服务中心的地址。其中，address可以在公有云“工具和案例”目录下查到对应的服务中心地址，修改协议（http/https）、主机名（可能使用域名）和端口号。
 
-## 连接配置中心
+### 连接配置中心
 
-### 功能描述
+#### 功能描述
 
 配置中心实现配置下发，连接配置中心是使用治理、灰度发布等功能的前台。
 
-### 配置参考
+#### 配置参考
 
 * 增加依赖关系\(pom.xml\)
 
@@ -105,13 +107,13 @@ cse:
 
 该配置项配置了配置中心的地址。其中，address可以在公有云“工具和案例”目录下查到对应的配置中心地址，修改协议（http/https）、主机名（可能使用域名）和端口号。
 
-## 使用服务治理
+### 使用服务治理
 
-### 功能描述
+#### 功能描述
 
 服务治理主要涉及“隔离”、“熔断”、“容错”、“限流”、“负载均衡”等。
 
-### 配置参考
+#### 配置参考
 
 配置项\(microservice.yaml）
 
@@ -127,13 +129,13 @@ cse:
     default: bizkeeper-consumer,loadbalance,qps-flowcontrol-consumer
 ```
 
-## 使用故障注入
+### 使用故障注入
 
-### 功能描述
+#### 功能描述
 
 故障注入主要提供了延时、错误两种类型故障。
 
-### 配置参考
+#### 配置参考
 
 配置项\(microservice.yaml）
 
@@ -147,13 +149,13 @@ cse:
     default: loadbalance,fault-injection-consumer
 ```
 
-## 使用灰度发布
+### 使用灰度发布
 
-### 功能描述
+#### 功能描述
 
 该功能对应于微服务目录灰度发布功能。管理员可以通过下发规则，对服务进行灰度发布管理。
 
-### 配置参考
+#### 配置参考
 
 * 增加依赖关系\(pom.xml\)
 
@@ -179,19 +181,19 @@ cse:
       className: com.huawei.paas.darklaunch.DarklaunchServerListFilter
 ```
 
-## 使用调用链
+### 使用调用链
 
-### 功能描述
+#### 功能描述
 
 华为云提供了业务无侵入的埋点功能APM。只需要通过华为云部署容器应用，并选择启用调用链监控功能，即可使用调用链服务。
 
-## 微服务运行数据上报
+### 微服务运行数据上报
 
-### 功能描述
+#### 功能描述
 
 微服务可以将自己的运行数据上报给Dashboard服务，在公有云上查看仪表盘数据、分布式事务数据等。该章节是描述如何启用微服务数据上报功能。
 
-### 配置参考
+#### 配置参考
 
 * 增加依赖关系\(pom.xml\)
 
@@ -217,39 +219,3 @@ cse:
       Consumer:
         default: bizkeeper-consumer,loadbalance,perf-stats,tracing-consumer,sla-consumer
 ```
-
-## 分布式事务: TCC
-
-### 功能描述
-
-主要实现基于TCC协议的分布式服务间的最终一致性方案，保障一般场景下的应用一致性需求，并可以在FusionStage/ServiceStage分布式事务界面查看事务详细信息。
-
-### 配置参考
-
-* 增加依赖关系\(pom.xml\)
-
-引入必要的jar包
-
-```
-<dependency>
-　　<groupId>com.huawei.paas.cse</groupId>
-　　<artifactId>cse-handler-tcc</artifactId>
-</dependency>
-```
-
-* 配置项参考
-
-需要增加下面事务相关的handler，才能在从配置中心实时获取治理数据。
-
-```
-cse:
- handler:
-  chain:
-   Provider:
-    default: tcc-client,bizkeeper-provider
-   Consumer:
-    default: tcc-server,bizkeeper-consumer,loadbalance
-```
-
-
-

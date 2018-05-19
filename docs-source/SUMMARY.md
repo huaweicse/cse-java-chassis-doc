@@ -10,7 +10,7 @@
   * [使用MyBatis访问数据库\(user-service\)](featured-topics/develope-microservice-using-ces/shi-yong-mybatis-fang-wen-shu-ju-5e9328-user-service.md)
   * [进行认证和鉴权设计](featured-topics/develope-microservice-using-ces/jin-xing-ren-zheng-he-jian-quan-she-ji.md)
   * [网关HTTPS安全配置](featured-topics/develope-microservice-using-ces/wang-guan-https-an-quan-pei-zhi.md)
-* [ServiceComb Java Chassis应用接入CSE](start/deployment-on-cloud.md)
+* [ServiceComb应用接入CSE](start/deployment-on-cloud.md)
 * [在Spring Boot中使用CSE](using-cse-in-spring-boot.md)
   * [CSE提供的组件说明](using-cse-in-spring-boot/cse-components-for-spring-boot.md)
   * [JAVA应用方式开发步骤](using-cse-in-spring-boot/java-application.md)
