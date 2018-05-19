@@ -33,7 +33,7 @@ CSE支持如下几种集成方式，当需要和Spring Cloud集成的时候，CS
 
 ## 配置启动类和定义REST接口
 
-在启动类Application里面加入：@EnableServiceComb。这样就会在启动的时候，加载CSE运行时。
+在启动类Application里面加入@EnableServiceComb加载CSE运行时，并通过@SpringBootApplication(exclude=DispatcherServletAutoConfiguration.class)关闭Spring RESTful Web Service。
 
 然后开发者就可以定义自己的REST接口（对应于Spring Cloud的Controller）。可以看出和Spring Cloud Controller的差异：
 
@@ -165,6 +165,7 @@ paths:
 
 ### 服务监控
 将应用部署到华为云以后，微服务会统计和上报自己的监控状态，这样用户就可以通过仪表盘、ServiceStage的性能监控等功能，监控微服务的运行状态、调用链等指标。
+
 注意：本地调试情况下，不会上报监控数据。并且日志可能打印如下错误：
 ```
 Can not find any instances from service center due to previous errors. service=default/CseMonitoring/latest
@@ -175,3 +176,13 @@ servicecomb.monitor.client.enable=false
 ```
 关闭。
  
+## 补充说明
+除了上述可以直接感受到的功能，切换为CSE RPC后，请求处理流程也发生了变化。调用流程使用了CSE优秀的统一一致的处理流程。
+![](/assets/open-design-running-arch.png)
+
+该流程里面的处理链扩展能力和契约能力，是所有治理的基础。
+
+当然，修改后，还会发生其他一些变化，业务代码还会涉及一些修改，这些修改包括REST接口定义的数据类型支持（参考[说明](../using-cse-in-spring-boot/diff-spring-mvc.md))，以及Spring Cloud其他的构建在Spring RESTful Web Service之上的能力。修改过程中，也可能会碰到若干jar包冲突或者不兼容的情况。
+
+这些情况都不涉及到业务逻辑代码的修改，本质上只是改变了业务代码发布为服务的表现形式。使用CSE，能够更好的聚焦于业务逻辑开发。
+
