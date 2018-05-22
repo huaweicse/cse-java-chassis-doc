@@ -1,3 +1,6 @@
+# 遗留系统快速接入
+
+
 本章节通过一个实际的案例，说明Spring Cloud应用如何经过少量的配置修改，快速接入CSE。
 
 * 原始Spring Cloud应用[下载地址](https://github.com/huaweicse/cse-java-chassis-samples/tree/master/springcloud-sample)
@@ -14,7 +17,7 @@
 * 使用CSE提供的配置中心作为动态配置服务，可以通过配置中心管理公共配置；
 * 业务的其他逻辑不发生任何变化，写代码的方式也不发生变化。开发者仍然可以按照原来的开发习惯书写业务代码。
 
-# 接入步骤说明
+## 接入步骤说明
 
 CSE为Spring Cloud应用提供了非常简单的接入方式，开发者只需要修改依赖关系和少量的配置，就可以启用服务中心和配置中心客户端连接功能，将Spring Cloud应用作为一个CSE的微服务注册到服务中心和使用动态配置能力。
 
@@ -77,13 +80,13 @@ helloprovider:
 
 经过上面步骤，就完成了Spring Cloud应用接入CSE的全部整改。开发者可以将应用打包为容器镜像，在华为云上进行部署。
 
-# 体验改造后的服务
+## 体验改造后的服务
 本地调试，可以通过: http://localhost:7211/hello?name=World 来访问服务。
 
-## 服务目录
+### 服务目录
 登录华为云，访问微服务引擎，可以在"微服务管理" > "服务目录" 查看到注册成功的两个服务以及实例信息。
 
-## 动态配置
+### 动态配置
 为了演示，在HelloService中增加了如下接口
 ```
   @Value(value = "${cse.dynamic.property:null}")
@@ -107,10 +110,10 @@ helloprovider:
 
 Spring Cloud还提供了@ConfigurationProperties简化配置，但它的工作原理和@Value以及API都不同，只能够读取到application.yml配置文件中的配置项，不支持动态配置。
 
-## 其他功能
+### 其他功能
 该接入步骤完成了上云的第一步，只能使用服务目录和动态配置功能。经过进一步的改造Spring Cloud应用才能够使用仪表盘、服务治理等功能。
 
-# 补充说明
+## 补充说明
 
 将应用制作为镜像，部署到华为云，部署平台会对应用增加一些认证关系的配置，以完成对于应用的安全认证，这些过程是由部署平台自动完成的。CSE的服务中心和配置中心提供api gateway开放了REST接口，支持开发者在公网环境使用其服务，这样给开发者的线下开发带来大量的便利。为了线下使用CSE的服务中心和配置中心，开发者需要在application.yml中增加认证信息，认证信息包含AS/SK，可以从华为云账号的"[我的凭证](https://support.huaweicloud.com/usermanual-iam/zh-cn_topic_0079477318.html)”获取。
 

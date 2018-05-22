@@ -7,3 +7,39 @@ CSE Java SDK 100% 兼容 [ServiceComb Java Chassis](https://github.com/apache/in
 为了描述简单，本文会使用CSE指代CSE Java SDK，使用ServiceComb指代ServiceComb Java Chassis。
 
 开发者可以通过[微服务引擎华为云官网](https://www.huaweicloud.com/product/cse.html)了解CSE。如有疑问，可通过[CSE论坛](http://forum.huaweicloud.com/forum.php?mod=forumdisplay&fid=622)进行咨询。
+
+## 版本获取
+
+获取CSE需要使用如下maven仓库
+```
+<mirror>
+  <id>mirrorId</id>
+  <mirrorOf>central</mirrorOf>
+  <name>Mirror of central repository.</name>
+  <url>http://maven.huaweicse.com/nexus/content/groups/public</url>
+</mirror>
+```
+
+## 版本说明
+
+
+### CSE 2.3.23
+#### 新特性
+* [SCB-532] 接口定义支持自引用的数据类型
+* [SCB-548] 优雅停机支持，服务停止的时候，正常关闭网络线程、等待调用完成等
+* [SCB-482] SDK支持http2作为通信协议
+* [SCB-531] 契约定义x-java-interface支持可选
+
+#### 修改特性
+* 匹配ServiceComb Java Chassis的版本：commit id 5fc99f5
+* [SCB-546] 微服务契约注册优化，当检测到相同微服务版本契约不同，并且环境不是development的时候，启动失败。
+* [SCB-582] 提供服务中心网络暂时不可达、服务中心故障重启等异常情况下的实例保护机制。当从服务中心查询到空实例的时候，默认会对现在使用的实例Ping一次，Ping成功则不移除本地实例。查询的实例列表不为空的时候，行为保持不变。
+* [SCB-504] Spring 版本由4.3.5.RELEASE升级到4.3.16.RELEASE。注意：新版本Spring的原生RestTempalte接口在未知HTTP错误码的情况下，接口行为有变化。使用CSE提供的接口则不受影响。
+* [SCB-542] Netty 版本有4.1.17.Final升级到4.1.24.Final
+
+#### Bug fixes
+* [SCB-591] 解决查询配置中心配置项是，微服务名称没有转码导致查询失败的问题
+* [SCB-580] 解决大文件上传抛出异常的问题
+* [SCB-579] 解决Consumer上传空文件，服务端抛出NPE的问题
+* [SCB-607] 解决服务中心没启动情况下，先启动微服务，再启动服务中心，仍然无法注册的问题
+* [SCB-543] 解决注册微服务过程中删除微服务信息，后续微服务无法继续注册的问题

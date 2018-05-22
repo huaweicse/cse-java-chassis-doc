@@ -1,3 +1,5 @@
+# 使用CSE作为RPC框架
+
 在上面的章节中，介绍了Spring Cloud如何使用CSE的服务注册发现、动态配置管理等中间件服务。这些操作的基础是Spring RESTful Web Service \(本质上是一个Servlet，即org.springframework.web.servlet.DispatcherServlet\)。CSE作为一个独立的RPC框架实现，可以非常容易集成到Spring Cloud中。通过将Spring RESTful Web Service替换为CSE，可以给开发者带来如下便利：
 
 * 一致的开发体验。使用CSE的SpringMVC模式，可以获得和Spring RESTful Web Service一致的开发体验，包括一样的声明式Annotation，使用RestTemplate进行访问。
