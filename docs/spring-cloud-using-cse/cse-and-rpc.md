@@ -188,3 +188,99 @@ servicecomb.monitor.client.enable=false
 
 这些情况都不涉及到业务逻辑代码的修改，本质上只是改变了业务代码发布为服务的表现形式。使用CSE，能够更好的聚焦于业务逻辑开发。
 
+## 改造过程中的常见问题
+
+### HttpServletRequest
+HttpServletRequest是J2EE(Servlet)协议定义的对象。CSE支持在Servlet协议上、HTTP协议以及其他协议上提供REST服务，因此不支持特定技术框架的对象。需要将接口定义修改为平台无关的原型。
+
+以下面接口为例：
+
+```
+    @RequestMapping(value = "/auth", method = RequestMethod.POST)
+    public ResultResponse createAuthenticationToken(HttpServletRequest request,
+            @RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException{
+        String type = authenticationRequest.getType();
+        String appCode = request.getHeader(BaseTypeConstants.HEADER_APP_CODE);
+        String appType = request.getHeader(BaseTypeConstants.HEADER_APP_TYPE);
+… …
+```
+
+修改后：
+
+```
+    @RequestMapping(value = "/auth", method = RequestMethod.POST)
+public ResultResponse createAuthenticationToken(@RequestHeader(name= BaseTypeConstants.HEADER_APP_CODE) String appCode, 
+@RequestHeader(name= BaseTypeConstants.HEADER_APP_TYPE String appType),
+            @RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException{
+        String type = authenticationRequest.getType();
+
+… …
+```
+
+对于HttpServletResponse的改造原理是一样的。
+
+### Feign客户端
+CSE提供了比Feign更加容易使用的客户端RPC方式，客户端不需要像Feign一样声明REST映射关系。本项目中已经包含了Feign的改造例子。
+
+改造前：
+```
+# 客户端接口声明
+@FeignClient("helloprovider")
+@RequestMapping(path = "/hello")
+public interface Hello {
+  @RequestMapping(path = "/sayhi", method = RequestMethod.GET)
+  String sayHi(@RequestParam(name = "name") String name);
+}
+# 客户端使用
+@Autowired
+Hello client;
+```
+
+改造后:
+```
+# 客户端接口声明
+public interface Hello {
+  String sayHi(String name);
+}
+# 客户端使用
+@RpcReference(microserviceName="helloprovider", schemaId="hello")
+Hello client;
+```
+
+对于习惯RPC编程的开发人员，可以直接在服务定义的时候，就声明接口，然后作为API发布。这样客户端就可以避免重复写代码了。
+
+### 三分软件冲突
+
+启动报如下错误：
+```
+Caused by: java.lang.IllegalStateException: Detected both log4j-over-slf4j.jar AND bound slf4j-log4j12.jar on the class path, preempting StackOverflowError.
+```
+spring boot默认使用logback， 并且依赖了slf4j-log4j12，会导致冲突。可以通过排除log4j-over-slf4j解除冲突:
+```
+<dependency>
+    <groupId>com.huawei.paas.cse</groupId>
+    <artifactId>cse-solution-service-engine</artifactId>
+    <exclusions>
+        <exclusion>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+```
+
+启动报如下错误：
+```
+java.lang.NoSuchMethodError: javax.ws.rs.core.Response$Status$Family.familyOf(I)Ljavax/ws/rs/core/Response$Status$Family;
+    at org.apache.servicecomb.serviceregistry.client.http.ServiceRegistryClientImpl.registerSchema(ServiceRegistryClientImpl.java:309) ~[service-registry-1.0.0.B010.jar:1.0.0.B010]
+```
+这个属于jsr311-api冲突，如果pom中依赖了下面的旧的协议包，删除即可
+```
+<dependency>
+    <groupId>javax.ws.rs</groupId>
+    <artifactId>jsr311-api</artifactId>
+    <version>1.1.1</version>
+</dependency>
+```
+
+

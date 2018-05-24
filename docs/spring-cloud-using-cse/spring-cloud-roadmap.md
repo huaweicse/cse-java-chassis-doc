@@ -33,3 +33,8 @@ Spring Cloud开发者通过修改pom文件，就可以接入CSE提供的公共�
   1. 完成第一步，并体验CSE
   2. 阅读[CSE的设计原理](http://servicecomb.incubator.apache.org/cn/docs/open-design/)，了解CSE框架的设计思路和组件组成
   2. 体验[在Spring Boot中使用CSE](../using-cse-in-spring-boot.md)，理解在Spring Boot框架下使用CSE的基本原理。
+
+* 第三步：使用轻量级容器和Edge Service
+
+对于多数后台服务，对外只提供REST接口，不提供WEB页面。这些服务运行于J2EE容器（比如tomcat）会额外多出很多性能损耗。CSE提供了轻量级的HTTP服务器来提供REST服务，可以极大的提高性能和减少资源占用。Edge Service是CSE提供的和CSE微服务完美配合的网关服务，除了高性能，还支持强大的灰度版本管理能力、异步编程扩展能力和治理能力。
+  
