@@ -28,3 +28,5 @@
 
 在Spring Boot中通过@EnableServiceComb启用CSE的核心功能，并启用CSE的RestServlet。用于” Web开发方式“。
 
+
+开发过程中会使用到的组件是spring-boot-starter-provider和spring-boot-starter-transport，详细使用场景会在后面的章节说明。
