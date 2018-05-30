@@ -137,16 +137,16 @@ servicecomb:
     passwd: password for proxy 
 ```
 
-在上面的步骤中，实际隐含了将服务中心的地址设置为华南区，如果需要使用其他区域的服务中心地址，还需要显示的指定地址和区域
+在上面的步骤中，实际隐含了将服务中心的地址设置为华北区，如果需要使用其他区域的服务中心地址，还需要显示的指定地址和区域，下面以华为云“华东-上海二”区域为例
 ```
 servicecomb:
   service:
     registry:
-      address: https://cse.cn-north-1.myhwclouds.com
+      address: https://cse.cn-east-2.myhuaweicloud.com:443
   config:
     client:
-      serverUri: https://cse.cn-north-1.myhwclouds.com
+      serverUri: https://cse.cn-east-2.myhuaweicloud.com:443
   credentials:
-    project: cn-north-1
+    project: cn-east-2
 ```
 
