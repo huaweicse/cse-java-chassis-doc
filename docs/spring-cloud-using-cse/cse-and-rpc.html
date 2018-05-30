@@ -34,6 +34,8 @@
 
     
         
+        <link rel="stylesheet" href="../styles/website.css">
+        
     
         
     
@@ -672,7 +674,7 @@ public interface Hello {
 @RpcReference(microserviceName=&quot;helloprovider&quot;, schemaId=&quot;hello&quot;)
 Hello client;
 </code></pre><p>&#x5BF9;&#x4E8E;&#x4E60;&#x60EF;RPC&#x7F16;&#x7A0B;&#x7684;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;&#x670D;&#x52A1;&#x5B9A;&#x4E49;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x58F0;&#x660E;&#x63A5;&#x53E3;&#xFF0C;&#x7136;&#x540E;&#x4F5C;&#x4E3A;API&#x53D1;&#x5E03;&#x3002;&#x8FD9;&#x6837;&#x5BA2;&#x6237;&#x7AEF;&#x5C31;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x91CD;&#x590D;&#x5199;&#x4EE3;&#x7801;&#x4E86;&#x3002;</p>
-<h3 id="&#x4E09;&#x5206;&#x8F6F;&#x4EF6;&#x51B2;&#x7A81;">&#x4E09;&#x5206;&#x8F6F;&#x4EF6;&#x51B2;&#x7A81;</h3>
+<h3 id="&#x4E09;&#x65B9;&#x8F6F;&#x4EF6;&#x51B2;&#x7A81;">&#x4E09;&#x65B9;&#x8F6F;&#x4EF6;&#x51B2;&#x7A81;</h3>
 <p>&#x542F;&#x52A8;&#x62A5;&#x5982;&#x4E0B;&#x9519;&#x8BEF;&#xFF1A;</p>
 <pre><code>Caused by: java.lang.IllegalStateException: Detected both log4j-over-slf4j.jar AND bound slf4j-log4j12.jar on the class path, preempting StackOverflowError.
 </code></pre><p>spring boot&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;logback&#xFF0C; &#x5E76;&#x4E14;&#x4F9D;&#x8D56;&#x4E86;slf4j-log4j12&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4;&#x51B2;&#x7A81;&#x3002;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6392;&#x9664;log4j-over-slf4j&#x89E3;&#x9664;&#x51B2;&#x7A81;:</p>
@@ -738,7 +740,7 @@ Hello client;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"使用CSE作为RPC框架","level":"1.5.3","depth":2,"next":{"title":"使用轻量级容器和Edge Service","level":"1.5.4","depth":2,"path":"spring-cloud-using-cse/performance.md","ref":"spring-cloud-using-cse/performance.md","articles":[]},"previous":{"title":"遗留系统快速接入","level":"1.5.2","depth":2,"path":"spring-cloud-using-cse/quick-start.md","ref":"spring-cloud-using-cse/quick-start.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"introduction.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"spring-cloud-using-cse/cse-and-rpc.md","mtime":"2018-05-23T12:50:04.706Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-24T01:43:23.082Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"使用CSE作为RPC框架","level":"1.5.3","depth":2,"next":{"title":"使用轻量级容器和Edge Service","level":"1.5.4","depth":2,"path":"spring-cloud-using-cse/performance.md","ref":"spring-cloud-using-cse/performance.md","articles":[]},"previous":{"title":"遗留系统快速接入","level":"1.5.2","depth":2,"path":"spring-cloud-using-cse/quick-start.md","ref":"spring-cloud-using-cse/quick-start.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"introduction.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"spring-cloud-using-cse/cse-and-rpc.md","mtime":"2018-05-26T02:12:05.953Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-30T10:43:28.812Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
