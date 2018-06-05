@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Spring Cloud应用接入CSE · GitBook</title>
+        <title>契约开发工具 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -59,10 +59,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="spring-cloud-roadmap.html" />
+    <link rel="next" href="maven-piugin.html" />
     
     
-    <link rel="prev" href="../using-cse-in-spring-boot/diff-spring-mvc.html" />
+    <link rel="prev" href="intruduction.html" />
     
 
     </head>
@@ -324,9 +324,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5" data-path="spring-cloud-using-cse.html">
+        <li class="chapter " data-level="1.5" data-path="../spring-cloud-using-cse/spring-cloud-using-cse.html">
             
-                <a href="spring-cloud-using-cse.html">
+                <a href="../spring-cloud-using-cse/spring-cloud-using-cse.html">
             
                     
                     Spring Cloud应用接入CSE
@@ -338,9 +338,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="spring-cloud-roadmap.html">
+        <li class="chapter " data-level="1.5.1" data-path="../spring-cloud-using-cse/spring-cloud-roadmap.html">
             
-                <a href="spring-cloud-roadmap.html">
+                <a href="../spring-cloud-using-cse/spring-cloud-roadmap.html">
             
                     
                     演进路线图
@@ -351,9 +351,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="quick-start.html">
+        <li class="chapter " data-level="1.5.2" data-path="../spring-cloud-using-cse/quick-start.html">
             
-                <a href="quick-start.html">
+                <a href="../spring-cloud-using-cse/quick-start.html">
             
                     
                     遗留系统快速接入
@@ -364,9 +364,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="cse-and-rpc.html">
+        <li class="chapter " data-level="1.5.3" data-path="../spring-cloud-using-cse/cse-and-rpc.html">
             
-                <a href="cse-and-rpc.html">
+                <a href="../spring-cloud-using-cse/cse-and-rpc.html">
             
                     
                     使用CSE作为RPC框架
@@ -377,9 +377,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4" data-path="performance.html">
+        <li class="chapter " data-level="1.5.4" data-path="../spring-cloud-using-cse/performance.html">
             
-                <a href="performance.html">
+                <a href="../spring-cloud-using-cse/performance.html">
             
                     
                     使用轻量级容器和Edge Service
@@ -395,9 +395,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="../tools/intruduction.html">
+        <li class="chapter " data-level="1.6" data-path="intruduction.html">
             
-                <a href="../tools/intruduction.html">
+                <a href="intruduction.html">
             
                     
                     工具和插件
@@ -409,9 +409,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../tools/contract-tool.html">
+        <li class="chapter active" data-level="1.6.1" data-path="contract-tool.html">
             
-                <a href="../tools/contract-tool.html">
+                <a href="contract-tool.html">
             
                     
                     契约开发工具
@@ -422,9 +422,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="../tools/maven-piugin.html">
+        <li class="chapter " data-level="1.6.2" data-path="maven-piugin.html">
             
-                <a href="../tools/maven-piugin.html">
+                <a href="maven-piugin.html">
             
                     
                     代码生成插件
@@ -435,9 +435,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.3" data-path="../tools/ak-sk-encrypt.html">
+        <li class="chapter " data-level="1.6.3" data-path="ak-sk-encrypt.html">
             
-                <a href="../tools/ak-sk-encrypt.html">
+                <a href="ak-sk-encrypt.html">
             
                     
                     加密工具
@@ -528,7 +528,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Spring Cloud应用接入CSE</a>
+        <a href=".." >契约开发工具</a>
     </h1>
 </div>
 
@@ -543,18 +543,123 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="spring-cloud&#x5E94;&#x7528;&#x63A5;&#x5165;cse">Spring Cloud&#x5E94;&#x7528;&#x63A5;&#x5165;CSE</h1>
-<p>Spring Cloud&#x5E94;&#x7528;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x7684;&#x63A5;&#x5165;CSE&#x63D0;&#x4F9B;&#x7684;&#x57FA;&#x7840;&#x670D;&#x52A1;&#x3002;&#x63A5;&#x5165;CSE&#x670D;&#x52A1;&#x6709;&#x5982;&#x4E0B;&#x597D;&#x5904;&#xFF1A;</p>
-<ol>
-<li><p>&#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x4E13;&#x6CE8;&#x4E8E;&#x4E1A;&#x52A1;&#x7CFB;&#x7EDF;&#x7684;&#x5F00;&#x53D1;&#xFF0C;&#x628A;&#x7CBE;&#x529B;&#x4ECE;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x53EF;&#x9760;&#x6027;&#x8BC4;&#x4F30;&#x3001;&#x96C6;&#x7FA4;&#x90E8;&#x7F72;&#x3001;&#x8FD0;&#x7EF4;&#x76D1;&#x63A7;&#x7B49;&#x590D;&#x6742;&#x7684;&#x4E8B;&#x60C5;&#x4E2D;&#x89E3;&#x653E;&#x51FA;&#x6765;&#x3002;</p>
+                                <h1 id="&#x5951;&#x7EA6;&#x5F00;&#x53D1;&#x5DE5;&#x5177;">&#x5951;&#x7EA6;&#x5F00;&#x53D1;&#x5DE5;&#x5177;</h1>
+<h2 id="&#x6982;&#x5FF5;&#x9610;&#x8FF0;">&#x6982;&#x5FF5;&#x9610;&#x8FF0;</h2>
+<p>&#x672C;&#x8282;&#x4ECB;&#x7ECD;&#x7684;&#x5951;&#x7EA6;&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#x662F;Swagger&#x3002;</p>
+<h2 id="swagger&#x4ECB;&#x7ECD;">Swagger&#x4ECB;&#x7ECD;</h2>
+<p>Swagger&#x662F;&#x4E00;&#x79CD;&#x548C;&#x8BED;&#x8A00;&#x65E0;&#x5173;&#x7684;&#x89C4;&#x8303;&#x548C;&#x6846;&#x67B6;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;API&#x8BBE;&#x8BA1;&#x5DE5;&#x5177;&#xFF0C;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x670D;&#x52A1;&#x63A5;&#x53E3;&#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;RESTful&#x7684;API&#x3002;&#x5B83;&#x4E13;&#x6CE8;&#x4E8E;&#x4E3A;API&#x521B;&#x5EFA;&#x4F18;&#x79C0;&#x7684;&#x6587;&#x6863;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x5E93;&#x3002;</p>
+<p>Swagger&#x5305;&#x62EC;&#x5E93;&#x3001;&#x7F16;&#x8F91;&#x5668;&#x3001;&#x4EE3;&#x7801;&#x751F;&#x6210;&#x5668;&#x7B49;&#x5F88;&#x591A;&#x90E8;&#x5206;&#xFF0C;&#x5728;Java Chassis&#x6846;&#x67B6;&#x4E2D;&#x5DF2;&#x7ECF;&#x96C6;&#x6210;&#x4E86;Swagger&#x5E93;&#xFF0C;&#x540C;&#x65F6;&#x5728;ServiceStage&#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x5728;&#x7EBF;&#x5951;&#x7EA6;&#x7F16;&#x8F91;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;Swagger&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;</p>
+<ul>
+<li><p>Swagger API Spec&#xFF0C;&#x63CF;&#x8FF0;Rest API&#x7684;&#x8BED;&#x8A00;&#x3002;</p>
 </li>
-<li><p>&#x5B9E;&#x73B0;&#x4E1A;&#x52A1;&#x5FEB;&#x901F;&#x4EA4;&#x4ED8;&#x548C;&#x654F;&#x6377;&#x5F00;&#x53D1;&#x3002;&#x5229;&#x7528;PaaS&#x5E73;&#x53F0;&#xFF0C;&#x6839;&#x636E;&#x4E1A;&#x52A1;&#x89C4;&#x6A21;&#xFF0C;&#x52A8;&#x6001;&#x7684;&#x8C03;&#x6574;&#x8D44;&#x6E90;&#x4F7F;&#x7528;&#xFF0C;&#x964D;&#x4F4E;&#x4E1A;&#x52A1;&#x98CE;&#x9669;&#x3002;</p>
+<li><p>ServiceStage Swagger API Editor&#xFF0C;ServiceStage&#x4E0A;&#x63D0;&#x4F9B;&#x7684;Swagger API Spec&#x7684;&#x7F16;&#x8F91;&#x5668;&#x3002;</p>
 </li>
-</ol>
-<p>&#x4E0B;&#x56FE;&#x5C55;&#x73B0;&#x4E86;CSE&#x57FA;&#x7840;&#x670D;&#x52A1;&#x3001;PaaS&#x5E73;&#x53F0;&#x670D;&#x52A1;&#x548C;&#x7B2C;&#x4E09;&#x65B9;&#x670D;&#x52A1;&#x7684;&#x5173;&#x7CFB;&#xFF1A;</p>
-<p><img src="../assets/spring-cloud.png" alt=""></p>
-<p>CSE&#x5B98;&#x65B9;&#x652F;&#x6301;ServiceComb&#x5FAE;&#x670D;&#x52A1;&#x6846;&#x67B6;&#x63A5;&#x5165;&#x548C;Spring Cloud&#x5FAE;&#x670D;&#x52A1;&#x6846;&#x67B6;&#x63A5;&#x5165;&#x3002;&#x4E24;&#x4E2A;&#x6846;&#x67B6;&#x63A5;&#x5165;&#x7684;&#x6B65;&#x9AA4;&#x57FA;&#x672C;&#x7C7B;&#x4F3C;&#x3002;&#x5728;&#x672C;&#x7AE0;&#x8282;&#x4E2D;&#xFF0C;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;Spring Cloud&#x5E94;&#x7528;&#x63A5;&#x5165;CSE&#x7684;&#x539F;&#x7406;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;Spring Cloud&#x5E94;&#x7528;&#x6539;&#x9020;&#x7684;&#x6848;&#x4F8B;&#xFF0C;&#x8BF4;&#x660E;&#x6539;&#x9020;&#x6B65;&#x9AA4;&#x3002;</p>
-<p>&#x4E3A;&#x4E86;&#x4F7F;&#x7528;CSE&#x57FA;&#x7840;&#x670D;&#x52A1;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x5F00;&#x53D1;&#x8005;&#x62E5;&#x6709;&#x534E;&#x4E3A;&#x4E91;&#x8D26;&#x53F7;&#xFF0C;&#x53EF;&#x4EE5;&#x767B;&#x9646;<a href="http://www.huaweicloud.com/" target="_blank">http://www.huaweicloud.com/</a> &#x514D;&#x8D39;&#x6CE8;&#x518C;&#x3002;&#x5EFA;&#x8BAE;&#x5F00;&#x53D1;&#x8005;&#x5148;&#x901A;&#x8FC7;CSE&#x63D0;&#x4F9B;&#x7684;&#x201C;&#x5FEB;&#x901F;&#x4F53;&#x9A8C;&#x5FAE;&#x670D;&#x52A1;&#x80FD;&#x529B;&#x201D;&#x4E86;&#x89E3;CSE&#xFF0C;&#x5728;&#x4E0B;&#x9762;&#x7684;&#x7AE0;&#x8282;&#x4E2D;&#xFF0C;&#x4F1A;&#x7701;&#x7565;&#x4F53;&#x9A8C;&#x8FC7;&#x7A0B;&#x4E2D;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x4E00;&#x4E9B;&#x516C;&#x5171;&#x64CD;&#x4F5C;&#xFF0C;&#x6BD4;&#x5982;&#x5982;&#x4F55;&#x83B7;&#x53D6;AK/SK&#x8BA4;&#x8BC1;&#x4FE1;&#x606F;&#x7B49;&#x3002;</p>
+</ul>
+<h2 id="swagger-api-spec">Swagger API Spec</h2>
+<p>Swagger API Spec&#x662F;Swagger&#x7528;&#x6765;&#x63CF;&#x8FF0;Rest API&#x7684;&#x8BED;&#x8A00;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;yaml&#x6216;json&#x6765;&#x8868;&#x793A;&#x3002;Swagger API Spec&#x5305;&#x542B;&#x4EE5;&#x4E0B;&#x90E8;&#x5206;&#xFF1A;</p>
+<ul>
+<li><p>swagger&#xFF0C;&#x6307;&#x5B9A;swagger spec&#x7248;&#x672C;&#xFF0C;2.0</p>
+</li>
+<li><p>info&#xFF0C;&#x63D0;&#x4F9B;API&#x7684;&#x5143;&#x6570;&#x636E;</p>
+</li>
+<li><p>basePath&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;host&#x7684;&#x8DEF;&#x5F84;</p>
+</li>
+<li><p>schemes&#xFF0C;API&#x7684;&#x4F20;&#x8F93;&#x534F;&#x8BAE;&#xFF0C;http&#xFF0C;https&#xFF0C;ws&#xFF0C;wss</p>
+</li>
+<li><p>consumes&#xFF0C;API&#x53EF;&#x4EE5;&#x6D88;&#x8D39;&#x7684;MIME&#x7C7B;&#x578B;&#x5217;&#x8868;</p>
+</li>
+<li><p>produces&#xFF0C;API&#x4EA7;&#x751F;&#x7684;MIME&#x7C7B;&#x578B;&#x5217;&#x8868;</p>
+</li>
+<li><p>paths&#xFF0C;API&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x4EE5;&#x53CA;&#x6BCF;&#x4E2A;&#x8DEF;&#x5F84;&#x7684;HTTP&#x65B9;&#x6CD5;&#xFF0C;&#x4E00;&#x4E2A;&#x8DEF;&#x5F84;&#x52A0;&#x4E0A;&#x4E00;&#x4E2A;HTTP&#x65B9;&#x6CD5;&#x6784;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x3002;&#x6BCF;&#x4E2A;&#x64CD;&#x4F5C;&#x90FD;&#x6709;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;</p>
+<ul>
+<li><p>tags&#xFF0C;&#x64CD;&#x4F5C;&#x7684;&#x6807;&#x7B7E;</p>
+</li>
+<li><p>description&#xFF0C;&#x63CF;&#x8FF0;</p>
+</li>
+<li><p>externalDocs&#xFF0C;&#x5916;&#x90E8;&#x6587;&#x6863;</p>
+</li>
+<li><p>operationId&#xFF0C;&#x6807;&#x8BC6;&#x64CD;&#x4F5C;&#x7684;&#x552F;&#x4E00;&#x5B57;&#x7B26;&#x4E32;</p>
+</li>
+<li><p>consumes&#xFF0C;MIME&#x7C7B;&#x578B;&#x5217;&#x8868;</p>
+</li>
+<li><p>produces&#xFF0C;MIME&#x7C7B;&#x578B;&#x5217;&#x8868;</p>
+</li>
+<li><p>parameters&#xFF0C;&#x53C2;&#x6570;&#x5217;&#x8868;&#xFF0C;&#x53C2;&#x6570;&#x7684;&#x63CF;&#x8FF0;&#x5305;&#x62EC;&#xFF1A;</p>
+<ul>
+<li><p>name&#xFF0C;&#x540D;&#x5B57;</p>
+</li>
+<li><p>description&#xFF0C;&#x63CF;&#x8FF0;required&#xFF0C;&#x662F;&#x5426;&#x5FC5;&#x987B;</p>
+</li>
+<li><p>in&#xFF0C;&#x53C2;&#x6570;&#x83B7;&#x53D6;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x5305;&#x62EC;&#x5982;&#x4E0B;&#x51E0;&#x79CD;&#xFF1A;</p>
+<ul>
+<li><p>Path&#x3001;Query&#x3001;Header&#x3001;Body&#x3001;Form</p>
+</li>
+<li><p>&#xFF08;&#x5BF9;&#x4E8E;Body&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#xFF09;</p>
+<ul>
+<li>schema&#xFF0C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x53EF;&#x4EE5;&#x8BE6;&#x7EC6;&#x63CF;&#x8FF0;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5F15;&#x7528;definition&#x90E8;&#x5206;&#x5B9A;&#x4E49;&#x7684;schema</li>
+</ul>
+</li>
+<li><p>&#xFF08;&#x5BF9;&#x4E8E;Body&#x7C7B;&#x578B;&#x4EE5;&#x5916;&#x7684;&#x53C2;&#x6570;&#xFF09;</p>
+<ul>
+<li><p>type&#xFF0C;&#x7C7B;&#x578B;</p>
+</li>
+<li><p>format&#xFF0C;&#x6570;&#x636E;&#x683C;&#x5F0F;</p>
+</li>
+<li><p>allowEmptyValue&#xFF0C;&#x662F;&#x5426;&#x5141;&#x8BB8;&#x7A7A;&#x503C;</p>
+</li>
+<li><p>items&#xFF0C;&#x5BF9;&#x4E8E;Array&#x7C7B;&#x578B;</p>
+</li>
+<li><p>collectionFormat&#xFF0C;&#x5BF9;&#x4E8E;Array&#x7C7B;&#x578B;</p>
+</li>
+<li><p>default&#xFF0C;&#x7F3A;&#x7701;&#x503C;</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>responses&#xFF0C;&#x5E94;&#x7B54;&#x72B6;&#x6001;&#x7801;&#x548C;&#x5BF9;&#x4E8E;&#x7684;&#x6D88;&#x606F;&#x7684;Schema</p>
+</li>
+<li><p>schemes&#xFF0C;&#x4F20;&#x8F93;&#x534F;&#x8BAE;</p>
+</li>
+<li><p>deprecated&#xFF0C;&#x4E0D;&#x63A8;&#x8350;&#x4F7F;&#x7528;</p>
+</li>
+<li><p>security&#xFF0C;&#x5B89;&#x5168;</p>
+</li>
+</ul>
+</li>
+<li><p>definitions&#xFF0C;&#x5B9A;&#x4E49;API&#x6D88;&#x8D39;&#x6216;&#x751F;&#x4EA7;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x4F7F;&#x7528;json-schema&#x63CF;&#x8FF0;&#xFF0C;&#x64CD;&#x4F5C;&#x7684;parameter&#x548C;response&#x90E8;&#x5206;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5F15;&#x7528;&#x7684;&#x65B9;&#x5F0F;&#x4F7F;&#x7528;definitions&#x90E8;&#x5206;&#x5B9A;&#x4E49;&#x7684;schema</p>
+</li>
+</ul>
+<p>Swagger API Spec&#x5BF9;Rest API&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x7684;&#x8BF7;&#x6C42;&#x6D88;&#x606F;&#x7684;&#x53C2;&#x6570;&#xFF08;Path,Query,Body,Form&#xFF09;&#xFF0C;&#x54CD;&#x5E94;&#x6D88;&#x606F;&#x7684;&#x72B6;&#x6001;&#x7801;&#x548C;&#x6D88;&#x606F;&#x4F53;&#x7684;json&#x7ED3;&#x6784;&#x90FD;&#x8FDB;&#x884C;&#x4E86;&#x8BE6;&#x7EC6;&#x7684;&#x63CF;&#x8FF0;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x67E5;&#x770B;&#x8BE6;&#x7EC6;&#x7684;Swagger API Spec&#x5B9A;&#x4E49;&#xFF0C;&#x8BF7;&#x53C2;&#x8003;<a href="http://swagger.io/specification/" target="_blank">http://swagger.io/specification/</a>&#x3002;</p>
+<h2 id="servicestage-api-editor">ServiceStage API Editor</h2>
+<p>ServiceStage&#x63D0;&#x4F9B;&#x4E86;&#x5728;&#x7EBF;&#x7684;Swagger API Editor&#xFF0C;&#x94FE;&#x63A5;&#x662F;<a href="https://servicestage.hwclouds.com/codegen/" target="_blank">ServiceStage API Editor</a>&#xFF0C;&#x9700;&#x8981;&#x4E8B;&#x5148;&#x6CE8;&#x518C;&#x548C;&#x767B;&#x5F55;&#x534E;&#x4E3A;&#x4E91;&#x8D26;&#x53F7;&#x3002;</p>
+<p>ServiceStage API Editor&#x662F;Swagger API Spec&#x7684;&#x7F16;&#x8F91;&#x5668;&#xFF0C;Swagger API Spec&#x652F;&#x6301;&#x4E24;&#x79CD;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#xFF0C;yaml&#x548C;json&#xFF0C;&#x5728;ServiceStage API Editor&#x4E2D;&#x4F7F;&#x7528;yaml&#x6216;&#x8005;json&#x683C;&#x5F0F;&#x4E2D;&#x8FDB;&#x884C;&#x7F16;&#x8F91;&#xFF0C;&#x540C;&#x65F6;&#x5141;&#x8BB8;&#x4E0B;&#x8F7D;&#x4E24;&#x79CD;&#x683C;&#x5F0F;&#x7684;&#x6587;&#x4EF6;&#x3002;&#x5728;yaml&#x7F16;&#x8F91;&#x5668;&#x7684;&#x53F3;&#x9762;&#x6709;&#x6240;&#x89C1;&#x5373;&#x6240;&#x5F97;&#x7684;&#x9884;&#x89C8;&#x3002;<img src="../start/&#x5951;&#x7EA6;&#x5F00;&#x53D1;&#x5DE5;&#x5177;.png" alt=""></p>
+<p>ServiceStage API Editor&#x9875;&#x9762;&#x7684;&#x6587;&#x4EF6;&#x83DC;&#x5355;&#x63D0;&#x4F9B;&#x4E86;&#x4EE5;&#x4E0B;&#x529F;&#x80FD;&#xFF1A;</p>
+<ul>
+<li>File&#xFF0C;&#x6587;&#x6863;&#x4E0B;&#x8F7D;</li>
+</ul>
+<blockquote>
+<ul>
+<li><p>Download YAML&#xFF0C;&#x4E0B;&#x8F7D;yaml&#x683C;&#x5F0F;&#x7684;&#x5951;&#x7EA6;&#x6587;&#x4EF6;&#x3002;</p>
+</li>
+<li><p>Download JSON&#xFF0C;&#x4E0B;&#x8F7D;json&#x683C;&#x5F0F;&#x7684;&#x5951;&#x7EA6;&#x6587;&#x4EF6;&#x3002;</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>Edit</li>
+</ul>
+<blockquote>
+<p>Convert to YAML&#xFF0C;&#x5C06;json&#x683C;&#x5F0F;&#x7684;&#x5951;&#x7EA6;&#x5B9A;&#x4E49;&#x8F6C;&#x6362;&#x6210;yaml&#x683C;&#x5F0F;&#x3002;</p>
+</blockquote>
+<ul>
+<li>Generate-Document</li>
+</ul>
+<blockquote>
+<p>HTML&#xFF0C;&#x751F;&#x6210;&#x63CF;&#x8FF0;api&#x7684;html&#x6587;&#x6863;&#x3002;</p>
+</blockquote>
 
                                 
                                 </section>
@@ -582,12 +687,12 @@
 
             
                 
-                <a href="../using-cse-in-spring-boot/diff-spring-mvc.html" class="navigation navigation-prev " aria-label="Previous page: Spring MVC模式的差异">
+                <a href="intruduction.html" class="navigation navigation-prev " aria-label="Previous page: 工具和插件">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="spring-cloud-roadmap.html" class="navigation navigation-next " aria-label="Next page: 演进路线图">
+                <a href="maven-piugin.html" class="navigation navigation-next " aria-label="Next page: 代码生成插件">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -598,7 +703,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Spring Cloud应用接入CSE","level":"1.5","depth":1,"next":{"title":"演进路线图","level":"1.5.1","depth":2,"path":"spring-cloud-using-cse/spring-cloud-roadmap.md","ref":"spring-cloud-using-cse/spring-cloud-roadmap.md","articles":[]},"previous":{"title":"Spring MVC模式的差异","level":"1.4.5","depth":2,"path":"using-cse-in-spring-boot/diff-spring-mvc.md","ref":"using-cse-in-spring-boot/diff-spring-mvc.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"introduction.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"spring-cloud-using-cse/spring-cloud-using-cse.md","mtime":"2018-05-19T08:08:48.956Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-05T08:56:57.588Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"契约开发工具","level":"1.6.1","depth":2,"next":{"title":"代码生成插件","level":"1.6.2","depth":2,"path":"tools/maven-piugin.md","ref":"tools/maven-piugin.md","articles":[]},"previous":{"title":"工具和插件","level":"1.6","depth":1,"path":"tools/intruduction.md","ref":"tools/intruduction.md","articles":[{"title":"契约开发工具","level":"1.6.1","depth":2,"path":"tools/contract-tool.md","ref":"tools/contract-tool.md","articles":[]},{"title":"代码生成插件","level":"1.6.2","depth":2,"path":"tools/maven-piugin.md","ref":"tools/maven-piugin.md","articles":[]},{"title":"加密工具","level":"1.6.3","depth":2,"path":"tools/ak-sk-encrypt.md","ref":"tools/ak-sk-encrypt.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"introduction.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tools/contract-tool.md","mtime":"2018-06-05T08:24:04.349Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-05T08:56:57.588Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

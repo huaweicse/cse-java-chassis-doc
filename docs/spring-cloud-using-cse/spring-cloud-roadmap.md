@@ -32,7 +32,7 @@ Spring Cloud开发者通过修改pom文件，就可以接入CSE提供的公共�
 
   1. 完成第一步，并体验CSE
   2. 阅读[CSE的设计原理](http://servicecomb.incubator.apache.org/cn/docs/open-design/)，了解CSE框架的设计思路和组件组成
-  2. 体验[在Spring Boot中使用CSE](../using-cse-in-spring-boot.md)，理解在Spring Boot框架下使用CSE的基本原理。
+  2. 体验[在Spring Boot中使用CSE](../using-cse-in-spring-boot/using-cse-in-spring-boot.md)，理解在Spring Boot框架下使用CSE的基本原理。
 
 * 第三步：使用轻量级容器和Edge Service
 
