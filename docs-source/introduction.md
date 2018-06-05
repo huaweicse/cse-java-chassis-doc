@@ -22,6 +22,20 @@ CSE Java SDK 100% 兼容 [ServiceComb Java Chassis](https://github.com/apache/in
 
 ## 版本说明
 
+### CSE 2.3.25
+#### 新特性
+* [SCB-617] J2EE运行环境（tomcat）优雅退出支持；Vert.x运行环境优雅退出增加了事件机制，并且统一了两个环境优雅退出的逻辑。
+* [SCB-611] Edge Service提供了两种通用的路由管理机制：基于服务名和版本的灰度管理和基于URL映射配置的灰度管理机制，简化用户使用Edge Service。
+* [SCB-607] Access Log支持打印Context头信息；格式支持用户扩展。
+
+#### 修改特性
+* [SCB-589] 采用Edge一样的机制管理Consumer的契约，默认拉取0+所有版本信息（之前是拉起latest），并对不同的版本采用隔离的ClassLoader进行接口调用，以解决Provider接口变更，Consumer配套Provider修改，升级的时候，Consumer先升级导致的接口调用异常和无法恢复问题。
+* [SCB-590] validation-api由1.1.0升级到2.0.0
+* [SCB-590] hibernate-validator由5.2.4.Final升级到6.0.2.Final。
+* [SCB-590] hibernate-validator-annotation-processor由5.2.2.Final升级到6.0.2.Final。
+
+#### Bug fixes
+* [SCB-471] 解决配置中心在watch模式下循环打印NullPointerException的问题
 
 ### CSE 2.3.23
 #### 新特性
