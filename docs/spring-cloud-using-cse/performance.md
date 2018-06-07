@@ -57,10 +57,23 @@ consumer:
 ## 增加Edge Service
 Edge Service开发非常简单，只需要将项目拷贝过来即可使用，并且可以应用于其他项目中。Edge Service的核心组成是AbstractEdgeDispatcher，通过SPI进行加载，当需要不同的路由规则的时候，通过增加扩展即可实现。SPI根据实现类的getOrder进行优先级选择。
 
-ApiDispatcher实现了AbstractEdgeDispatcher，它的核心是转发规则的正则表达式。
+在[本例子](https://github.com/huaweicse/cse-java-chassis-samples/tree/master/springcloud-sample-cse-edge/edge-service)中，使用了缺省的DefaultEdgeDispatcher，经过简单的配置就可以实现强大的路由能力。
+```
+servicecomb:
+  http:
+    dispatcher:
+      edge:
+        default:
+          enabled: true
+          prefix: api
+          withVersion: false
+          prefixSegmentCount: 2
+```
 
 增加Edge Service以后，可以通过下面的URL访问原来的服务：
 
 ```
 http://localhost:7118/api/helloconsumer/hello?name=World
 ```
+
+可以通过[ServiceComb开发指南](https://huaweicse.github.io/servicecomb-java-chassis-doc/zh_CN/edge/by-servicecomb-sdk.html)获取更多关于Edge Service的使用说明。
