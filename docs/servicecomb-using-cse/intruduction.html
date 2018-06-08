@@ -1,0 +1,819 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ServiceComb应用接入CSE · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="connect-service-center.html" />
+    
+    
+    <link rel="prev" href="../featured-topics/develope-microservice-using-ces/wang-guan-https-an-quan-pei-zhi.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../featured-topics/develope-microservice-using-ces.html">
+            
+                <a href="../featured-topics/develope-microservice-using-ces.html">
+            
+                    
+                    使用CSE开发微服务应用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../featured-topics/develope-microservice-using-ces/user-story.html">
+            
+                <a href="../featured-topics/develope-microservice-using-ces/user-story.html">
+            
+                    
+                    User Story
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../featured-topics/develope-microservice-using-ces/she-ji-wei-fu-wu.html">
+            
+                <a href="../featured-topics/develope-microservice-using-ces/she-ji-wei-fu-wu.html">
+            
+                    
+                    设计微服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../featured-topics/develope-microservice-using-ces/kai-fa-jie976228-porter-website.html">
+            
+                <a href="../featured-topics/develope-microservice-using-ces/kai-fa-jie976228-porter-website.html">
+            
+                    
+                    开发界面(porter-website)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../featured-topics/develope-microservice-using-ces/kai-fa-wen-jian-shang-chuan-gong-80fd28-file-service.html">
+            
+                <a href="../featured-topics/develope-microservice-using-ces/kai-fa-wen-jian-shang-chuan-gong-80fd28-file-service.html">
+            
+                    
+                    开发文件上传功能(file-service)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../featured-topics/develope-microservice-using-ces/kai-fa-wang-517328-gateway-service.html">
+            
+                <a href="../featured-topics/develope-microservice-using-ces/kai-fa-wang-517328-gateway-service.html">
+            
+                    
+                    开发网关(gateway-service)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../featured-topics/develope-microservice-using-ces/shi-yong-mybatis-fang-wen-shu-ju-5e9328-user-service.html">
+            
+                <a href="../featured-topics/develope-microservice-using-ces/shi-yong-mybatis-fang-wen-shu-ju-5e9328-user-service.html">
+            
+                    
+                    使用MyBatis访问数据库(user-service)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../featured-topics/develope-microservice-using-ces/jin-xing-ren-zheng-he-jian-quan-she-ji.html">
+            
+                <a href="../featured-topics/develope-microservice-using-ces/jin-xing-ren-zheng-he-jian-quan-she-ji.html">
+            
+                    
+                    进行认证和鉴权设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../featured-topics/develope-microservice-using-ces/wang-guan-https-an-quan-pei-zhi.html">
+            
+                <a href="../featured-topics/develope-microservice-using-ces/wang-guan-https-an-quan-pei-zhi.html">
+            
+                    
+                    网关HTTPS安全配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="intruduction.html">
+            
+                <a href="intruduction.html">
+            
+                    
+                    ServiceComb应用接入CSE
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="connect-service-center.html">
+            
+                <a href="connect-service-center.html">
+            
+                    
+                    连接服务中心
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="connect-config-center.html">
+            
+                <a href="connect-config-center.html">
+            
+                    
+                    连接配置中心
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="using-governance.html">
+            
+                <a href="using-governance.html">
+            
+                    
+                    使用服务治理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="monitoring.html">
+            
+                <a href="monitoring.html">
+            
+                    
+                    微服务运行数据上报
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../using-cse-in-spring-boot/using-cse-in-spring-boot.html">
+            
+                <a href="../using-cse-in-spring-boot/using-cse-in-spring-boot.html">
+            
+                    
+                    在Spring Boot中使用CSE
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../using-cse-in-spring-boot/cse-components-for-spring-boot.html">
+            
+                <a href="../using-cse-in-spring-boot/cse-components-for-spring-boot.html">
+            
+                    
+                    CSE提供的组件说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../using-cse-in-spring-boot/java-application.html">
+            
+                <a href="../using-cse-in-spring-boot/java-application.html">
+            
+                    
+                    JAVA应用方式开发步骤
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../using-cse-in-spring-boot/web-application.html">
+            
+                <a href="../using-cse-in-spring-boot/web-application.html">
+            
+                    
+                    Web开发方式开发步骤
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../using-cse-in-spring-boot/diff-between-java-web.html">
+            
+                <a href="../using-cse-in-spring-boot/diff-between-java-web.html">
+            
+                    
+                    JAVA应用方式和Web开发方式的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../using-cse-in-spring-boot/diff-spring-mvc.html">
+            
+                <a href="../using-cse-in-spring-boot/diff-spring-mvc.html">
+            
+                    
+                    Spring MVC模式的差异
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../spring-cloud-using-cse/spring-cloud-using-cse.html">
+            
+                <a href="../spring-cloud-using-cse/spring-cloud-using-cse.html">
+            
+                    
+                    Spring Cloud应用接入CSE
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../spring-cloud-using-cse/spring-cloud-roadmap.html">
+            
+                <a href="../spring-cloud-using-cse/spring-cloud-roadmap.html">
+            
+                    
+                    演进路线图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../spring-cloud-using-cse/quick-start.html">
+            
+                <a href="../spring-cloud-using-cse/quick-start.html">
+            
+                    
+                    遗留系统快速接入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../spring-cloud-using-cse/cse-and-rpc.html">
+            
+                <a href="../spring-cloud-using-cse/cse-and-rpc.html">
+            
+                    
+                    使用CSE作为RPC框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../spring-cloud-using-cse/performance.html">
+            
+                <a href="../spring-cloud-using-cse/performance.html">
+            
+                    
+                    使用轻量级容器和Edge Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../tools/intruduction.html">
+            
+                <a href="../tools/intruduction.html">
+            
+                    
+                    工具和插件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../tools/contract-tool.html">
+            
+                <a href="../tools/contract-tool.html">
+            
+                    
+                    契约开发工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../tools/maven-piugin.html">
+            
+                <a href="../tools/maven-piugin.html">
+            
+                    
+                    代码生成插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../tools/ak-sk-encrypt.html">
+            
+                <a href="../tools/ak-sk-encrypt.html">
+            
+                    
+                    加密工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../question-and-answer/question_answer.html">
+            
+                <a href="../question-and-answer/question_answer.html">
+            
+                    
+                    常见问题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../question-and-answer/service-center-error-diagnosis.html">
+            
+                <a href="../question-and-answer/service-center-error-diagnosis.html">
+            
+                    
+                    连接华为公有云服务中心常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../question-and-answer/interface-compatibility.html">
+            
+                <a href="../question-and-answer/interface-compatibility.html">
+            
+                    
+                    微服务接口兼容常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >ServiceComb应用接入CSE</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="servicecomb&#x5E94;&#x7528;&#x63A5;&#x5165;cse">ServiceComb&#x5E94;&#x7528;&#x63A5;&#x5165;CSE</h1>
+<p>CSE Java SDK 100%&#x517C;&#x5BB9;ServiceComb Java Chassis&#xFF0C;&#x5E76;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x66F4;&#x52A0;&#x53CB;&#x597D;&#x7684;&#x5C01;&#x88C5;&#xFF0C;&#x4EE5;&#x7B80;&#x5316;&#x7528;&#x6237;&#x4E1A;&#x52A1;&#x5F00;&#x53D1;&#xFF0C;&#x66F4;&#x52A0;&#x4E13;&#x6CE8;&#x4E8E;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x3002;&#x5C06;ServiceComb Java Chassis&#x90E8;&#x7F72;&#x5230;CSE&#xFF0C;&#x5E76;&#x4F7F;&#x7528;CSE&#x63D0;&#x4F9B;&#x7684;&#x80FD;&#x529B;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5BF9;microservice.yaml&#x8FDB;&#x884C;&#x9002;&#x5F53;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x4EE5;&#x53CA;&#x5728;pom&#x4E2D;&#x6DFB;&#x52A0;&#x989D;&#x5916;&#x7684;&#x4F9D;&#x8D56;&#xFF0C;&#x4E0D;&#x6D89;&#x53CA;&#x4EFB;&#x4F55;&#x4EE3;&#x7801;&#x4FEE;&#x6539;&#x3002;&#x5728;&#x672C;&#x7AE0;&#x8282;&#xFF0C;&#x4ECB;&#x7ECD;&#x5982;&#x4F55;&#x4E00;&#x952E;&#x5F0F;&#x542F;&#x7528;CSE&#x80FD;&#x529B;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x7AE0;&#x8282;&#xFF0C;&#x8BE6;&#x7EC6;&#x7684;&#x4ECB;&#x7ECD;CSE&#x7684;&#x6BCF;&#x4E2A;&#x5177;&#x4F53;&#x80FD;&#x529B;&#x7684;&#x4E00;&#x4E9B;&#x7EC6;&#x8282;&#x3002;</p>
+<h2 id="&#x4E00;&#x952E;&#x5F0F;&#x914D;&#x7F6E;">&#x4E00;&#x952E;&#x5F0F;&#x914D;&#x7F6E;</h2>
+<p>CSE&#x63D0;&#x4F9B;&#x4E86;cse-solution-service-engine&#xFF0C;&#x8BA9;&#x57FA;&#x4E8E;&#x5F00;&#x6E90;&#x7248;&#x672C;&#x5F00;&#x53D1;&#x7684;&#x5E94;&#x7528;&#x5FEB;&#x901F;&#x5207;&#x6362;&#x4E3A;&#x4E91;&#x4E0A;&#x5E94;&#x7528;&#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x516C;&#x6709;&#x4E91;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x3001;&#x7070;&#x5EA6;&#x53D1;&#x5E03;&#x3001;&#x670D;&#x52A1;&#x6CBB;&#x7406;&#x7B49;&#x529F;&#x80FD;&#x3002;&#x8FD9;&#x91CC;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x5305;&#x62EC;&#x7EC4;&#x5408;&#x9002;&#x5F53;&#x7684;&#x7EC4;&#x4EF6;&#x3001;&#x914D;&#x7F6E;&#x5904;&#x7406;&#x94FE;&#x3001;&#x914D;&#x7F6E;&#x53C2;&#x6570;&#x7684;&#x7F3A;&#x7701;&#x503C;&#x7B49;&#x3002;&#x5177;&#x4F53;&#x5305;&#x62EC;&#xFF1A;</p>
+<ul>
+<li>&#x5F15;&#x5165;&#x76F8;&#x5173;&#x4F9D;&#x8D56;&#x7684;&#x7EC4;&#x4EF6;&#x3002;&#x5305;&#x62EC;&#x5FC5;&#x987B;&#x7684;Handlers&#x3001;Providers&#x3001;Transports&#x3002;</li>
+<li>&#x589E;&#x52A0;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x9879;&#x3002;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x5305;&#x542B;&#x4E86;&#x5904;&#x7406;&#x94FE;&#x3001;&#x7F3A;&#x7701;&#x7684;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x548C;&#x6CBB;&#x7406;&#x9009;&#x9879;&#x7B49;&#x3002;</li>
+</ul>
+<p>&#x5BF9;&#x4E8E;ServiceComb&#x5E94;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4FEE;&#x6539;POM&#x5F15;&#x5165;cse-solution-service-engine&#x3002;</p>
+<p>&#x589E;&#x52A0;/&#x4FEE;&#x6539;&#x4F9D;&#x8D56;&#x7BA1;&#x7406;</p>
+<pre><code>    &lt;dependencyManagement&gt;
+        &lt;dependencies&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.huawei.paas.cse&lt;/groupId&gt;
+                &lt;artifactId&gt;cse-dependency&lt;/artifactId&gt;
+                &lt;version&gt;2.3.23&lt;/version&gt;
+                &lt;type&gt;pom&lt;/type&gt;
+                &lt;scope&gt;import&lt;/scope&gt;
+            &lt;/dependency&gt;
+        &lt;/dependencies&gt;
+    &lt;/dependencyManagement&gt;
+</code></pre><p>&#x5F15;&#x5165;&#x4F9D;&#x8D56;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span> 
+  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.huawei.paas.cse<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>  
+  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cse-solution-service-engine<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span> 
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+</code></pre>
+<h2 id="&#x517C;&#x5BB9;&#x6027;&#x548C;&#x5F00;&#x53D1;&#x8005;&#x5EFA;&#x8BAE;">&#x517C;&#x5BB9;&#x6027;&#x548C;&#x5F00;&#x53D1;&#x8005;&#x5EFA;&#x8BAE;</h2>
+<p>cse-solution-service-engine&#x7684;&#x76EE;&#x7684;&#x662F;&#x63D0;&#x4F9B;&#x5FEB;&#x901F;&#x3001;&#x5168;&#x9762;&#x7684;&#x4F7F;&#x7528;CSE&#x80FD;&#x529B;&#x7684;&#x7EC4;&#x5408;&#x65B9;&#x6848;&#x3002;&#x968F;&#x7740;CSE&#x63D0;&#x4F9B;&#x7684;&#x529F;&#x80FD;&#x7684;&#x8C03;&#x6574;&#x548C;&#x4E30;&#x5BCC;&#xFF0C;&#x5B83;&#x4F1A;&#x4E0D;&#x65AD;&#x7684;&#x53BB;&#x9002;&#x914D;CSE&#x7684;&#x53D8;&#x66F4;&#xFF0C;&#x4EE5;&#x671F;&#x8BA9;&#x5F00;&#x53D1;&#x8005;&#x83B7;&#x5F97;&#x6700;&#x65B0;&#x7684;&#x529F;&#x80FD;&#x4F53;&#x9A8C;&#x3002;CSE&#x5021;&#x5BFC;&#x6301;&#x7EED;&#x96C6;&#x6210;&#x3001;&#x8FED;&#x4EE3;&#x66F4;&#x65B0;&#x7684;&#x5DE5;&#x4F5C;&#x65B9;&#x5F0F;&#xFF0C;&#x4EE5;&#x63D0;&#x9AD8;&#x521B;&#x65B0;&#x6548;&#x7387;&#x548C;&#x63D0;&#x5347;&#x8F6F;&#x4EF6;&#x8D28;&#x91CF;&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x9700;&#x8981;&#x4E1A;&#x52A1;&#x7CFB;&#x7EDF;&#x5B58;&#x5728;&#x4E00;&#x5B9A;&#x7684;&#x673A;&#x5236;&#xFF0C;&#x80FD;&#x591F;&#x68C0;&#x6D4B;&#x53D8;&#x66F4;&#x548C;&#x5FEB;&#x901F;&#x9488;&#x5BF9;&#x53D8;&#x66F4;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x4E1A;&#x52A1;&#x7CFB;&#x7EDF;&#x5728;&#x96C6;&#x6210;CSE&#x7684;&#x65B0;&#x7248;&#x672C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x80FD;&#x591F;&#x8FD0;&#x884C;&#x81EA;&#x5DF1;&#x7684;&#x81EA;&#x52A8;&#x5316;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#xFF0C;&#x6765;&#x68C0;&#x6D4B;&#x53D8;&#x66F4;&#xFF0C;&#x5E76;&#x6839;&#x636E;CSE&#x63D0;&#x4F9B;&#x7684;&#x53D8;&#x66F4;&#x8BF4;&#x660E;&#x6765;&#x5FEB;&#x901F;&#x9002;&#x914D;&#x65B0;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x8FD9;&#x79CD;&#x6301;&#x7EED;&#x96C6;&#x6210;&#x3001;&#x8FED;&#x4EE3;&#x66F4;&#x65B0;&#x7684;&#x7406;&#x5FF5;&#x5E76;&#x4E0D;&#x9002;&#x5408;&#x6240;&#x6709;&#x7684;&#x573A;&#x666F;&#x548C;&#x7528;&#x6237;&#x3002;&#x5BF9;&#x4E8E;&#x5BFB;&#x6C42;&#x4E1A;&#x52A1;&#x7CFB;&#x7EDF;&#x7A33;&#x5B9A;&#xFF0C;&#x4E0D;&#x671F;&#x671B;&#x53D8;&#x66F4;&#x884C;&#x4E3A;&#x53D1;&#x751F;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5EFA;&#x8BAE;&#x4E1A;&#x52A1;&#x7CFB;&#x7EDF;&#x53C2;&#x8003;cse-solution-service-engine&#x7684;&#x505A;&#x6CD5;&#xFF0C;&#x521B;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;solution&#xFF0C;&#x4E1A;&#x52A1;&#x7CFB;&#x7EDF;&#x4F9D;&#x8D56;&#x81EA;&#x5DF1;&#x7684;solution&#xFF0C;&#x7136;&#x540E;&#x6839;&#x636E;&#x4E1A;&#x52A1;&#x8282;&#x594F;&#xFF0C;&#x81EA;&#x884C;&#x8C03;&#x6574;solution&#x7684;&#x884C;&#x4E3A;&#x3002;&#x5373;&#x4F7F;cse-solution-service-engine&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x4E1A;&#x52A1;&#x7CFB;&#x7EDF;&#x7684;&#x884C;&#x4E3A;&#x4E5F;&#x4E0D;&#x53D7;&#x5F71;&#x54CD;&#x3002;</p>
+<p>&#x8FD9;&#x4E24;&#x79CD;&#x7B56;&#x7565;&#x662F;&#x5E94;&#x5BF9;&#x53D8;&#x66F4;&#x7684;&#x4E0D;&#x540C;&#x7B56;&#x7565;&#xFF0C;&#x90FD;&#x6709;&#x5229;&#x6709;&#x5F0A;&#x3002;&#x901A;&#x5E38;&#x7684;&#x5EFA;&#x8BAE;&#x662F;&#x5BF9;&#x4E8E;&#x9891;&#x7E41;&#x53D8;&#x5316;&#x7684;&#x4E1A;&#x52A1;&#xFF0C;&#x91C7;&#x7528;&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x52A0;&#x5FEB;&#x4E1A;&#x52A1;&#x521B;&#x65B0;&#x901F;&#x5EA6;&#xFF1B;&#x5BF9;&#x4E8E;&#x9700;&#x8981;&#x957F;&#x671F;&#x7A33;&#x5B9A;&#x4E0D;&#x53D8;&#x5316;&#x7684;&#x4E1A;&#x52A1;&#xFF0C;&#x91C7;&#x7528;&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x5F0F;&#x3002;</p>
+<h2 id="cse-solution-service-engine&#x7684;&#x8BE6;&#x7EC6;&#x5185;&#x5BB9;">cse-solution-service-engine&#x7684;&#x8BE6;&#x7EC6;&#x5185;&#x5BB9;</h2>
+<p>cse-solution-service-engine&#x7684;&#x4E3B;&#x8981;&#x5185;&#x5BB9;&#x662F;POM&#x548C;microservice.yaml&#x3002; POM&#x5F15;&#x5165;&#x4E86;&#x5FC5;&#x8981;&#x7684;&#x4F9D;&#x8D56;&#xFF0C;microservice.yaml&#x6307;&#x5B9A;&#x4E86;&#x4E00;&#x4E9B;&#x7F3A;&#x7701;&#x503C;&#x914D;&#x7F6E;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x914D;&#x7F6E;&#x662F;2.3.23&#x7248;&#x672C;&#x7684;&#x914D;&#x7F6E;&#x3002;</p>
+<ul>
+<li>POM</li>
+</ul>
+<p>POM&#x5F15;&#x5165;&#x4E86;&#x76F8;&#x5173;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x8FD9;&#x6837;&#x5F00;&#x53D1;&#x8005;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x5206;&#x6790;&#x4F7F;&#x7528;CSE&#x9700;&#x8981;&#x5F15;&#x5165;&#x54EA;&#x4E9B;&#x7EC4;&#x4EF6;&#xFF0C;&#x5E76;&#x9010;&#x4E2A;&#x81EA;&#x884C;&#x5F15;&#x5165;&#x3002;2.3.23&#x7248;&#x672C;&#x9ED8;&#x8BA4;&#x5F15;&#x5165;&#x4E86;&#x5982;&#x4E0B;&#x7EC4;&#x4EF6;&#xFF1A;</p>
+<pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.huawei.paas.cse&lt;/groupId&gt;
+        &lt;artifactId&gt;foundation-auth&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.servicecomb&lt;/groupId&gt;
+        &lt;artifactId&gt;config-cc&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+        &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- transports --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.servicecomb&lt;/groupId&gt;
+        &lt;artifactId&gt;edge-core&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.servicecomb&lt;/groupId&gt;
+        &lt;artifactId&gt;transport-highway&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.servicecomb&lt;/groupId&gt;
+        &lt;artifactId&gt;transport-rest-vertx&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.servicecomb&lt;/groupId&gt;
+        &lt;artifactId&gt;transport-rest-servlet&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- providers --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.servicecomb&lt;/groupId&gt;
+        &lt;artifactId&gt;provider-springmvc&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.servicecomb&lt;/groupId&gt;
+        &lt;artifactId&gt;provider-pojo&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.servicecomb&lt;/groupId&gt;
+        &lt;artifactId&gt;provider-jaxrs&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- handlers --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.servicecomb&lt;/groupId&gt;
+        &lt;artifactId&gt;handler-bizkeeper&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.servicecomb&lt;/groupId&gt;
+        &lt;artifactId&gt;handler-fault-injection&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.servicecomb&lt;/groupId&gt;
+        &lt;artifactId&gt;handler-flowcontrol-qps&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.servicecomb&lt;/groupId&gt;
+        &lt;artifactId&gt;handler-loadbalance&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.servicecomb&lt;/groupId&gt;
+        &lt;artifactId&gt;handler-publickey-auth&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.huawei.paas.cse&lt;/groupId&gt;
+        &lt;artifactId&gt;cse-handler-cloud-extension&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre><ul>
+<li>microservice.yaml</li>
+</ul>
+<p>microservice.yaml&#x914D;&#x7F6E;&#x4E86;&#x7F3A;&#x7701;&#x7684;&#x5904;&#x7406;&#x94FE;&#xFF0C;&#x4EE5;&#x53CA;&#x4E00;&#x4E9B;&#x7F3A;&#x7701;&#x503C;&#x3002;&#x5B83;&#x7684;&#x914D;&#x7F6E;&#x4F18;&#x5148;&#x7EA7;cse-config-order&#x503C;&#x4E3A;-1&#xFF0C;&#x5728;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x914D;&#x7F6E;&#x4F18;&#x5148;&#x7EA7;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x503C;&#x4E3A;0&#xFF0C;&#x56E0;&#x6B64;&#x4E1A;&#x52A1;&#x81EA;&#x5DF1;&#x7684;microservice.yaml&#x914D;&#x7F6E;&#x7F3A;&#x7701;&#x62E5;&#x6709;&#x66F4;&#x9AD8;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x3002;2.3.23&#x7248;&#x672C;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>cse-config-order: -1
+service_description:
+  propertyExtendedClass: com.huawei.paas.middleware.MiddlewarePropertyExt
+
+servicecomb:
+  handler:
+    chain:
+      Provider:
+        default: auth-provider,qps-flowcontrol-provider,bizkeeper-provider
+      Consumer:
+        default: auth-consumer,qps-flowcontrol-consumer,loadbalance,fault-injection-consumer,bizkeeper-consumer
+  references:
+    version-rule: 0+
+  loadbalance:
+    serverListFilters: darklaunch,zoneaware
+    serverListFilter:
+      darklaunch:
+        className: com.huawei.paas.darklaunch.DarklaunchServerListFilter
+      zoneaware:
+        className: org.apache.servicecomb.loadbalance.filter.ZoneAwareServerListFilterExt
+addressResolver:
+  searchDomains: default.svc.cluster.local,svc.cluster.local,cluster.local
+  ndots: 1
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../featured-topics/develope-microservice-using-ces/wang-guan-https-an-quan-pei-zhi.html" class="navigation navigation-prev " aria-label="Previous page: 网关HTTPS安全配置">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="connect-service-center.html" class="navigation navigation-next " aria-label="Next page: 连接服务中心">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ServiceComb应用接入CSE","level":"1.3","depth":1,"next":{"title":"连接服务中心","level":"1.3.1","depth":2,"path":"servicecomb-using-cse/connect-service-center.md","ref":"servicecomb-using-cse/connect-service-center.md","articles":[]},"previous":{"title":"网关HTTPS安全配置","level":"1.2.8","depth":2,"path":"featured-topics/develope-microservice-using-ces/wang-guan-https-an-quan-pei-zhi.md","ref":"featured-topics/develope-microservice-using-ces/wang-guan-https-an-quan-pei-zhi.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"introduction.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"servicecomb-using-cse/intruduction.md","mtime":"2018-06-08T10:21:06.617Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-08T10:36:19.810Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
