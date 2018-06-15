@@ -73,7 +73,17 @@ service_description:
 . org.apache.servicecomb.serviceregistry.client.http.ServiceRegistryClientImpl.registerSchema(ServiceRegistryClientImpl.java:306)
 ```
 
-* 
+* Provider无可用版本，请查Provider和Consumer是否属于同一environment(默认为Production)，且成功注册到服务中心。
+
+```
+2018-06-15 11:03:56,045 [ERROR] invoke failed, invocation=PRODUCER rest customer-service.reactiveClient.hello org.apache.servicecomb.swagger.invocation.exception.DefaultExceptionToResponseConverter.convert(DefaultExceptionToResponseConverter.java:35)
+java.lang.IllegalStateException: Probably invoke a service before it is registered, appId=uploadapp, name=upload-service
+	at org.apache.servicecomb.core.definition.schema.ConsumerSchemaFactory.getOrCreateMicroserviceMeta(ConsumerSchemaFactory.java:90)
+	at org.apache.servicecomb.core.provider.consumer.ReferenceConfig.<init>(ReferenceConfig.java:36)
+	at org.apache.servicecomb.core.provider.consumer.ConsumerProviderManager.getReferenceConfig(ConsumerProviderManager.java:82)
+```
+
+*  本地开发调试时无法使用部分云上仪表盘功能，会出现下述异常，不影响功能，可以忽略。可以通过设置cse.monitor.client.enable为false禁用仪表盘功能。
 
 ```
 2018-06-14 22:23:59,407 [WARN] {"errorCode":"400012","errorMessage":"Micro-service does not exist","detail":"provider not exist, consumer 8e24bc416fde11e8945700ff37174dd4 find provider default/CseMonitoring/latest"}
@@ -81,4 +91,21 @@ service_description:
 2018-06-14 22:23:59,408 [ERROR] Can not find any instances from service center due to previous errors. service=default/CseMonitoring/latest org.apache.servicecomb.serviceregistry.registry.AbstractServiceRegistry.findServiceInstances(AbstractServiceRegistry.java:256)
 ```
 
+*  下面两种错误(前者直接消费upload-service，后者通过edge-service消费upload-service)均表示接口未注册到服务中心或消费者未拿到最新契约，调用报locate path failed. 请排除：1、Provider对应接口契约已注册到服务中心，内容与本地应用启动时输出一致；2、确保Consumer和edge-service在Provider启动后，手动重启以重新获取Provider契约信息；3、Debug启动Consumer，找到ConsumerSchemaFactory类中的loadSwagger（位于servicecomb的java-chassis-core包中），查看schemaContent内容是否拿到Consumer对应契约内容。
 
+```
+2018-06-15 14:52:45,312 [ERROR] locate path failed, status:Not Found, http method:GET, path:/favicon.ico/, microserviceName:upload-service org.apache.servicecomb.common.rest.locator.OperationLocator.locate(OperationLocator.java:72)
+```
+
+```
+2018-06-15 14:56:35,342 [ERROR] locate path failed, status:Not Found, http method:POST, path:/taskTemplate/uploadTaskTemplate/, microserviceName:upload-service org.apache.servicecomb.common.rest.locator.OperationLocator.locate(OperationLocator.java:72)
+2018-06-15 14:56:35,344 [ERROR] edge server failed. org.apache.servicecomb.edge.core.AbstractEdgeDispatcher.onFailure(AbstractEdgeDispatcher.java:33)
+InvocationException: code=404;msg=CommonExceptionData [message=Not Found]
+	at org.apache.servicecomb.common.rest.locator.OperationLocator.locate(OperationLocator.java:77)
+	at org.apache.servicecomb.common.rest.locator.ServicePathManager.consumerLocateOperation(ServicePathManager.java:107)
+	at org.apache.servicecomb.edge.core.EdgeInvocation.locateOperation(EdgeInvocation.java:114)
+	at org.apache.servicecomb.common.rest.AbstractRestInvocation.findRestOperation(AbstractRestInvocation.java:77)
+	at org.apache.servicecomb.edge.core.EdgeInvocation.edgeInvoke(EdgeInvocation.java:66)
+	at com.huawei.cse.houseapp.edge.ApiDispatcher.onRequest(ApiDispatcher.java:84)
+	at io.vertx.ext.web.impl.RouteImpl.handleContext(RouteImpl.java:223)
+```
