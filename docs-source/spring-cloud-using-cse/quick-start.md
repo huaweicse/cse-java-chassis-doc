@@ -148,7 +148,8 @@ servicecomb:
 
 在上面的步骤中，实际隐含了将服务中心的地址设置为华北区cn-north-1，如果需要使用其他区域的服务中心和配置中心地址，还需要显示的指定地址和区域。
 
-华为云“华东-上海二”区域配置如下
+华为云CSE已上线的区域请访问[地区和终端节点](https://developer.huaweicloud.com/endpoint?cse)。此处，以华为云“华东-上海二”区域为例配置如下
+
 ```
 servicecomb:
   service:
@@ -159,19 +160,6 @@ servicecomb:
       serverUri: https://cse.cn-east-2.myhuaweicloud.com:443
   credentials:
     project: cn-east-2
-```
-
-华为云“华南-广州”区域配置如下
-```
-servicecomb:
-  service:
-    registry:
-      address: https://cse.cn-south-1.myhuaweicloud.com:443
-  config:
-    client:
-      serverUri: https://cse.cn-south-1.myhuaweicloud.com:443
-  credentials:
-    project: cn-south-1
 ```
 
 有些开发者需要通过代理服务器访问华为云，也可以通过设置代理来实现：
