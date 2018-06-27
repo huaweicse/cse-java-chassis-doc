@@ -109,3 +109,14 @@ InvocationException: code=404;msg=CommonExceptionData [message=Not Found]
 	at com.huawei.cse.houseapp.edge.ApiDispatcher.onRequest(ApiDispatcher.java:84)
 	at io.vertx.ext.web.impl.RouteImpl.handleContext(RouteImpl.java:223)
 ```
+
+*  消费接口时Content-Type不一致将报参数非法，如前端使用form-data，Provider需要application/json
+
+```
+2018-06-27 14:51:13,939 [ERROR] invoke failed, invocation=PRODUCER rest loadbalance-isolation-server.hello.sayHello org.apache.servicecomb.swagger.invocation.exception.DefaultExceptionToResponseConverter.convert(DefaultExceptionToResponseConverter.java:35)
+java.lang.IllegalArgumentException: argument type mismatch
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+```
