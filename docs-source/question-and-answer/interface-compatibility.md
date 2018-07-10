@@ -13,7 +13,7 @@
 
 ## 接口兼容常见问题及其解决办法
 
-1. 开发阶段，由于存在频繁的接口修改，又不想频繁修改版本号，容易本地和服务中心契约不一致，且契约未被允许更新到服务中心，导致调试的时候接口调用失败的情况。
+- 开发阶段，由于存在频繁的接口修改，又不想频繁修改版本号，容易本地和服务中心契约不一致，且契约未被允许更新到服务中心，导致调试的时候接口调用失败的情况。
 
 推荐使用CSE提供了微服务按environment区分、隔离的能力(当前支持development和production)，允许处于development环境的微服务在不升级版本的情况下，仅需重启服务即可重新注册契约到服务中心。
 
@@ -26,25 +26,27 @@ service_description:
   environment: development
 ```
 
-2. 开发阶段，由于存在频繁的接口修改，也不会清理服务中心的数据，容易出现调试的时候接口调用失败的情况。
+
+
+- 开发阶段，由于存在频繁的接口修改，也不会清理服务中心的数据，容易出现调试的时候接口调用失败的情况。
 
 推荐使用华为公有云在线的服务中心，可以直接登录使用微服务引擎提供的微服务管理功能删除微服务或微服务实例。
 
 微服务引擎也提供了[本地轻量化服务中心](https://console.huaweicloud.com/cse/?region=cn-north-1#/cse/tools)，将服务停止后即可清理服务中心数据。服务中心及其frontend代码已开源，[项目地址](https://github.com/apache/incubator-servicecomb-service-center)。
 
-3. 发布阶段，需要审视下接口兼容的实践的步骤，确保不在线上引入接口兼容问题。
 
-如果不小心漏了其中的某个步骤，则可能导致如下一些接口兼容问题：
 
-* 如果修改、删除接口：导致一些老的Consumer将请求路由到新的Provider，调用失败。
+- 发布阶段，需要审视下接口兼容的实践的步骤，确保不在线上引入接口兼容问题。如果不小心漏了其中的某个步骤，则可能导致如下一些接口兼容问题：
+
+- [ ] 如果修改、删除接口：导致一些老的Consumer将请求路由到新的Provider，调用失败。
 
 解决办法：指定Provider的版本号、或修改Consumer适配新的Provider。
 
-* 如果忘记修改微服务版本号：导致一些新的Consumer将请求路由到老的Provider，调用失败。
+- [ ] 如果忘记修改微服务版本号：导致一些新的Consumer将请求路由到老的Provider，调用失败。
 
 解决办法：升级Provider版本号、删除老的Provider实例、重启Consumer。
 
-* 如果忘记配置Consumer的最小依赖版本：当部署顺序为先停止Consumer，再启动Consumer，再停止Provider，再启动Provider的情况，Consumer无法获取到新接口信息，就采用了老接口，当Provider启动以后，Consumer发起对新接口的调用会失败；或者在Provider没启动前，调用新接口失败等。
+- [ ] 如果忘记配置Consumer的最小依赖版本：当部署顺序为先停止Consumer，再启动Consumer，再停止Provider，再启动Provider的情况，Consumer无法获取到新接口信息，就采用了老接口，当Provider启动以后，Consumer发起对新接口的调用会失败；或者在Provider没启动前，调用新接口失败等。
 
 解决办法：建议先启动Provider，再启动Consumer。
 
