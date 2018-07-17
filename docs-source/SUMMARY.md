@@ -30,7 +30,7 @@
   * [契约开发工具](tools/contract-tool.md)
   * [代码生成插件](tools/maven-piugin.md)
   * [加密工具](tools/ak-sk-encrypt.md)
+  * [代理、监控和灰度发布](tools/net-proxy.md)
 * [常见问题](question-and-answer/question_answer.md)
   * [连接华为公有云服务中心常见问题](question-and-answer/service-center-error-diagnosis.md)
   * [微服务接口兼容常见问题](question-and-answer/interface-compatibility.md)
-
