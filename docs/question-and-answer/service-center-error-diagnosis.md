@@ -85,12 +85,31 @@ Project名称不正确。
 
 * 异常消息
 
-{"errorCode":"400100","errorMessage":"Not enough quota","detail":"no quota to create instance, ..."}
+Error message is [failed to resolve 'cse.cn-north-1.myhuaweicloud.com'. Exceeded max queries per resolve 4 ].
 
 * 问题原因
 
-没有足够的额度增加服务实例。
+CSE域名（cse.cn-north-1.myhuaweicloud.com）解析失败。
 
 * 排查方法
+
+请在microservice.yaml中将addressResolver.servers配置为电信的DNS Sever，如114.114.114.114或者114.114.115.115，或者8.8.8.8
+
+addressResolver:
+  servers: 114.114.114.114
+
+
+
+## \#6
+
+- 异常消息
+
+{"errorCode":"400100","errorMessage":"Not enough quota","detail":"no quota to create instance, ..."}
+
+- 问题原因
+
+没有足够的额度增加服务实例。
+
+- 排查方法
 
 登录华为云，在微服务引擎页面，可以看到实例个数的额度。如果发现页面有额度，需要检查下代码配置的服务中心地址和区域信息，如果是华北区，则检查华北区的额度。

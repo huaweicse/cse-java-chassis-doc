@@ -11,9 +11,12 @@
 3. 作为Consumer，使用Provider的新接口时候，指定Provider的最小版本号。比如：cse.references.\[serviceName\].version-rule=2.1.3+，其中serviceName为Provider的微服务名称。
 4. 在服务中心，定期清理不再使用的老版本的微服务信息。
 
+ServiceComb还有如下一些注意事项：
+1. 修改微服务信息，必须升级版本号，因为服务注册的时候，不会覆盖已经注册的微服务信息。
+
 ## 接口兼容常见问题及其解决办法
 
-1. 开发阶段，由于存在频繁的接口修改，又不想频繁修改版本号，容易本地和服务中心契约不一致，且契约未被允许更新到服务中心，导致调试的时候接口调用失败的情况。
+- 开发阶段，由于存在频繁的接口修改，又不想频繁修改版本号，容易本地和服务中心契约不一致，且契约未被允许更新到服务中心，导致调试的时候接口调用失败的情况。
 
 推荐使用CSE提供了微服务按environment区分、隔离的能力(当前支持development和production)，允许处于development环境的微服务在不升级版本的情况下，仅需重启服务即可重新注册契约到服务中心。
 
@@ -26,25 +29,27 @@ service_description:
   environment: development
 ```
 
-2. 开发阶段，由于存在频繁的接口修改，也不会清理服务中心的数据，容易出现调试的时候接口调用失败的情况。
+
+
+- 开发阶段，由于存在频繁的接口修改，也不会清理服务中心的数据，容易出现调试的时候接口调用失败的情况。
 
 推荐使用华为公有云在线的服务中心，可以直接登录使用微服务引擎提供的微服务管理功能删除微服务或微服务实例。
 
 微服务引擎也提供了[本地轻量化服务中心](https://console.huaweicloud.com/cse/?region=cn-north-1#/cse/tools)，将服务停止后即可清理服务中心数据。服务中心及其frontend代码已开源，[项目地址](https://github.com/apache/incubator-servicecomb-service-center)。
 
-3. 发布阶段，需要审视下接口兼容的实践的步骤，确保不在线上引入接口兼容问题。
 
-如果不小心漏了其中的某个步骤，则可能导致如下一些接口兼容问题：
 
-* 如果修改、删除接口：导致一些老的Consumer将请求路由到新的Provider，调用失败。
+- 发布阶段，需要审视下接口兼容的实践的步骤，确保不在线上引入接口兼容问题。如果不小心漏了其中的某个步骤，则可能导致如下一些接口兼容问题：
+
+- [ ] 如果修改、删除接口：导致一些老的Consumer将请求路由到新的Provider，调用失败。
 
 解决办法：指定Provider的版本号、或修改Consumer适配新的Provider。
 
-* 如果忘记修改微服务版本号：导致一些新的Consumer将请求路由到老的Provider，调用失败。
+- [ ] 如果忘记修改微服务版本号：导致一些新的Consumer将请求路由到老的Provider，调用失败。
 
 解决办法：升级Provider版本号、删除老的Provider实例、重启Consumer。
 
-* 如果忘记配置Consumer的最小依赖版本：当部署顺序为先停止Consumer，再启动Consumer，再停止Provider，再启动Provider的情况，Consumer无法获取到新接口信息，就采用了老接口，当Provider启动以后，Consumer发起对新接口的调用会失败；或者在Provider没启动前，调用新接口失败等。
+- [ ] 如果忘记配置Consumer的最小依赖版本：当部署顺序为先停止Consumer，再启动Consumer，再停止Provider，再启动Provider的情况，Consumer无法获取到新接口信息，就采用了老接口，当Provider启动以后，Consumer发起对新接口的调用会失败；或者在Provider没启动前，调用新接口失败等。
 
 解决办法：建议先启动Provider，再启动Consumer。
 
@@ -108,4 +113,15 @@ InvocationException: code=404;msg=CommonExceptionData [message=Not Found]
 	at org.apache.servicecomb.edge.core.EdgeInvocation.edgeInvoke(EdgeInvocation.java:66)
 	at com.huawei.cse.houseapp.edge.ApiDispatcher.onRequest(ApiDispatcher.java:84)
 	at io.vertx.ext.web.impl.RouteImpl.handleContext(RouteImpl.java:223)
+```
+
+*  消费接口时Content-Type不一致将报参数非法，如前端使用form-data，Provider需要application/json
+
+```
+2018-06-27 14:51:13,939 [ERROR] invoke failed, invocation=PRODUCER rest loadbalance-isolation-server.hello.sayHello org.apache.servicecomb.swagger.invocation.exception.DefaultExceptionToResponseConverter.convert(DefaultExceptionToResponseConverter.java:35)
+java.lang.IllegalArgumentException: argument type mismatch
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
 ```
