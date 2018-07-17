@@ -22,7 +22,56 @@ CSE Java SDK 100% 兼容 [ServiceComb Java Chassis](https://github.com/apache/in
 
 ## 版本说明
 
-### CSE 2.3.25
+### 2.3.30
+#### 新特性
+* [SCB-203] J2EE(Servlet）运行环境，支持文件上传和下载。
+* [SCB-627] 客户端请求超时时间，支持按照接口级别进行动态设置。
+* [SCB-636] 配置映射规则优化，支持从不同模块的映射文件加载映射规则，支持一个Key映射到多个Key。
+* [CSE-2058]公有云支持使用PAAS_CSE_ENDPOINT环境变量指定服务中心、配置中心地址
+* [SCB-625] 支持通过SPI的方式扩展Produces类型
+* [SCB-697][SCB-685] JAX-RS, Spring MVC开发模式，支持使用标签定义参数缺失值
+* [SCB-679] 支持跨域请求访问设置
+* [SCB-506] 服务治理相关的事件（熔断、实例隔离）发生的时候，发送event，支持业务开发事件上报功能
+* [SCB-640] 基于publicKey提供黑白名单功能。
+* [SCB-725] Spring启动方式的时候，默认扫描main所在Class的package，简化用户配置。
+* [SCB-733] 开放LocalContext接口供开发者使用
+* [SCB-726] 从Edge进来的请求，支持form格式，Edge自动将form转换为json。
+* [SCB-706] 提供客户端ping机制，能够通过ping扩展，检测客户端缓存实例是否可用。该功能默认启用，配合实例隔离功能对检测失败的实例进行隔离。
+
+#### 修改特性
+* [SCB-546] 微服务契约注册优化，当检测到相同微服务版本契约不同，并且环境不是development的时候，启动失败。环境配置项调整为service_description.environment
+* [SCB-679] cse.executor.groupThreadPool，cse.executor.reactive增加别名servicecomb.executor.groupThreadPoo，servicecomb.executor.reactive。
+* [SCB-194] BeanUtils.init 缺省扫描main函数所在的package，简化用户配置。
+* [SCB-712] 缺省情况下，不往服务中心注册通过schema定义解析出来的path信息，需要通过配置项servicecomb.service.registry.registerPath=true开启。
+* [SCB-671] 为了兼容，早期将servicecomb.xx配置项复制为cse.xxx，修改为将cse.xxx配置项复制为servicecomb.xx配置项。开发者在程序中、配置文件优先使用servicecomb.xx。
+* [SCB-671] 配置文件优先级配置项cse-config-order调整为servicecomb-config-order
+* [SCB-671] 配置项cse.configurationSource.additionalUrls和cse.configurationSource.defaultFileName分别调整为servicecomb.configurationSource.defaultFileName和 servicecomb.configurationSource.defaultFileName
+* [SCB-727] 检测到服务中心和本地的schema不相同的时候，打印schema内容到日志，降低定位成本。
+* [SCB-706] 将实例隔离、基于属性路由、数据中心路由等功能切换为DiscoveryFilter。详细开发文档参考：https://huaweicse.github.io/servicecomb-java-chassis-doc/zh_CN/references-handlers/loadbalance.html
+* [SCB-706] 调整ServerListFilterExt的实现，不再继承Ribbon的ServerListFilter，并且提供了新方法：public List<Server> getFilteredListOfServers(List<Server> servers, Invocation invocation)以支持基于Invocation属性的过滤器。开发者如果使用了ServerListFilterExt扩展，会编译不通过，可以参考文档https://huaweicse.github.io/servicecomb-java-chassis-doc/zh_CN/references-handlers/loadbalance.html查看是否需要进行自定义扩展。如果需要，可以通过扩展新的ServerListFilterExt或者DiscoveryTree来实现。
+* [SCB-706] CseServer重命名，调整为ServiceCombServer，并去掉了LoadBalancerStats属性。
+* [SCB-706] 默认开启实例隔离能力；如果依赖了cse-solution-service-engine，还将默认开启重试。
+  
+#### Bug fixes
+* [SCB-653]解决Edge在转发Tomcat容器提供REST服务的请求的时候，如果采用Trunked编码，浏览器（或者三方HTTP工具）解析响应失败的问题。
+* [SCB-646]解决Jax RS开发模式下，手工写契约，仍然自动生成契约并报错的问题。
+* [SCB-658]解决Edge Service MicroserviceVersion可能存在的内存泄露问题。
+* [SCB-656]解决Edge Service异常情况下没有返回Provider的错误码，而是返回502的问题。
+* [SCB-654]解决DiscoveryTree并发访问问题。
+* [Issue #573]灰度发布使用大小写敏感的规则的时候，如果参数值为空，会执行异常
+* [SCB-669] 解决Generics参数类型里面还包含Generics字段的情况下，响应解析失败的问题
+* [SCB-667] 解决在异常场景下,无法优雅退出的问题
+* [SCB-662]解决cse.*和servicecomb.*配置项并存的情况下，读取参数值错误的问题
+* [SCB-651] 解决流控第一个周期的数值和后面周期的数值差1的问题
+* [SCB-703] 解决返回值为void时，反序列化失败的问题
+* [SCB-715] 解决ContextClassLoader为空时，抛出NullPointerException的问题
+* [SCB-701] 解决RequestBody(required = false)场景下，解析空body抛出异常的问题
+* [SCB-705] 解决服务端未启动，先启动客户端并调用接口，服务端启动后仍然无法正常调用客户端的问题。
+* [SCB-693] 解决启动过程中获取网卡信息失败，可能导致的服务注册失败问题
+* [SCB-696] 解决Access Log在短连接情况下没有正确打印HOST信息的问题
+* [SCB-738] 解决服务删除的场景下，客户端会继续周期查询服务版本的问题。
+
+### 2.3.25
 #### 新特性
 * [SCB-617] J2EE运行环境（tomcat）优雅退出支持；Vert.x运行环境优雅退出增加了事件机制，并且统一了两个环境优雅退出的逻辑。
 * [SCB-611] Edge Service提供了两种通用的路由管理机制：基于服务名和版本的灰度管理和基于URL映射配置的灰度管理机制，简化用户使用Edge Service。
@@ -37,7 +86,7 @@ CSE Java SDK 100% 兼容 [ServiceComb Java Chassis](https://github.com/apache/in
 #### Bug fixes
 * [SCB-471] 解决配置中心在watch模式下循环打印NullPointerException的问题
 
-### CSE 2.3.23
+### 2.3.23
 #### 新特性
 * [SCB-532] 接口定义支持自引用的数据类型
 * [SCB-548] 优雅停机支持，服务停止的时候，正常关闭网络线程、等待调用完成等
