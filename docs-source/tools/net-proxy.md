@@ -63,7 +63,7 @@ cse:
 
 用户可以根据自己的需求在配置文件里面配置自己的灰度发布规则。
 ```yaml
-#灰度规则的配置项如下：
+#灰度发布规则的配置项如下：
 {
     "policyType": "RULE", #这是一个枚举类型，定义了 "RULE" 和 "RATE" 两种，这个配置项决定了 如何对 ruleItems 中的规则进行解析
     "ruleItems": [
@@ -95,5 +95,5 @@ cse:
 ```
 > 1. 因为在根据`version`进行分组的时候，会把所有的server分为 两大类，`第一大类`是符合其中某组的筛选条件，进入其中的某个小组的server。`第二大类`是不符合所有分组的筛选条件，进入defaultGroup 中的server。而当 `policyType` 为 `"RATE"` 的时候， 从第一大类随机挑出一个小组的百分比可能性为 `policyCondition * ruleItems.size` 。 例如上例，说明从`第一大类`随机挑出一个小组的可能性为 `20% * 1 `。 当 `policyType` 为 `"RULE"` 的时候，是从`第一大类`中挑选出第一个符合 `groupCondition` 和 `policyCondition` 的小组。如果没有小组符合，就返回`第二大类`中的server。
 
->2. 要想配置灰度过滤规则，需要在配置文件中加入键值对
-`cse.darklaunch.policy.%s ：%jsonString` ,`%s` 指得是你的 `微服务名称` ，`%jsonString` 指的是 `上述json配置的项的字符串`
+>2. 要想配置灰度发布的过滤规则，需要在配置文件中加入键值对
+`cse.darklaunch.policy.%s ：%jsonString` ,`%s` 指的是你的 `微服务名称` ，`%jsonString` 指的是 `上述json配置项的字符串形式`
