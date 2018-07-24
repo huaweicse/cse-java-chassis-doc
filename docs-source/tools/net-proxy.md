@@ -93,7 +93,53 @@ cse:
 }
 
 ```
-> 1. 因为在根据`version`进行分组的时候，会把所有的server分为 两大类，`第一大类`是符合其中某组的筛选条件，进入其中的某个小组的server。`第二大类`是不符合所有分组的筛选条件，进入defaultGroup 中的server。而当 `policyType` 为 `"RATE"` 的时候， 从第一大类随机挑出一个小组的百分比可能性为 `policyCondition * ruleItems.size` 。 例如上例，说明从`第一大类`随机挑出一个小组的可能性为 `20% * 1 `。 当 `policyType` 为 `"RULE"` 的时候，是从`第一大类`中挑选出第一个符合 `groupCondition` 和 `policyCondition` 的小组。如果没有小组符合，就返回`第二大类`中的server。
+> 1. 根据`version`进行分组的时候，会把所有的server分为 两大类，`第一大类`是符合其中某组的筛选条件，进入其中的某个小组的server。`第二大类`是不符合所有分组的筛选条件，进入defaultGroup 中的server。而当 `policyType` 为 `"RATE"` 的时候， 从第一大类随机挑出一个小组的百分比可能性为 `policyCondition * ruleItems.size` 。 例如上例，说明从`第一大类`随机挑出一个小组的可能性为 `20% * 1 `。 当 `policyType` 为 `"RULE"` 的时候，从`第一大类`中挑选出第一个符合 `groupCondition` 和 `policyCondition` 的小组。如果没有小组符合，就返回`第二大类`中的server。
+2. 配置灰度发布的过滤规则，需要在配置文件中加入键值对`cse.darklaunch.policy.%s ：%jsonString`
 
->2. 要想配置灰度发布的过滤规则，需要在配置文件中加入键值对
-`cse.darklaunch.policy.%s ：%jsonString` ,`%s` 指的是你的 `微服务名称` ，`%jsonString` 指的是 `上述json配置项的字符串形式`
+>- `%s` 指的是你的 `微服务名称`
+- `%jsonString` 指的是 `上述json配置项的字符串形式`。
+
+# 事务存储器配置
+
+## 应用场景
+
+在TCC 的过程中，根据应用内存中的事务信息完成整个事务流程。但是在实际的业务场景中，只把事务信息放置在内存中是非常危险的。例如 ：当应用程序因为各方面原因异常崩溃，事务信息将会丢失 ；紧急部署新版本，等等，需要紧急重启应用，事务信息将会丢失；当应用在整个集群上，在发生远程调用时，事务信息需要高效的在集群内共享。 因此，把事务信息在外部存储进行持久化是非常有必要的。
+
+## 事务配置管理
+```yaml
+cse:
+  tcc:
+    transaction:
+      repository:  #事务存储器类名, 默认值: com.huawei.paas.cse.tcc.repository.FileSystemTransactionRepository
+        file:
+          path: # 当事务存储器为 File 事务存储器时，指 TCC 存储文件根目录，默认值：tcc
+      sessionstick: #是否启用黏贴会话 功能。 默认值：false
+      recover: # 是否启用异常恢复 功能。 默认值： true
+      redis:
+        host: # 配置redis 事务存储器 host地址。 默认值： localhost
+        port: # 配置redis 事务存储器 port 端口。默认值：6379
+        password: # 配置redis 事务存储器 密码。 默认值： null
+
+```
+
+> 对于事务存储器，共提供了以下种类：
+- com.huawei.paas.cse.tcc.repository.FileSystemTransactionRepository :    File 事务存储器
+- com.huawei.paas.cse.tcc.repository.JdbcTransactionRepository : JDBC 事务存储器
+- com.huawei.paas.cse.tcc.repository.RedisTransactionRepository : Redis 事务存储器
+- com.huawei.paas.cse.tcc.repository.ZooKeeperTransactionRepository : Zookeeper 事务存储器
+
+# 调用链跟踪
+
+## 业务场景
+
+分布式调用链追踪提供了服务间调用的时序信息，但服务内部的链路调用信息对开发者同样重要，如果能将两者合二为一，就能提供更完整的调用链，更容易定位错误和潜在性能问题。因此对调用链进行跟踪，对接监控系统是至关重要的。
+
+## 调用链跟踪配置
+
+```yaml
+cse:
+  tracing:
+    enabled: # 是否跟踪调用链，进行打点采样，吐出打点数据。 默认值： true
+    samplingRate: #对调用链打点采样的频率。默认值： 1 （对调用链上下文所有节点都进行打点采样）
+
+```
