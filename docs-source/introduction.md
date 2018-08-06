@@ -21,6 +21,34 @@ CSE Java SDK 100% 兼容 [ServiceComb Java Chassis](https://github.com/apache/in
 ```
 
 ## 版本说明
+### 2.3.35
+#### 新特性
+* [SCB-728] 从Edge进来的请求，支持form格式能力增强。允许key值为json的转换。
+* [SCB-708] Spring MVC编码方式支持query参数为一个POJO对象，简化接口参数个数。
+* [SCB-729] 提供一种机制，可以由运维工具诊断、查询和更新客户端缓存的实例列表。
+* [SCB-775] RestTemplate支持使用弱类型，比如JsonObject或者String，来访问服务端接口。
+* [SCB-778] Servlet模式下，支持注册容器路径到swagger的base path，从而支持RestTemplate以URL的全路径访问服务端。
+* [SCB-777] JAX-RS开发模式支持BeanParam
+* [SCB-687] Highway支持通过servicecomb.highway.server.connection-limit设置最大连接数
+
+#### 修改特性
+* [SCB-775] RestObjectMapper.INSTANCE修改为RestObjectMapperFactory.getRestObjectMapper()
+* [CSE-2201] cse.credentials.*,cse.monitor.*等配置项支持别名servicecomb.credentials.*,servicecomb.monitor.*
+* [CSE-2256] servicecomb.monitor.client.sslEnalbed修改为servicecomb.monitor.client.sslEnabled
+* [CSE-2256] servicecomb.monitor.client.enable修改为servicecomb.monitor.client.enabled
+* [SCB-795] jackson 从 2.9.5 升级到 2.9.6
+
+#### Bug fixes
+* [CSE-2202]cse-solution-service-engine携带了edge模块，会改变业务代码执行线程池，变成reactive模式，移除这个依赖。
+* [DTS2018071604849]监控服务的地址配置，不支持URL不书写端口号并使用缺省端口号的问题。(http:80, https:443)。
+* [SCB-754] 解决业务扩展HttpServerFilter抛出异常（NPE）的情况下，服务端没有正确写响应导致请求超时的问题。
+* [SCB-762] linux环境扫描main class路径错误导致的spring加载路径找不到问题以及生成log4j合并文件报错的问题。
+* [SCB-755] 解决打印大量“cse.*和servicecomb.*配置项重复”日志的问题
+* [SCB-769] 解决启用故障注入时，可能导致客户端无法取到服务响应的问题。
+* [SCB-774] 解决reactive模式下，优雅停机时打印大量警告日志问题。
+* [SCB-780] 解决会话保持模式下，实例移除时，会话周期内继续访问移除的实例的问题。
+* [SCB-787] 实例下线后，客户端会很长时间继续Ping实例状态
+* [SCB-794] 从Edge调用Tomcat作为容器的服务，如果Filter返回401错误码，浏览器获取到错误码是490的问题。
 
 ### 2.3.30
 #### 新特性
