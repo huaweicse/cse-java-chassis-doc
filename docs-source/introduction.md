@@ -10,7 +10,7 @@ CSE Java SDK 100% 兼容 [ServiceComb Java Chassis](https://github.com/apache/in
 
 ## 版本获取
 
-获取CSE需要使用如下maven仓库
+方式一：使用huaweicse私有maven仓库获取CSE
 ```
 <mirror>
   <id>mirrorId</id>
@@ -18,6 +18,42 @@ CSE Java SDK 100% 兼容 [ServiceComb Java Chassis](https://github.com/apache/in
   <name>Mirror of central repository.</name>
   <url>http://maven.huaweicse.com/nexus/content/groups/public</url>
 </mirror>
+```
+
+方式二：访问[华为开源镜像站](https://mirrors.huaweicloud.com/)，搜索“HuaweiCloud”，点击“HuaweiCloud SDK”后下载setting.xml，或依次按照下面方法手动修改settings.xml文件
+
+1、在profiles节点中添加如下内容：
+```
+<profile>
+    <id>MyProfile</id>
+    <repositories>
+        <repository>
+            <id>HuaweiCloudSDK</id>
+            <url>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+</profile>
+```
+2、在mirrors节点中增加：
+```
+<mirror>
+    <id>huaweicloud</id>
+    <mirrorOf>*,!HuaweiCloudSDK</mirrorOf>
+    <url>https://repo.huaweicloud.com/repository/maven/</url>
+</mirror>
+```
+
+3、增加activeProfiles标签激活配置：
+```
+<activeProfiles>
+    <activeProfile>MyProfile</activeProfile>
+</activeProfiles>
 ```
 
 ## 版本说明
@@ -79,7 +115,7 @@ CSE Java SDK 100% 兼容 [ServiceComb Java Chassis](https://github.com/apache/in
 * [SCB-706] 调整ServerListFilterExt的实现，不再继承Ribbon的ServerListFilter，并且提供了新方法：public List<Server> getFilteredListOfServers(List<Server> servers, Invocation invocation)以支持基于Invocation属性的过滤器。开发者如果使用了ServerListFilterExt扩展，会编译不通过，可以参考文档https://huaweicse.github.io/servicecomb-java-chassis-doc/zh_CN/references-handlers/loadbalance.html查看是否需要进行自定义扩展。如果需要，可以通过扩展新的ServerListFilterExt或者DiscoveryTree来实现。
 * [SCB-706] CseServer重命名，调整为ServiceCombServer，并去掉了LoadBalancerStats属性。
 * [SCB-706] 默认开启实例隔离能力；如果依赖了cse-solution-service-engine，还将默认开启重试。
-  
+
 #### Bug fixes
 * [SCB-653]解决Edge在转发Tomcat容器提供REST服务的请求的时候，如果采用Trunked编码，浏览器（或者三方HTTP工具）解析响应失败的问题。
 * [SCB-646]解决Jax RS开发模式下，手工写契约，仍然自动生成契约并报错的问题。
