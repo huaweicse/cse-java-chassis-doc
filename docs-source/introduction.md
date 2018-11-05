@@ -10,17 +10,13 @@ CSE Java SDK 100% 兼容 [ServiceComb Java Chassis](https://github.com/apache/in
 
 ## 版本获取
 
-方式一：使用huaweicse私有maven仓库获取CSE
-```
-<mirror>
-  <id>mirrorId</id>
-  <mirrorOf>central</mirrorOf>
-  <name>Mirror of central repository.</name>
-  <url>http://maven.huaweicse.com/nexus/content/groups/public</url>
-</mirror>
-```
+### 通过华为开源镜像站下载setting.xml文件
 
-方式二：访问[华为开源镜像站](https://mirrors.huaweicloud.com/)，搜索“HuaweiCloud”，点击“HuaweiCloud SDK”后下载setting.xml，或依次按照下面方法手动修改settings.xml文件
+访问[华为开源镜像站](https://mirrors.huaweicloud.com/)，搜索“HuaweiCloud”，点击“HuaweiCloud SDK”后下载setting.xml。
+
+### 手工配置setting.xml文件
+
+依次按照下面方法手动修改settings.xml文件
 
 1、在profiles节点中添加如下内容：
 ```

@@ -8,9 +8,9 @@
 
 3. 提供starter简化maven依赖关系配置。
 
-将Spring Boot用于微服务开发，可以极大的简化开发者配置和部署。CSE提供了完善的的服务治理能力、良好的跨语言特性和高效的异步通信能力，通过使用CSE，可以快速启用各种满足商业运维需要的功能。
+将Spring Boot用于微服务开发，可以极大的简化开发者配置和部署。CSE提供了完善的的服务治理能力、良好的跨语言特性和高效的异步通信能力，通过使用CSE，可以快速启用各种满足商业运维需要的功能。[基于Spring Boot 2.0的IoT应用集成和使用CSE实践](https://bbs.huaweicloud.com/blogs/02de5f11cb6e11e8bd5a7ca23e93a891)提供了一个实际的例子，描述了Spring Boot中集成CSE框架带来的变化，以及演示 了部分开箱即用的治理功能。CSE同时支持集成Spring Boot 1和Spring Boot 2，在前面的章节中，主要介绍Spring Boot 1，两者集成的原理和步骤基本是一致的，在最后的章节，会描述使用Spring Boot 2的差异。
 
-本文将介绍如何在Spring Boot中集成和使用CSE。开发者通常会以如下几种方式使用Spring Boot：
+开发者通常会以如下几种方式使用Spring Boot：
 
 1. JAVA应用方式：引入spring-boot-starter，开发普通JAVA应用。该应用不会启动WEB服务器。
 

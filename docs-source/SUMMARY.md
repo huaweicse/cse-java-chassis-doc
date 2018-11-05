@@ -21,6 +21,7 @@
   * [Web开发方式开发步骤](using-cse-in-spring-boot/web-application.md)
   * [JAVA应用方式和Web开发方式的区别](using-cse-in-spring-boot/diff-between-java-web.md)
   * [Spring MVC模式的差异](using-cse-in-spring-boot/diff-spring-mvc.md)
+  * [使用Spring Boot 2](using-cse-in-spring-boot/spring-boot-2.md)
 * [Spring Cloud应用接入CSE](spring-cloud-using-cse/spring-cloud-using-cse.md)
   * [演进路线图](spring-cloud-using-cse/spring-cloud-roadmap.md)
   * [遗留系统快速接入](spring-cloud-using-cse/quick-start.md)
