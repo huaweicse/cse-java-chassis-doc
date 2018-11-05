@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>CSE提供的组件说明 · GitBook</title>
+        <title>使用Spring Boot 2 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -59,10 +59,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="java-application.html" />
+    <link rel="next" href="../spring-cloud-using-cse/spring-cloud-using-cse.html" />
     
     
-    <link rel="prev" href="using-cse-in-spring-boot.html" />
+    <link rel="prev" href="diff-spring-mvc.html" />
     
 
     </head>
@@ -312,7 +312,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.4.1" data-path="cse-components-for-spring-boot.html">
+        <li class="chapter " data-level="1.4.1" data-path="cse-components-for-spring-boot.html">
             
                 <a href="cse-components-for-spring-boot.html">
             
@@ -377,7 +377,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.6" data-path="spring-boot-2.html">
+        <li class="chapter active" data-level="1.4.6" data-path="spring-boot-2.html">
             
                 <a href="spring-boot-2.html">
             
@@ -599,7 +599,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >CSE提供的组件说明</a>
+        <a href=".." >使用Spring Boot 2</a>
     </h1>
 </div>
 
@@ -614,29 +614,56 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="cse&#x63D0;&#x4F9B;&#x7684;&#x7EC4;&#x4EF6;&#x8BF4;&#x660E;">CSE&#x63D0;&#x4F9B;&#x7684;&#x7EC4;&#x4EF6;&#x8BF4;&#x660E;</h1>
-<p>&#x9488;&#x5BF9;Spring Boot&#x3001;Spring Cloud&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x5982;&#x4E0B;&#x51E0;&#x4E2A;&#x7EC4;&#x4EF6;&#xFF1A;</p>
+                                <h1 id="&#x4F7F;&#x7528;spring-boot-2">&#x4F7F;&#x7528;Spring Boot 2</h1>
+<p><strong><em>&#x8BF4;&#x660E;&#xFF1A;&#x9700;&#x8981;&#x4F7F;&#x7528;CSE SDK 2.3.51&#x53CA;&#x5176;&#x4EE5;&#x4E0A;&#x7248;&#x672C;</em></strong></p>
+<p>&#x9488;&#x5BF9;Spring&#x6280;&#x672F;&#x4F53;&#x7CFB;&#xFF0C;CSE&#x63D0;&#x4F9B;&#x4E86;&#x5982;&#x4E0B;&#x51E0;&#x4E2A;&#x7EC4;&#x4EF6;&#xFF0C;&#x65B9;&#x4FBF;&#x5F00;&#x53D1;&#x8005;&#x3002;</p>
 <ul>
-<li>spring-boot-starter-configuration</li>
-</ul>
-<p>&#x63A5;&#x5165;&#x914D;&#x7F6E;&#x4E2D;&#x5FC3;&#x3002;&#x5F53;&#x9700;&#x8981;&#x5728;Spring Boot&#x3001;Spring Cloud&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x914D;&#x7F6E;&#x4E2D;&#x5FC3;&#x4F5C;&#x4E3A;&#x52A8;&#x6001;&#x914D;&#x7F6E;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x3002;</p>
+<li><p>cse-dependency
+&#x8FD9;&#x4E2A;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x7BA1;&#x7406;&#x5668;&#x63D0;&#x4F9B;CSE&#x63A8;&#x8350;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x7BA1;&#x7406;&#x3002;&#x5B83;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x4F1A;&#x968F;&#x7740;CSE&#x7248;&#x672C;&#x7684;&#x53D1;&#x5C55;&#x8FDB;&#x884C;&#x8C03;&#x6574;&#x3002;&#x6BD4;&#x5982;&#x5728;spring 4&#x662F;&#x7A33;&#x5B9A;&#x7248;&#x672C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4E2A;&#x7BA1;&#x7406;&#x5668;&#x63D0;&#x4F9B;spring 4&#x7684;&#x4F9D;&#x8D56;&#xFF1B;spring 5&#x662F;&#x7A33;&#x5B9A;&#x7248;&#x672C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4E2A;&#x7BA1;&#x7406;&#x5668;&#x63D0;&#x4F9B;spring 5&#x7684;&#x4F9D;&#x8D56;&#x3002;&#x5F53;&#x524D;CSE&#x63D0;&#x4F9B;&#x7684;&#x7248;&#x672C;&#x9ED8;&#x8BA4;&#x4E3A;spring 4. </p>
 <ul>
-<li>spring-boot-starter-registry</li>
+<li>spring4&#x5347;&#x7EA7;&#x5230;spring 5&#x7684;&#x6CE8;&#x610F;&#x4E8B;&#x9879;<ul>
+<li>spring 5&#x548C;spring 4&#x5728;&#x5F88;&#x591A;&#x63A5;&#x53E3;&#x548C;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x4E0A;&#x662F;&#x4E0D;&#x517C;&#x5BB9;&#x7684;&#x3002;&#x56E0;&#x6B64;CSE&#x9488;&#x5BF9;&#x8FD9;&#x4E9B;&#x4E0D;&#x517C;&#x5BB9;&#x7684;&#x5B9E;&#x73B0;&#x63D0;&#x4F9B;&#x4E86;&#x5BF9;&#x5E94;&#x7684;&#x5904;&#x7406;&#x63AA;&#x65BD;&#x3002;&#x6BD4;&#x5982;&#xFF1A;EnableServiceComb&#xFF1A;spring 4&#x4E3A;org.apache.servicecomb.springboot.starter.provider.EnableServiceComb, spring 5&#x4E3A;org.apache.servicecomb.springboot2.starter.EnableServiceComb; DispatcherServletAutoConfiguration: spring 4&#x4E3A;org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration, spring5&#x4E3A;org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration&#x3002;</li>
+<li>spring 5&#x5E9F;&#x5F03;&#x4E86;AsyncRestTemplate&#x3002;CSE&#x63D0;&#x4F9B;&#x4E86;AsyncRestTemplate&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x56E0;&#x6B64;&#x4E5F;&#x5E9F;&#x5F03;&#x8FD9;&#x4E2A;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x4F7F;&#x7528;&#x4E86;bean&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x4E14;&#x5B9A;&#x4E49;&#x4E86;&#x5982;&#x4E0B;schema&#xFF0C;&#x9700;&#x8981;&#x8C03;&#x6574;&#xFF1A;xsi:schemaLocation=&quot;<a href="http://www.springframework.org/schema/beans" target="_blank">http://www.springframework.org/schema/beans</a> classpath:org/springframework/beans/factory/xml/spring-beans-3.0.xsd&#x201D; &#x4FEE;&#x6539;&#x4E3A;&#xFF1A;xsi:schemaLocation=&quot;<a href="http://www.springframework.org/schema/beans" target="_blank">http://www.springframework.org/schema/beans</a> <a href="http://www.springframework.org/schema/beans/spring-beans.xsd&#x201C;" target="_blank">http://www.springframework.org/schema/beans/spring-beans.xsd&#x201C;</a></li>
 </ul>
-<p>&#x63A5;&#x5165;&#x670D;&#x52A1;&#x4E2D;&#x5FC3;&#x3002;&#x5F53;&#x9700;&#x8981;&#x5728;Spring Boot&#x3001;Spring Cloud&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x670D;&#x52A1;&#x4E2D;&#x5FC3;&#x4F5C;&#x4E3A;&#x670D;&#x52A1;&#x6CE8;&#x518C;&#x3001;&#x53D1;&#x73B0;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><p>cse-dependency-spring4</p>
+</li>
+</ul>
+<p>&#x5982;&#x679C;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#x6CA1;&#x4F7F;&#x7528;spring 5&#x6216;&#x8005;spring boot 2&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x7BA1;&#x7406;&#x5668;&#x3002;</p>
 <ul>
-<li>spring-boot-starter-discovery</li>
+<li>cse-dependency-spring5</li>
 </ul>
-<p>&#x9002;&#x914D;Spring Cloud&#x7684;DiscoveryClient&#x63A5;&#x53E3;&#x3002;&#x5F53;&#x5728;Spring Cloud&#x4E2D;&#x4F7F;&#x7528;@EnableDiscoveryClient&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#x4F7F;&#x7528;spring 5&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x7BA1;&#x7406;&#x5668;&#x3002;</p>
 <ul>
-<li>spring-boot-starter-provider</li>
+<li>cse-dependency-spring-boot1</li>
 </ul>
-<p>&#x5728;Spring Boot&#x4E2D;&#x901A;&#x8FC7;@EnableServiceComb&#x542F;&#x7528;CSE&#x7684;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#x3002;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x201C;JAVA&#x5E94;&#x7528;&#x65B9;&#x5F0F;&#x201D;&#x548C;&#x201D;Web&#x5F00;&#x53D1;&#x65B9;&#x5F0F;&#x201C;&#x3002; &#x5728;&#x201D;Web&#x5F00;&#x53D1;&#x65B9;&#x5F0F;&#x201D;&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;spring.main.web-environment=false&#x7981;&#x7528;&#x4E86;Web&#x73AF;&#x5883;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x4E3B;&#x8981;&#x662F;&#x89E3;&#x51B3;&#x201D;JAVA&#x5E94;&#x7528;&#x65B9;&#x5F0F;&#x201C;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#x4F7F;&#x7528;spring boot 1&#x548C;spring 4&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x7BA1;&#x7406;&#x5668;&#x3002;</p>
 <ul>
-<li>spring-boot-starter-transport</li>
+<li>cse-dependency-spring-boot2</li>
 </ul>
-<p>&#x5728;Spring Boot&#x4E2D;&#x901A;&#x8FC7;@EnableServiceComb&#x542F;&#x7528;CSE&#x7684;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#xFF0C;&#x5E76;&#x542F;&#x7528;CSE&#x7684;RestServlet&#x3002;&#x7528;&#x4E8E;&#x201D; Web&#x5F00;&#x53D1;&#x65B9;&#x5F0F;&#x201C;&#x3002;</p>
-<p>&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x7EC4;&#x4EF6;&#x662F;spring-boot-starter-provider&#x548C;spring-boot-starter-transport&#xFF0C;&#x8BE6;&#x7EC6;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x4F1A;&#x5728;&#x540E;&#x9762;&#x7684;&#x7AE0;&#x8282;&#x8BF4;&#x660E;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#x4F7F;&#x7528;spring boot 2&#x548C;spring 5&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x7BA1;&#x7406;&#x5668;&#x3002;</p>
+<h2 id="&#x5982;&#x4F55;&#x4F7F;&#x7528;">&#x5982;&#x4F55;&#x4F7F;&#x7528;</h2>
+<p>&#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x5229;&#x7528;maven&#x63D0;&#x4F9B;&#x7684;dependencyManagement&#x66F4;&#x597D;&#x7684;&#x7BA1;&#x7406;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x3002;</p>
+<pre><code>&lt;dependencyManagement&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.huawei.paas.cse&lt;/groupId&gt;
+            &lt;artifactId&gt;cse-dependency&lt;/artifactId&gt;
+            &lt;version&gt;${paas.cse.version}&lt;/version&gt;
+            &lt;type&gt;pom&lt;/type&gt;
+            &lt;scope&gt;import&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;
+</code></pre><ul>
+<li><p><a href="https://bbs.huaweicloud.com/blogs/33eaad00db4911e8bd5a7ca23e93a891" target="_blank">CSE &#x652F;&#x6301;spring 4/5 &#x4EE5;&#x53CA;spring boot 1/2 maven&#x7EC4;&#x4EF6;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x914D;&#x7F6E;&#x53C2;&#x8003;</a>&#x63D0;&#x4F9B;&#x4E86;&#x914D;&#x7F6E;&#x548C;&#x539F;&#x7406;&#x8BF4;&#x660E;&#x3002;</p>
+</li>
+<li><p><a href="https://bbs.huaweicloud.com/blogs/02de5f11cb6e11e8bd5a7ca23e93a891" target="_blank">&#x57FA;&#x4E8E;Spring Boot 2.0&#x7684;IoT&#x5E94;&#x7528;&#x96C6;&#x6210;&#x548C;&#x4F7F;&#x7528;CSE&#x5B9E;&#x8DF5;</a>&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x5B9E;&#x9645;Spring Boot 2&#x7684;&#x4F8B;&#x5B50;&#x3002;</p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -664,12 +691,12 @@
 
             
                 
-                <a href="using-cse-in-spring-boot.html" class="navigation navigation-prev " aria-label="Previous page: 在Spring Boot中使用CSE">
+                <a href="diff-spring-mvc.html" class="navigation navigation-prev " aria-label="Previous page: Spring MVC模式的差异">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="java-application.html" class="navigation navigation-next " aria-label="Next page: JAVA应用方式开发步骤">
+                <a href="../spring-cloud-using-cse/spring-cloud-using-cse.html" class="navigation navigation-next " aria-label="Next page: Spring Cloud应用接入CSE">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -680,7 +707,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"CSE提供的组件说明","level":"1.4.1","depth":2,"next":{"title":"JAVA应用方式开发步骤","level":"1.4.2","depth":2,"path":"using-cse-in-spring-boot/java-application.md","ref":"using-cse-in-spring-boot/java-application.md","articles":[]},"previous":{"title":"在Spring Boot中使用CSE","level":"1.4","depth":1,"path":"using-cse-in-spring-boot/using-cse-in-spring-boot.md","ref":"using-cse-in-spring-boot/using-cse-in-spring-boot.md","articles":[{"title":"CSE提供的组件说明","level":"1.4.1","depth":2,"path":"using-cse-in-spring-boot/cse-components-for-spring-boot.md","ref":"using-cse-in-spring-boot/cse-components-for-spring-boot.md","articles":[]},{"title":"JAVA应用方式开发步骤","level":"1.4.2","depth":2,"path":"using-cse-in-spring-boot/java-application.md","ref":"using-cse-in-spring-boot/java-application.md","articles":[]},{"title":"Web开发方式开发步骤","level":"1.4.3","depth":2,"path":"using-cse-in-spring-boot/web-application.md","ref":"using-cse-in-spring-boot/web-application.md","articles":[]},{"title":"JAVA应用方式和Web开发方式的区别","level":"1.4.4","depth":2,"path":"using-cse-in-spring-boot/diff-between-java-web.md","ref":"using-cse-in-spring-boot/diff-between-java-web.md","articles":[]},{"title":"Spring MVC模式的差异","level":"1.4.5","depth":2,"path":"using-cse-in-spring-boot/diff-spring-mvc.md","ref":"using-cse-in-spring-boot/diff-spring-mvc.md","articles":[]},{"title":"使用Spring Boot 2","level":"1.4.6","depth":2,"path":"using-cse-in-spring-boot/spring-boot-2.md","ref":"using-cse-in-spring-boot/spring-boot-2.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"introduction.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"using-cse-in-spring-boot/cse-components-for-spring-boot.md","mtime":"2018-10-29T06:52:55.932Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-05T02:39:57.937Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"使用Spring Boot 2","level":"1.4.6","depth":2,"next":{"title":"Spring Cloud应用接入CSE","level":"1.5","depth":1,"path":"spring-cloud-using-cse/spring-cloud-using-cse.md","ref":"spring-cloud-using-cse/spring-cloud-using-cse.md","articles":[{"title":"演进路线图","level":"1.5.1","depth":2,"path":"spring-cloud-using-cse/spring-cloud-roadmap.md","ref":"spring-cloud-using-cse/spring-cloud-roadmap.md","articles":[]},{"title":"遗留系统快速接入","level":"1.5.2","depth":2,"path":"spring-cloud-using-cse/quick-start.md","ref":"spring-cloud-using-cse/quick-start.md","articles":[]},{"title":"使用CSE作为RPC框架","level":"1.5.3","depth":2,"path":"spring-cloud-using-cse/cse-and-rpc.md","ref":"spring-cloud-using-cse/cse-and-rpc.md","articles":[]},{"title":"使用轻量级容器和Edge Service","level":"1.5.4","depth":2,"path":"spring-cloud-using-cse/performance.md","ref":"spring-cloud-using-cse/performance.md","articles":[]}]},"previous":{"title":"Spring MVC模式的差异","level":"1.4.5","depth":2,"path":"using-cse-in-spring-boot/diff-spring-mvc.md","ref":"using-cse-in-spring-boot/diff-spring-mvc.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"introduction.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"using-cse-in-spring-boot/spring-boot-2.md","mtime":"2018-11-05T02:34:05.345Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-05T02:39:57.937Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
