@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>使用MyBatis访问数据库(user-service) · GitBook</title>
+        <title>进行认证和鉴权设计 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -59,10 +59,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="jin-xing-ren-zheng-he-jian-quan-she-ji.html" />
+    <link rel="next" href="https.html" />
     
     
-    <link rel="prev" href="kai-fa-wang-517328-gateway-service.html" />
+    <link rel="prev" href="user-service.html" />
     
 
     </head>
@@ -104,9 +104,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="../develope-microservice-using-ces.html">
+        <li class="chapter " data-level="1.2" data-path="../develop-microservice-using-cse.html">
             
-                <a href="../develope-microservice-using-ces.html">
+                <a href="../develop-microservice-using-cse.html">
             
                     
                     使用CSE开发微服务应用
@@ -131,9 +131,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="she-ji-wei-fu-wu.html">
+        <li class="chapter " data-level="1.2.2" data-path="design.html">
             
-                <a href="she-ji-wei-fu-wu.html">
+                <a href="design.html">
             
                     
                     设计微服务
@@ -144,9 +144,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="kai-fa-jie976228-porter-website.html">
+        <li class="chapter " data-level="1.2.3" data-path="porter-website.html">
             
-                <a href="kai-fa-jie976228-porter-website.html">
+                <a href="porter-website.html">
             
                     
                     开发界面(porter-website)
@@ -157,9 +157,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="kai-fa-wen-jian-shang-chuan-gong-80fd28-file-service.html">
+        <li class="chapter " data-level="1.2.4" data-path="file-service.html">
             
-                <a href="kai-fa-wen-jian-shang-chuan-gong-80fd28-file-service.html">
+                <a href="file-service.html">
             
                     
                     开发文件上传功能(file-service)
@@ -170,9 +170,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="kai-fa-wang-517328-gateway-service.html">
+        <li class="chapter " data-level="1.2.5" data-path="gateway-service.html">
             
-                <a href="kai-fa-wang-517328-gateway-service.html">
+                <a href="gateway-service.html">
             
                     
                     开发网关(gateway-service)
@@ -183,9 +183,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.6" data-path="shi-yong-mybatis-fang-wen-shu-ju-5e9328-user-service.html">
+        <li class="chapter " data-level="1.2.6" data-path="user-service.html">
             
-                <a href="shi-yong-mybatis-fang-wen-shu-ju-5e9328-user-service.html">
+                <a href="user-service.html">
             
                     
                     使用MyBatis访问数据库(user-service)
@@ -196,9 +196,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.7" data-path="jin-xing-ren-zheng-he-jian-quan-she-ji.html">
+        <li class="chapter active" data-level="1.2.7" data-path="authentication.html">
             
-                <a href="jin-xing-ren-zheng-he-jian-quan-she-ji.html">
+                <a href="authentication.html">
             
                     
                     进行认证和鉴权设计
@@ -209,9 +209,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.8" data-path="wang-guan-https-an-quan-pei-zhi.html">
+        <li class="chapter " data-level="1.2.8" data-path="https.html">
             
-                <a href="wang-guan-https-an-quan-pei-zhi.html">
+                <a href="https.html">
             
                     
                     网关HTTPS安全配置
@@ -599,7 +599,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >使用MyBatis访问数据库(user-service)</a>
+        <a href="../.." >进行认证和鉴权设计</a>
     </h1>
 </div>
 
@@ -614,122 +614,155 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>CSE&#x672C;&#x8EAB;&#x5E76;&#x672A;&#x96C6;&#x6210;&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x529F;&#x80FD;&#xFF0C;&#x8BBF;&#x95EE;&#x6570;&#x636E;&#x5E93;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x63D0;&#x4F9B;&#x7684;&#x7EC4;&#x4EF6;&#x3002;&#x8FD9;&#x91CC;&#x9009;&#x62E9;&#x4E86;MyBatis&#x8BF4;&#x660E;&#x5982;&#x4F55;&#x8BBF;&#x95EE;&#x6570;&#x636E;&#x5E93;&#x3002;&#x5F00;&#x53D1;&#x8005;&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x53C2;&#x8003;&#xFF1A;</p>
-<p><a href="http://www.mybatis.org/spring/zh/index.html" target="_blank">http://www.mybatis.org/spring/zh/index.html</a></p>
-<p>&#x8FD9;&#x91CC;&#x7ED9;&#x51FA;&#x4E00;&#x4E2A;&#x5FEB;&#x901F;&#x96C6;&#x6210;&#x53C2;&#x8003;&#x3002;&#x5728;&#x672C;&#x7AE0;&#x4E2D;&#x6D89;&#x53CA;&#x5230;&#x5EFA;&#x8868;&#x7B49;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x9009;&#x7528;MySQL&#x3002;</p>
-<h1 id="&#x8BBE;&#x8BA1;&#x8868;">&#x8BBE;&#x8BA1;&#x8868;</h1>
-<p>&#x672C;&#x5E94;&#x7528;&#x63D0;&#x4F9B;&#x4E86;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x7684;&#x7528;&#x6237;&#x7BA1;&#x7406;&#x548C;&#x57FA;&#x4E8E;&#x89D2;&#x8272;&#x7684;&#x9274;&#x6743;&#x673A;&#x5236;&#x3002;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x8BBE;&#x8BA1;&#x4E86;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x7684;&#x7528;&#x6237;&#x8868;&#xFF0C;&#x8868;&#x683C;&#x5305;&#x542B;&#x4E86;&#x7528;&#x6237;&#x540D;&#x79F0;&#x53CA;&#x7528;&#x6237;&#x6240;&#x5C5E;&#x7684;&#x89D2;&#x8272;&#x3002;&#x4E3A;&#x4E86;&#x6D4B;&#x8BD5;&#x7684;&#x76EE;&#x7684;&#xFF0C;&#x8FD8;&#x63D2;&#x5165;&#x4E86;&#x4E24;&#x4E2A;&#x7528;&#x6237;&#x6570;&#x636E;&#xFF0C;&#x5176;&#x4E2D;&#x5BC6;&#x7801;&#x91C7;&#x7528;SHA256&#x8FDB;&#x884C;&#x5355;&#x5411;&#x52A0;&#x5BC6;&#x4FDD;&#x5B58;&#x3002;</p>
-<pre><code>CREATE DATABASE IF NOT EXISTS porter_user_db;
+                                <p>&#x4F20;&#x7EDF;&#x7684;WEB&#x5BB9;&#x5668;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x4F1A;&#x8BDD;&#x7BA1;&#x7406;&#xFF0C;&#x5728;&#x5FAE;&#x670D;&#x52A1;&#x67B6;&#x6784;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E9B;&#x4F1A;&#x8BDD;&#x7BA1;&#x7406;&#x5B58;&#x5728;&#x5F88;&#x591A;&#x7684;&#x9650;&#x5236;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x505A;&#x5230;&#x5F39;&#x6027;&#x6269;&#x7F29;&#x5BB9;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x505A;&#x5927;&#x91CF;&#x7684;&#x5B9A;&#x5236;&#x3002; &#x5728;porter&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;user-service&#x505A;&#x4F1A;&#x8BDD;&#x7BA1;&#x7406;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;login&#x548C;session&#x4E24;&#x4E2A;&#x63A5;&#x53E3;&#x521B;&#x5EFA;&#x548C;&#x83B7;&#x53D6;&#x4F1A;&#x8BDD;&#x4FE1;&#x606F;&#x3002;&#x4F1A;&#x8BDD;&#x4FE1;&#x606F;&#x6301;&#x4E45;&#x5316;&#x5230;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x5FAE;&#x670D;&#x52A1;&#x672C;&#x8EAB;&#x7684;&#x65E0;&#x72B6;&#x6001;&#xFF0C;&#x5FAE;&#x670D;&#x52A1;&#x53EF;&#x4EE5;&#x5F39;&#x6027;&#x6269;&#x7F29;&#x5BB9;&#x3002;&#x5728;&#x66F4;&#x5927;&#x89C4;&#x6A21;&#x5E76;&#x53D1;&#x6216;&#x8005;&#x9AD8;&#x6027;&#x80FD;&#x8981;&#x6C42;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x5C06;&#x4F1A;&#x8BDD;&#x4FE1;&#x606F;&#x5B58;&#x50A8;&#x5230;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x3002;</p>
+<pre><code>@PostMapping(path = &quot;/login&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
 
-USE porter_user_db;
+public SessionInfo login(@RequestParam(name = &quot;userName&quot;) String userName,
 
-DROP TABLE IF EXISTS T_USER;
+@RequestParam(name = &quot;password&quot;) String password)
 
-CREATE TABLE `T_USER` (
-  `ID`  INTEGER(20) NOT NULL COMMENT &apos;&#x7528;&#x6237;ID&apos;,
+
+
+@GetMapping(path = &quot;/session&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
+
+public SessionInfo getSession(@RequestParam(name = &quot;sessionId&quot;) String sessionId)
+</code></pre><p>&#x540C;&#x65F6;&#x65B0;&#x589E;&#x4E86;&#x4F1A;&#x8BDD;&#x7BA1;&#x7406;&#x7684;&#x6570;&#x636E;&#x8868;&#x8BBE;&#x8BA1;&#xFF1A;</p>
+<pre><code>CREATE TABLE `T_SESSION` (
+  `ID`  INTEGER(8) NOT NULL AUTO_INCREMENT COMMENT &apos;&#x552F;&#x4E00;&#x6807;&#x8BC6;&apos;,
+  `SESSION_ID`  VARCHAR(64) NOT NULL COMMENT &apos;&#x4E34;&#x65F6;&#x4F1A;&#x8BDD;ID&apos;,
   `USER_NAME`  VARCHAR(64) NOT NULL COMMENT &apos;&#x7528;&#x6237;&#x540D;&#x79F0;&apos;,
-  `PASSWORD`  VARCHAR(64) NOT NULL COMMENT &apos;&#x7528;&#x6237;&#x5BC6;&#x7801;&apos;,
   `ROLE_NAME`  VARCHAR(64) NOT NULL COMMENT &apos;&#x89D2;&#x8272;&#x540D;&#x79F0;&apos;,
+  `CREATION_TIME`  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;&#x521B;&#x5EFA;&#x65F6;&#x95F4;&apos;,
+  `ACTIVE_TIME`  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT &apos;&#x6700;&#x8FD1;&#x6D3B;&#x8DC3;&#x65F6;&#x95F4;&apos;,
   PRIMARY KEY (`ID`)
 );
-
-insert into T_USER(ID, USER_NAME, PASSWORD, ROLE_NAME) values(1, &quot;admin&quot;, &quot;n4bQgYhMfWWaL+qgxVrQFaO/TxsrC4Is0V1sFbDwCgg=&quot;, &quot;admin&quot;);
-insert into T_USER(ID, USER_NAME, PASSWORD, ROLE_NAME) values(2, &quot;guest&quot;, &quot;n4bQgYhMfWWaL+qgxVrQFaO/TxsrC4Is0V1sFbDwCgg=&quot;, &quot;guest&quot;);
-</code></pre><h1 id="&#x4F7F;&#x7528;mybatis">&#x4F7F;&#x7528;MyBatis</h1>
+</code></pre><p>&#x4F1A;&#x8BDD;&#x7BA1;&#x7406;&#x548C;&#x8BA4;&#x8BC1;&#x90FD;&#x5728;gateway-service&#x8FDB;&#x884C;&#xFF0C;&#x9274;&#x6743;&#x5219;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5230;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x3002;&#x4E3A;&#x4E86;&#x8BA9;&#x5FAE;&#x670D;&#x52A1;&#x83B7;&#x53D6;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x81F3;&#x4E8E;&#x518D;&#x67E5;&#x8BE2;user-service&#xFF0C;&#x6211;&#x4EEC;&#x5229;&#x7528;&#x4E86;CSE&#x63D0;&#x4F9B;&#x7684;Context&#x673A;&#x5236;&#xFF0C;&#x5728;Context&#x91CC;&#x9762;&#x5B58;&#x50A8;&#x4E86;session&#x4FE1;&#x606F;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x90FD;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4ECE;Context&#x91CC;&#x9762;&#x53D6;&#x5230;session&#x4FE1;&#x606F;&#xFF0C;&#x975E;&#x5E38;&#x65B9;&#x4FBF;&#x548C;&#x7075;&#x6D3B;&#x3002;&#x5B8C;&#x6210;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x6709;&#x5982;&#x4E0B;&#x51E0;&#x4E2A;&#x5173;&#x952E;&#x6B65;&#x9AA4;&#xFF1A;</p>
 <ul>
-<li>&#x5F15;&#x7528;MyBatis&#x7684;&#x76F8;&#x5173;&#x4F9D;&#x8D56;</li>
+<li>gateway-service&#x8FDB;&#x884C;HTTP&#x534F;&#x8BAE;&#x5230;Invocation&#x7684;&#x8F6C;&#x6362;</li>
 </ul>
-<p>&#x4F9D;&#x8D56;&#x5305;&#x542B;&#x4E86;MyBatis&#x548C;Spring&#x3001;DBCP2&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;&#x7BA1;&#x7406;&#x76F8;&#x5173;&#x7EC4;&#x4EF6;&#x3002;&#x8FD9;&#x4E9B;&#x7EC4;&#x4EF6;&#x90FD;&#x662F;&#x4F7F;&#x7528;Spring&#x548C;MyBatis&#x5FC5;&#x987B;&#x7684;&#x3002;</p>
-<pre><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
-  &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
-  &lt;version&gt;3.4.5&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;mysql&lt;/groupId&gt;
-  &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
-  &lt;artifactId&gt;commons-dbcp2&lt;/artifactId&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
-  &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;
-  &lt;version&gt;1.3.0&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-  &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
-  &lt;scope&gt;compile&lt;/scope&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-  &lt;artifactId&gt;spring-aop&lt;/artifactId&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-  &lt;artifactId&gt;spring-context-support&lt;/artifactId&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-  &lt;artifactId&gt;spring-tx&lt;/artifactId&gt;
-&lt;/dependency&gt;
+<p>&#x8FD9;&#x4E2A;&#x901A;&#x8FC7;&#x91CD;&#x8F7D;EdgeInvocation&#x7684;createInvocation&#x5B9E;&#x73B0;&#x3002;&#x5C06;&#x4F1A;&#x8BDD;ID&#x901A;&#x8FC7;Context&#x4F20;&#x9012;&#x7ED9;handler&#x3002;&#x5982;&#x679C;&#x5F00;&#x53D1;&#x8005;&#x9700;&#x8981;&#x5B9E;&#x73B0;&#x8BF8;&#x5982;&#x589E;&#x52A0;&#x54CD;&#x5E94;&#x5934;&#xFF0C;&#x8BBE;&#x8BA1;Cookie&#x7B49;&#x64CD;&#x4F5C;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x91CD;&#x8F7D;sendResponse&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<pre><code>EdgeInvocation invoker = new EdgeInvocation() {
+  // &#x8BA4;&#x8BC1;&#x9274;&#x6743;&#xFF1A;&#x6784;&#x9020;Invocation&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BBE;&#x7F6E;&#x4F1A;&#x8BDD;&#x4FE1;&#x606F;&#x3002;&#x5982;&#x679C;&#x662F;&#x8BA4;&#x8BC1;&#x8BF7;&#x6C42;&#xFF0C;&#x5219;&#x6DFB;&#x52A0;Cookie&#x3002;
+  protected void createInvocation(Object[] args) {
+    super.createInvocation(args);
+    // &#x65E2;&#x4ECE;cookie&#x91CC;&#x9762;&#x8BFB;&#x53D6;&#x4F1A;&#x8BDD;ID&#xFF0C;&#x4E5F;&#x4ECE;header&#x91CC;&#x9762;&#x8BFB;&#x53D6;&#xFF0C;&#x65B9;&#x4FBF;&#x5404;&#x79CD;&#x72EC;&#x7ACB;&#x7684;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;&#x8054;&#x8C03;
+    String sessionId = context.request().getHeader(&quot;session-id&quot;);
+    if (sessionId != null) {
+      this.invocation.addContext(&quot;session-id&quot;, sessionId);
+    } else {
+      Cookie sessionCookie = context.getCookie(&quot;session-id&quot;);
+      if (sessionCookie != null) {
+        this.invocation.addContext(&quot;session-id&quot;, sessionCookie.getValue());
+      }
+    }
+  }
+};
 </code></pre><ul>
-<li>&#x914D;&#x7F6E;&#x6570;&#x636E;&#x6E90;&#x548C;SqlSessionFactory</li>
+<li>&#x901A;&#x8FC7;handler&#x6765;&#x8FDB;&#x884C;&#x8BA4;&#x8BC1;&#x548C;&#x4F1A;&#x8BDD;&#x7BA1;&#x7406;</li>
 </ul>
-<p>&#x6570;&#x636E;&#x6E90;&#x4F7F;&#x7528;DBCP2&#x3002;SqlSessionFactory&#x91CC;&#x9762;&#x6307;&#x5B9A;&#x4E86;dataSource&#x548C;configLocation&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x5E76;&#x65B0;&#x589E;&#x52A0;&#x4E86;mybatis-config.xml&#x6587;&#x4EF6;&#xFF0C;&#x7528;&#x4E8E;&#x914D;&#x7F6E;mapper&#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;&#x3002; &#x5728;&#x672C;&#x5FAE;&#x670D;&#x52A1;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x7B80;&#x5355;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x548C;&#x7B80;&#x5355;&#x4E8B;&#x52A1;&#x7BA1;&#x7406;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x590D;&#x6742;&#x7684;&#x4E8B;&#x52A1;&#x7BA1;&#x7406;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x914D;&#x7F6E;XA&#x6570;&#x636E;&#x6E90;&#x548C;&#x76F8;&#x5173;&#x7684;&#x4E8B;&#x52A1;&#x7BA1;&#x7406;&#x5668;&#x3002; &#x6709;&#x5173;MyBatis&#x7684;Configuration&#x66F4;&#x52A0;&#x8BE6;&#x7EC6;&#x7684;&#x4FE1;&#x606F;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#xFF1A;<a href="http://www.mybatis.org/mybatis-3/configuration.html" target="_blank">http://www.mybatis.org/mybatis-3/configuration.html</a> &#x3002;</p>
-<pre><code>&lt;bean id=&quot;dataSource&quot; class=&quot;org.apache.commons.dbcp2.BasicDataSource&quot; destroy-method=&quot;close&quot;&gt;
-  &lt;property name=&quot;driverClassName&quot; value=&quot;${db.url:com.mysql.jdbc.Driver}&quot; /&gt;
-  &lt;property name=&quot;url&quot; value=&quot;${db.url:jdbc:mysql://localhost/porter_user_db}&quot; /&gt;
-  &lt;property name=&quot;username&quot; value=&quot;${db.username:root}&quot; /&gt;
-  &lt;property name=&quot;password&quot; value=&quot;${db.password:}&quot; /&gt;
-&lt;/bean&gt;
+<p>&#x5BF9;&#x4E8E;ui&#x754C;&#x9762;&#xFF0C;&#x4E0D;&#x63D0;&#x4F9B;&#x8BA4;&#x8BC1;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x3002;&#x5BF9;&#x4E8E;REST&#x63A5;&#x53E3;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x8BA4;&#x8BC1;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x5C06;&#x8BA4;&#x8BC1;&#x548C;&#x4F1A;&#x8BDD;&#x7BA1;&#x7406;&#x7684;&#x529F;&#x80FD;&#x5728;Hanlder&#x4E2D;&#x5B9E;&#x73B0;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5BF9;user-service&#x7684;login&#x63A5;&#x53E3;&#x76F4;&#x63A5;&#x8F6C;&#x53D1;&#x8BF7;&#x6C42;&#xFF0C;&#x5176;&#x4ED6;&#x8BF7;&#x6C42;&#x5148;&#x7ECF;&#x8FC7;&#x4F1A;&#x8BDD;&#x6821;&#x9A8C;&#xFF0C;&#x518D;&#x8FDB;&#x884C;&#x8F6C;&#x53D1;&#x3002;</p>
+<pre><code>public class AuthHandler implements Handler {
+    private RestTemplate restTemplate = RestTemplateBuilder.create();
 
-&lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
-  &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
-  &lt;property name=&quot;configLocation&quot; value=&quot;classpath:/config/mybatis-config.xml&quot;&gt;&lt;/property&gt;
-&lt;/bean&gt;
+    @Override
+    public void handle(Invocation invocation, AsyncResponse asyncResponse) throws Exception {
+        if (invocation.getMicroserviceName().equals(&quot;user-service&quot;)
+                &amp;&amp; (invocation.getOperationName().equals(&quot;login&quot;)
+                        || (invocation.getOperationName().equals(&quot;getSession&quot;)))) {
+            invocation.next(asyncResponse);
+        } else {
+            // check session
+            String sessionId = invocation.getContext(&quot;session-id&quot;);
+            if (sessionId == null) {
+                throw new InvocationException(405, &quot;&quot;, &quot;session is not valid.&quot;);
+            }
+            SessionInfo sessionInfo =
+                restTemplate.getForObject(&quot;cse://user-service/session?sessionId=&quot; + sessionId, SessionInfo.class);
+            if (sessionInfo == null) {
+                throw new InvocationException(405, &quot;&quot;, &quot;session is not valid.&quot;);
+            }
+            // &#x5C06;&#x4F1A;&#x8BDD;&#x4FE1;&#x606F;&#x4F20;&#x9012;&#x7ED9;&#x540E;&#x9762;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x3002;&#x540E;&#x9762;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x53EF;&#x4EE5;&#x4ECE;context&#x83B7;&#x53D6;&#x5230;&#x4F1A;&#x8BDD;&#x4FE1;&#x606F;&#xFF0C;&#x4ECE;&#x800C;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x9274;&#x6743;&#x7B49;&#x3002; 
+            invocation.addContext(&quot;session-id&quot;, sessionId);
+            invocation.addContext(&quot;session-info&quot;, JsonUtils.writeValueAsString(sessionInfo));
+            invocation.next(asyncResponse);
+        }
+    }
+}
+</code></pre><p>&#x542F;&#x7528;&#x8BE5;Hanlder&#xFF0C;&#x9700;&#x8981;&#x589E;&#x52A0;cse.handler.xml&#x6587;&#x4EF6;</p>
+<pre><code>&lt;config&gt;
+    &lt;handler id=&quot;auth&quot;
+             class=&quot;com.huawei.cse.porter.gateway.AuthHandler&quot; /&gt;
+&lt;/config&gt;
+</code></pre><p>&#x5E76;&#x4E14;&#x5728;microservice.yaml&#x4E2D;&#x542F;&#x7528;auth&#xFF0C;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x7684;&#x914D;&#x7F6E;&#x9879;&#x53EF;&#x4EE5;&#x8986;&#x76D6;cse-solution-service-engine&#x63D0;&#x4F9B;&#x7684;&#x9ED8;&#x8BA4;handler&#x94FE;&#x3002;&#x5C06;&#x65B0;&#x589E;&#x52A0;&#x7684;auth&#x5904;&#x7406;&#x94FE;&#x653E;&#x5230;&#x6D41;&#x63A7;&#x4E4B;&#x540E;&#x3002;</p>
+<pre><code>cse:
+  handler:
+    chain:
+      Consumer:
+        default: perf-stats,qps-flowcontrol-consumer,auth,loadbalance,bizkeeper-consumer
 </code></pre><ul>
-<li>&#x4E66;&#x5199;Mapper&#x6587;&#x4EF6;</li>
+<li>&#x7ED9;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x589E;&#x52A0;&#x9274;&#x6743;</li>
 </ul>
-<p>&#x6D89;&#x53CA;&#x5230;JAVA&#x7684;Mapper&#x5B9A;&#x4E49;UserMapper&#xFF0C;XML&#x4E2D;&#x5B9A;&#x4E49;SQL&#x4E0E;JAVA&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;UserMapper.xml&#x3002;&#x5B9A;&#x4E49;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x5C06;&#x5185;&#x5BB9;&#x914D;&#x7F6E;&#x5230;Mybatis&#x7684;&#x626B;&#x63CF;&#x8DEF;&#x5F84;&#x548C;Spring&#x7684;&#x626B;&#x63CF;&#x8DEF;&#x5F84;&#x4E2D;&#xFF0C;&#x6D89;&#x53CA;&#x6587;&#x4EF6;mybatis-config.xml&#x548C;user.bean.xml&#x3002;</p>
-<pre><code>### mybatis-config.xml
-&lt;configuration&gt;
-    &lt;mappers&gt;
-        &lt;mapper resource=&quot;config/UserMapper.xml&quot;/&gt;
-    &lt;/mappers&gt;
-&lt;/configuration&gt;
-
-### user.bean.xml
-&lt;bean id=&quot;userMapper&quot; class=&quot;org.mybatis.spring.mapper.MapperFactoryBean&quot;&gt;
-  &lt;property name=&quot;mapperInterface&quot; value=&quot;com.huawei.cse.porter.user.dao.UserMapper&quot; /&gt;
-  &lt;property name=&quot;sqlSessionFactory&quot; ref=&quot;sqlSessionFactory&quot; /&gt;
-&lt;/bean&gt;
-</code></pre><h2 id="&#x8BBE;&#x8BA1;&#x7528;&#x6237;&#x670D;&#x52A1;">&#x8BBE;&#x8BA1;&#x7528;&#x6237;&#x670D;&#x52A1;</h2>
-<p>&#x7ECF;&#x8FC7;&#x4E0A;&#x9762;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x76F8;&#x5173;&#x5F00;&#x53D1;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x4E86;&#x3002; &#x7ED3;&#x5408;User Story&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;login&#x7684;&#x670D;&#x52A1;&#x63A5;&#x53E3;&#x3002; &#x8FD9;&#x4E2A;&#x670D;&#x52A1;&#x5728;UserServiceEndpoint&#x91CC;&#x9762;&#x8FDB;&#x884C;&#x5B9A;&#x4E49;&#x3002;</p>
-<pre><code>@PostMapping(path = &quot;/login&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
-public SessionInfo login(@RequestParam(name = &quot;userName&quot;) String userName, 
-    @RequestParam(name = &quot;password&quot;) String password)
-</code></pre><p>&#x63A5;&#x53E3;&#x4F1A;&#x8FD4;&#x56DE;SessionInfo&#xFF0C;&#x8FD9;&#x4E9B;&#x5FC5;&#x8981;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4F1A;&#x5728;&#x540E;&#x7EED;&#x7684;&#x9274;&#x6743;&#x3001;&#x8BA4;&#x8BC1;&#x64CD;&#x4F5C;&#x4E2D;&#x8D77;&#x5230;&#x5F88;&#x5927;&#x7684;&#x65B9;&#x4FBF;&#x3002;</p>
-<p>&#x7ECF;&#x8FC7;&#x4EE5;&#x4E0A;&#x7684;&#x5F00;&#x53D1;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x542F;&#x52A8;&#x7528;&#x6237;&#x670D;&#x52A1;&#xFF0C;&#x914D;&#x7F6E;&#x6570;&#x636E;&#x5E93;&#x548C;&#x63D2;&#x5165;&#x76F8;&#x5173;&#x6570;&#x636E;&#xFF0C;&#x4ECE;&#x754C;&#x9762;&#x8BBF;&#x95EE;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x3002;</p>
-<pre><code>#### &#x8BBF;&#x95EE;login&#x63A5;&#x53E3;&#x7684;HTTP&#x8BF7;&#x6C42;&#x548C;&#x54CD;&#x5E94;
+<p>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x6B65;&#x9AA4;&#x4E2D;&#xFF0C;&#x5DF2;&#x7ECF;&#x5C06;&#x4F1A;&#x8BDD;&#x4FE1;&#x606F;&#x8BBE;&#x7F6E;&#x5230;Context&#x91CC;&#x9762;&#xFF0C;file-service&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x7684;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x9274;&#x6743;&#x64CD;&#x4F5C;&#x3002;</p>
+<pre><code>@DeleteMapping(path = &quot;/delete&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
+public boolean deleteFile(@RequestParam(name = &quot;id&quot;) String id) {
+    String session = ContextUtils.getInvocationContext().getContext(&quot;session-info&quot;);
+    if (session == null) {
+        throw new InvocationException(403, &quot;&quot;, &quot;not allowed&quot;);
+    } else {
+        SessionInfo sessionInfo = null;
+        try {
+            sessionInfo = JsonUtils.readValue(session.getBytes(&quot;UTF-8&quot;), SessionInfo.class);
+        } catch (Exception e) {
+            throw new InvocationException(403, &quot;&quot;, &quot;session not allowed&quot;);
+        }
+        if (sessionInfo == null || !sessionInfo.getRoleName().equals(&quot;admin&quot;)) {
+            throw new InvocationException(403, &quot;&quot;, &quot;not allowed&quot;);
+        }
+    }
+    return fileService.deleteFile(id);
+}
+</code></pre><p>&#x5230;&#x8FD9;&#x91CC;&#x4E3A;&#x6B62;&#xFF0C;&#x8BA4;&#x8BC1;&#x3001;&#x4F1A;&#x8BDD;&#x7BA1;&#x7406;&#x548C;&#x9274;&#x6743;&#x7684;&#x903B;&#x8F91;&#x57FA;&#x672C;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x4E86;&#x3002;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Postman&#x7B49;&#x5DE5;&#x5177;&#x8FDB;&#x884C;&#x6D41;&#x7A0B;&#x76F8;&#x5173;&#x7684;&#x6D4B;&#x8BD5;&#x3002;</p>
+<pre><code>#### &#x4F1A;&#x8BDD;&#x7BA1;&#x7406;&#x63A5;&#x53E3;&#x8C03;&#x7528;&#x793A;&#x4F8B;&#xFF0C;&#x8C03;&#x7528;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x63A5;&#x53E3;&#x3002;&#x4F7F;&#x7528;guest&#x7528;&#x6237;&#x7684;&#x4F1A;&#x8BDD;&#x7684;&#x60C5;&#x51B5;&#x3002;
 
 #Request
-POST http://localhost:9090/api/user-service/login
+DELETE http://localhost:9090/api/file-service/delete?id=ba6bd8a2-d31a-42cd-a1be-9fb3d6ab4c82
 
-Content-Type: application/x-www-form-urlencoded
-
-userName=admin&amp;password=test
+session-id: 1be646c0-50cb-4c0a-968d-2a512775f5e8
 
 #Response
 {
-    &quot;id&quot;: 0,
-    &quot;sessiondId&quot;: &quot;1be646c0-50cb-4c0a-968d-2a512775f5e8&quot;,
-    &quot;userName&quot;: &quot;guest&quot;,
-    &quot;roleName&quot;: &quot;guest&quot;,
-    &quot;creationTime&quot;: null,
-    &quot;activeTime&quot;: null
+    &quot;message&quot;: &quot;not allowed&quot;
+}
+</code></pre><h1 id="&#x5F00;&#x53D1;js&#x811A;&#x672C;&#x7BA1;&#x7406;&#x4F1A;&#x8BDD;">&#x5F00;&#x53D1;JS&#x811A;&#x672C;&#x7BA1;&#x7406;&#x4F1A;&#x8BDD;</h1>
+<p>&#x9996;&#x5148;&#x9700;&#x8981;&#x63D0;&#x4F9B;&#x767B;&#x9646;&#x6846;&#xFF0C;&#x8BA9;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7528;&#x6237;&#x540D;&#x5BC6;&#x7801;&#xFF1A;</p>
+<pre><code>&lt;div class=&quot;form&quot;&gt;
+    &lt;h2&gt;&#x767B;&#x5F55;&lt;/h2&gt;
+    &lt;input id=&quot;username&quot; type=&quot;text&quot; name=&quot;Username&quot; placeholder=&quot;Username&quot;&gt;
+    &lt;input id=&quot;paasword&quot; type=&quot;password&quot; name=&quot;Password&quot; placeholder=&quot;Password&quot; &gt;
+    &lt;input type=&quot;button&quot; value=&quot;Login&quot; onclick=&quot;loginAction()&quot;&gt;
+&lt;/div&gt;
+</code></pre><p>&#x5B9E;&#x73B0;&#x767B;&#x9646;&#x903B;&#x8F91;&#x3002;&#x767B;&#x9646;&#x9996;&#x5148;&#x8C03;&#x7528;&#x540E;&#x53F0;&#x767B;&#x9646;&#x63A5;&#x53E3;&#xFF0C;&#x767B;&#x9646;&#x6210;&#x529F;&#x540E;&#x8BBE;&#x7F6E;&#x4F1A;&#x8BDD;cookie:</p>
+<pre><code>function loginAction() {
+     var username = document.getElementById(&quot;username&quot;).value;
+     var password = document.getElementById(&quot;paasword&quot;).value;
+     var formData = {};
+     formData.userName = username;
+     formData.password = password;
+
+     $.ajax({
+        type: &apos;POST&apos;,
+        url: &quot;/api/user-service/login&quot;,
+        data: formData,
+        success: function (data) {
+            setCookie(&quot;session-id&quot;, data.sessiondId, false);
+            window.alert(&apos;&#x767B;&#x9646;&#x6210;&#x529F;&#xFF01;&apos;);
+        },
+        error: function(data) {
+            console.log(data);
+            window.alert(&apos;&#x767B;&#x9646;&#x5931;&#x8D25;&#xFF01;&apos; + data);
+        },
+        async: true
+    });
 }
 </code></pre>
                                 
@@ -758,12 +791,12 @@ userName=admin&amp;password=test
 
             
                 
-                <a href="kai-fa-wang-517328-gateway-service.html" class="navigation navigation-prev " aria-label="Previous page: 开发网关(gateway-service)">
+                <a href="user-service.html" class="navigation navigation-prev " aria-label="Previous page: 使用MyBatis访问数据库(user-service)">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="jin-xing-ren-zheng-he-jian-quan-she-ji.html" class="navigation navigation-next " aria-label="Next page: 进行认证和鉴权设计">
+                <a href="https.html" class="navigation navigation-next " aria-label="Next page: 网关HTTPS安全配置">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -774,7 +807,7 @@ userName=admin&amp;password=test
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"使用MyBatis访问数据库(user-service)","level":"1.2.6","depth":2,"next":{"title":"进行认证和鉴权设计","level":"1.2.7","depth":2,"path":"featured-topics/develope-microservice-using-ces/jin-xing-ren-zheng-he-jian-quan-she-ji.md","ref":"featured-topics/develope-microservice-using-ces/jin-xing-ren-zheng-he-jian-quan-she-ji.md","articles":[]},"previous":{"title":"开发网关(gateway-service)","level":"1.2.5","depth":2,"path":"featured-topics/develope-microservice-using-ces/kai-fa-wang-517328-gateway-service.md","ref":"featured-topics/develope-microservice-using-ces/kai-fa-wang-517328-gateway-service.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"introduction.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"featured-topics/develope-microservice-using-ces/shi-yong-mybatis-fang-wen-shu-ju-5e9328-user-service.md","mtime":"2018-05-02T09:21:25.735Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-05T02:51:31.732Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"进行认证和鉴权设计","level":"1.2.7","depth":2,"next":{"title":"网关HTTPS安全配置","level":"1.2.8","depth":2,"path":"featured-topics/develop-microservice-using-cse/https.md","ref":"featured-topics/develop-microservice-using-cse/https.md","articles":[]},"previous":{"title":"使用MyBatis访问数据库(user-service)","level":"1.2.6","depth":2,"path":"featured-topics/develop-microservice-using-cse/user-service.md","ref":"featured-topics/develop-microservice-using-cse/user-service.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"introduction.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"featured-topics/develop-microservice-using-cse/authentication.md","mtime":"2018-05-02T09:21:25.731Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-06T07:22:01.341Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
