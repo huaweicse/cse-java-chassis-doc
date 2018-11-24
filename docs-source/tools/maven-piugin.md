@@ -19,7 +19,7 @@
 <plugin>
     <groupId>io.swagger</groupId>
     <artifactId>huawei-swagger-codegen-maven-plugin</artifactId>
-    <version>2.2.2</version>
+    <version>2.2.3</version>
     <executions>
         <execution>
             <goals>
@@ -89,7 +89,4 @@ mvn generate-sources
 
 根据配置的output路径，例如：&lt;output&gt;target/swagger&lt;/output&gt;，代码会生成在当前项目target/swagger目录下。
 
-##### 
-
-
-
+#####
