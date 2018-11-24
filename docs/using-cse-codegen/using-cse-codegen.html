@@ -1,0 +1,943 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>使用CSE-Codegen插件开发微服务 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../tools/intruduction.html" />
+    
+    
+    <link rel="prev" href="cse-codegen.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../featured-topics/develop-microservice-using-cse.html">
+            
+                <a href="../featured-topics/develop-microservice-using-cse.html">
+            
+                    
+                    使用CSE开发微服务应用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../featured-topics/develop-microservice-using-cse/user-story.html">
+            
+                <a href="../featured-topics/develop-microservice-using-cse/user-story.html">
+            
+                    
+                    User Story
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../featured-topics/develop-microservice-using-cse/design.html">
+            
+                <a href="../featured-topics/develop-microservice-using-cse/design.html">
+            
+                    
+                    设计微服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../featured-topics/develop-microservice-using-cse/porter-website.html">
+            
+                <a href="../featured-topics/develop-microservice-using-cse/porter-website.html">
+            
+                    
+                    开发界面(porter-website)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../featured-topics/develop-microservice-using-cse/file-service.html">
+            
+                <a href="../featured-topics/develop-microservice-using-cse/file-service.html">
+            
+                    
+                    开发文件上传功能(file-service)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../featured-topics/develop-microservice-using-cse/gateway-service.html">
+            
+                <a href="../featured-topics/develop-microservice-using-cse/gateway-service.html">
+            
+                    
+                    开发网关(gateway-service)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../featured-topics/develop-microservice-using-cse/user-service.html">
+            
+                <a href="../featured-topics/develop-microservice-using-cse/user-service.html">
+            
+                    
+                    使用MyBatis访问数据库(user-service)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../featured-topics/develop-microservice-using-cse/authentication.html">
+            
+                <a href="../featured-topics/develop-microservice-using-cse/authentication.html">
+            
+                    
+                    进行认证和鉴权设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../featured-topics/develop-microservice-using-cse/https.html">
+            
+                <a href="../featured-topics/develop-microservice-using-cse/https.html">
+            
+                    
+                    网关HTTPS安全配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../servicecomb-using-cse/intruduction.html">
+            
+                <a href="../servicecomb-using-cse/intruduction.html">
+            
+                    
+                    ServiceComb应用接入CSE
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../servicecomb-using-cse/connect-service-center.html">
+            
+                <a href="../servicecomb-using-cse/connect-service-center.html">
+            
+                    
+                    连接服务中心
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../servicecomb-using-cse/connect-config-center.html">
+            
+                <a href="../servicecomb-using-cse/connect-config-center.html">
+            
+                    
+                    连接配置中心
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../servicecomb-using-cse/using-governance.html">
+            
+                <a href="../servicecomb-using-cse/using-governance.html">
+            
+                    
+                    使用服务治理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../servicecomb-using-cse/monitoring.html">
+            
+                <a href="../servicecomb-using-cse/monitoring.html">
+            
+                    
+                    微服务运行数据上报
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../using-cse-in-spring-boot/using-cse-in-spring-boot.html">
+            
+                <a href="../using-cse-in-spring-boot/using-cse-in-spring-boot.html">
+            
+                    
+                    在Spring Boot中使用CSE
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../using-cse-in-spring-boot/cse-components-for-spring-boot.html">
+            
+                <a href="../using-cse-in-spring-boot/cse-components-for-spring-boot.html">
+            
+                    
+                    CSE提供的组件说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../using-cse-in-spring-boot/java-application.html">
+            
+                <a href="../using-cse-in-spring-boot/java-application.html">
+            
+                    
+                    JAVA应用方式开发步骤
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../using-cse-in-spring-boot/web-application.html">
+            
+                <a href="../using-cse-in-spring-boot/web-application.html">
+            
+                    
+                    Web开发方式开发步骤
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../using-cse-in-spring-boot/diff-between-java-web.html">
+            
+                <a href="../using-cse-in-spring-boot/diff-between-java-web.html">
+            
+                    
+                    JAVA应用方式和Web开发方式的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../using-cse-in-spring-boot/diff-spring-mvc.html">
+            
+                <a href="../using-cse-in-spring-boot/diff-spring-mvc.html">
+            
+                    
+                    Spring MVC模式的差异
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../using-cse-in-spring-boot/spring-boot-2.html">
+            
+                <a href="../using-cse-in-spring-boot/spring-boot-2.html">
+            
+                    
+                    使用Spring Boot 2
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../spring-cloud-using-cse/spring-cloud-using-cse.html">
+            
+                <a href="../spring-cloud-using-cse/spring-cloud-using-cse.html">
+            
+                    
+                    Spring Cloud应用接入CSE
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../spring-cloud-using-cse/spring-cloud-roadmap.html">
+            
+                <a href="../spring-cloud-using-cse/spring-cloud-roadmap.html">
+            
+                    
+                    演进路线图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../spring-cloud-using-cse/quick-start.html">
+            
+                <a href="../spring-cloud-using-cse/quick-start.html">
+            
+                    
+                    遗留系统快速接入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../spring-cloud-using-cse/cse-and-rpc.html">
+            
+                <a href="../spring-cloud-using-cse/cse-and-rpc.html">
+            
+                    
+                    使用CSE作为RPC框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../spring-cloud-using-cse/performance.html">
+            
+                <a href="../spring-cloud-using-cse/performance.html">
+            
+                    
+                    使用轻量级容器和Edge Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="cse-codegen.html">
+            
+                <a href="cse-codegen.html">
+            
+                    
+                    使用CSE-Codegen插件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.6.1" data-path="using-cse-codegen.html">
+            
+                <a href="using-cse-codegen.html">
+            
+                    
+                    使用CSE-Codegen插件开发微服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../tools/intruduction.html">
+            
+                <a href="../tools/intruduction.html">
+            
+                    
+                    工具和插件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../tools/contract-tool.html">
+            
+                <a href="../tools/contract-tool.html">
+            
+                    
+                    契约开发工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../tools/maven-piugin.html">
+            
+                <a href="../tools/maven-piugin.html">
+            
+                    
+                    代码生成插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../tools/ak-sk-encrypt.html">
+            
+                <a href="../tools/ak-sk-encrypt.html">
+            
+                    
+                    加密工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../question-and-answer/question_answer.html">
+            
+                <a href="../question-and-answer/question_answer.html">
+            
+                    
+                    常见问题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../question-and-answer/service-center-error-diagnosis.html">
+            
+                <a href="../question-and-answer/service-center-error-diagnosis.html">
+            
+                    
+                    连接华为公有云服务中心常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../question-and-answer/interface-compatibility.html">
+            
+                <a href="../question-and-answer/interface-compatibility.html">
+            
+                    
+                    微服务接口兼容常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >使用CSE-Codegen插件开发微服务</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="&#x4F7F;&#x7528;cse-codegen&#x63D2;&#x4EF6;&#x5FEB;&#x901F;&#x5F00;&#x53D1;&#x5FAE;&#x670D;&#x52A1;">&#x4F7F;&#x7528;CSE-Codegen&#x63D2;&#x4EF6;&#x5FEB;&#x901F;&#x5F00;&#x53D1;&#x5FAE;&#x670D;&#x52A1;</h3>
+<p>&#x4F7F;&#x7528;CSE-Codegen&#x63D2;&#x4EF6;&#x5F00;&#x53D1;&#x5FAE;&#x670D;&#x52A1;&#x6B65;&#x9AA4;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x51C6;&#x5907;&#x4E00;&#x4E2A;Git&#x4ED3;&#x5E93;&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x5951;&#x7EA6;&#xFF0C;&#x5728;&#x5FAE;&#x670D;&#x52A1;&#x5DE5;&#x7A0B;&#x91CC;&#x9762;&#x5F15;&#x5165;&#x63D2;&#x4EF6;&#x4F9D;&#x8D56;&#xFF0C;&#x8FD0;&#x884C;&#x63D2;&#x4EF6;&#x5C31;&#x80FD;&#x540C;&#x6B65;&#x8FDC;&#x7AEF;&#x5951;&#x7EA6;&#x5230;&#x672C;&#x5730;&#x5E76;&#x6839;&#x636E;&#x5951;&#x7EA6;&#x751F;&#x6210;&#x6846;&#x67B6;&#x4EE3;&#x7801;&#x3002;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="https://github.com/huaweicse/cse-java-chassis-samples/tree/master/cse-codegen-demo" target="_blank">&#x9879;&#x76EE;&#x793A;&#x4F8B;&#x4EE3;&#x7801;</a>&#xFF0C;&#x6B65;&#x9AA4;&#x5982;&#x4E0B;&#x3002;&#x76EE;&#x524D;CSE-Codegen&#x7684;&#x7248;&#x672C;&#x5DF2;&#x7ECF;&#x66F4;&#x65B0;&#x5230;2.2.8&#x5E76;&#x4E0A;&#x4F20;&#x5230;&#x534E;&#x4E3A;&#x955C;&#x50CF;&#x7AD9;&#x7684;<a href="https://repo.huaweicloud.com/repository/maven/huaweicloudsdk/" target="_blank">huaweicloudsdk&#x4ED3;&#x5E93;</a>&#xFF0C;&#x540E;&#x7EED;&#x7248;&#x672C;&#x4E5F;&#x4F1A;&#x53D1;&#x5E03;&#x5230;&#x8FD9;&#x91CC;&#x3002;</p>
+<h6 id="1-git&#x4ED3;&#x5E93;&#x5F52;&#x6863;&#x5951;&#x7EA6;">1. Git&#x4ED3;&#x5E93;&#x5F52;&#x6863;&#x5951;&#x7EA6;</h6>
+<p>&#x521B;&#x5EFA;&#x8FDC;&#x7AEF;Git&#x4ED3;&#x5E93;&#xFF0C;&#x7528;&#x4E8E;&#x5951;&#x7EA6;&#x7BA1;&#x63A7;&#xFF0C;&#x4E0A;&#x4F20;&#x5951;&#x7EA6;&#x6587;&#x4EF6;&#x5230;Git&#x4ED3;&#x5E93;&#x4E2D;&#x3002;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="https://github.com/huaweicse/cse-codegen-schemas" target="_blank">&#x5951;&#x7EA6;&#x4ED3;&#x5E93;&#x793A;&#x4F8B;</a>&#x3002;</p>
+<h6 id="2-&#x914D;&#x7F6E;maven&#x7684;settings&#x6587;&#x4EF6;">2. &#x914D;&#x7F6E;maven&#x7684;settings&#x6587;&#x4EF6;</h6>
+<p>&#x2003;&#x2003;&#x5230;<a href="https://mirrors.huaweicloud.com/" target="_blank">&#x534E;&#x4E3A;&#x955C;&#x50CF;&#x7AD9;</a>&#x91CC;&#x9762;&#x627E;&#x5230;HuaweiCloud SDK&#xFF0C;&#x4E0B;&#x8F7D;settings.xml&#xFF0C;&#x66FF;&#x6362;&#x6389;&#x539F;&#x6765;&#x7684;settings&#x6587;&#x4EF6;&#x3002;&#x5728;settings&#x6587;&#x4EF6;&#x4E2D;&#x589E;&#x52A0;&#x5982;&#x4E0B;&#x914D;&#x7F6E;&#x3002;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">profiles</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">profile</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>MyProfile<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">pluginRepositories</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">pluginRepository</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>HuaweiCloudSDK<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk/<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">releases</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">enabled</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">enabled</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">releases</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">snapshots</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">enabled</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">enabled</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">snapshots</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">pluginRepository</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">pluginRepositories</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">profile</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">profiles</span>&gt;</span>
+</code></pre>
+<h6 id="3-&#x914D;&#x7F6E;pom&#x6587;&#x4EF6;&#xFF0C;&#x5F15;&#x5165;&#x63D2;&#x4EF6;">3. &#x914D;&#x7F6E;pom&#x6587;&#x4EF6;&#xFF0C;&#x5F15;&#x5165;&#x63D2;&#x4EF6;</h6>
+<p>&#x4F7F;&#x7528;eclipse&#x7684;&#x7528;&#x6237;&#x53EF;&#x80FD;&#x4F1A;&#x53D1;&#x73B0;pom&#x6587;&#x4EF6;&#x51FA;&#x73B0;&#x201C;Plugin execution not covered by lifecycle configuration&#x201D;&#x7684;&#x62A5;&#x9519;&#x4FE1;&#x606F;&#x3002;&#x51FA;&#x73B0;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0D;&#x5F71;&#x54CD;&#x63D2;&#x4EF6;&#x4F7F;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x7406;&#x4F1A;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x6309;&#x7167;eclipse&#x7684;&#x4FEE;&#x590D;&#x63D0;&#x793A;&#x8FDB;&#x884C;&#x4FEE;&#x590D;&#x3002;</p>
+<p>&#x53C2;&#x6570;&#x8BF4;&#x660E;&#x5982;&#x4E0B;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>skip</td>
+<td>&#x662F;&#x5426;&#x8DF3;&#x8FC7;&#x6267;&#x884C;&#x8BE5;&#x63D2;&#x4EF6;&#x529F;&#x80FD;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;true&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5C06;skip&#x8BBE;&#x4E3A;false&#x3002;</td>
+</tr>
+<tr>
+<td>skipOverWrite</td>
+<td>&#x662F;&#x5426;&#x8DF3;&#x8FC7;&#x6587;&#x4EF6;&#x8986;&#x76D6;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;false&#xFF0C;&#x5373;&#x6BCF;&#x6B21;&#x8FD0;&#x884C;&#x63D2;&#x4EF6;&#x90FD;&#x53EF;&#x4EE5;&#x66F4;&#x65B0;&#x6846;&#x67B6;&#x4EE3;&#x7801;&#x3002;</td>
+</tr>
+<tr>
+<td>repositories</td>
+<td>&#x5B9A;&#x4E49;&#x591A;&#x4E2A;&#x5951;&#x7EA6;&#x4ED3;&#x5E93;&#x3002;</td>
+</tr>
+<tr>
+<td>repository</td>
+<td>&#x5B9A;&#x4E49;&#x5355;&#x4E2A;&#x5951;&#x7EA6;&#x4ED3;&#x5E93;&#xFF0C;&#x5373;&#x8FDC;&#x7AEF;&#x5951;&#x7EA6;&#x6240;&#x5728;&#x7684;git&#x4ED3;&#x5E93;&#x3002;</td>
+</tr>
+<tr>
+<td>userName</td>
+<td>&#x5951;&#x7EA6;&#x4ED3;&#x5E93;&#x7684;&#x7528;&#x6237;&#x540D;&#xFF08;&#x9009;&#x586B;&#xFF09;&#x3002;</td>
+</tr>
+<tr>
+<td>password</td>
+<td>&#x5951;&#x7EA6;&#x4ED3;&#x5E93;&#x5BC6;&#x7801;&#xFF08;&#x9009;&#x586B;&#xFF09;&#x3002;</td>
+</tr>
+<tr>
+<td>repoUrl</td>
+<td>&#x5951;&#x7EA6;&#x4ED3;&#x5E93;&#x5730;&#x5740;&#xFF0C;http&#x3001;https&#x3001;ssh&#x683C;&#x5F0F;&#x90FD;&#x9002;&#x7528;&#x3002;</td>
+</tr>
+<tr>
+<td>branch</td>
+<td>&#x5951;&#x7EA6;&#x4ED3;&#x5E93;&#x5206;&#x652F;&#x540D;&#x3002;</td>
+</tr>
+<tr>
+<td>services</td>
+<td>&#x5B9A;&#x4E49;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x3002;</td>
+</tr>
+<tr>
+<td>service</td>
+<td>&#x5B9A;&#x4E49;&#x5355;&#x4E2A;&#x670D;&#x52A1;&#xFF0C;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#x5951;&#x7EA6;&#x6587;&#x4EF6;&#x3002;</td>
+</tr>
+<tr>
+<td>appId</td>
+<td>&#x5E94;&#x7528;Id&#xFF08;&#x9009;&#x586B;&#xFF0C;&#x53EA;&#x5728;consumer&#x8FD9;&#x8FB9;&#x6307;&#x5B9A;&#xFF0C;consumer&#x8DE8;&#x5E94;&#x7528;&#x8C03;&#x7528;provider&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x586B;&#x5BF9;&#x5E94;&#x7684;provider&#x7684;appId&#xFF09;&#x3002;</td>
+</tr>
+<tr>
+<td>serviceName</td>
+<td>&#x670D;&#x52A1;&#x540D;(&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;consumer&#x548C;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;provider&#x90FD;&#x586B;provider&#x7684;&#x670D;&#x52A1;&#x540D;)&#x3002;</td>
+</tr>
+<tr>
+<td>packageName&#xFF08;service&#x5C42;&#xFF09;</td>
+<td>&#x751F;&#x6210;&#x7684;&#x6846;&#x67B6;&#x4EE3;&#x7801;&#xFF08;delegate&#x3001;impl&#x3001;controller&#xFF09;&#x7684;&#x5305;&#x8DEF;&#x5F84;&#xFF0C;&#x5F53;&#x5951;&#x7EA6;&#x4E2D;&#x7684;model&#x91CC;&#x9762;&#x6CA1;&#x6709;x-java-class&#xFF0C;&#x4E5F;&#x4F5C;&#x4E3A;model&#x7684;&#x5305;&#x8DEF;&#x5F84;&#x3002;</td>
+</tr>
+<tr>
+<td>schemaType</td>
+<td>&#x6307;&#x5B9A;&#x670D;&#x52A1;&#x662F;consumer&#x8FD8;&#x662F;provider&#xFF0C;&#x6839;&#x636E;&#x5951;&#x7EA6;&#x751F;&#x6210;&#x76F8;&#x5E94;&#x7684;&#x6846;&#x67B6;&#x4EE3;&#x7801;&#x3002;</td>
+</tr>
+<tr>
+<td>schemas</td>
+<td>&#x5B9A;&#x4E49;&#x591A;&#x4E2A;&#x5951;&#x7EA6;&#x6587;&#x4EF6;&#x3002;</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>&#x5B9A;&#x4E49;&#x5355;&#x4E2A;&#x5951;&#x7EA6;&#x6587;&#x4EF6;&#x3002;</td>
+</tr>
+<tr>
+<td>schemaPath</td>
+<td>&#x5951;&#x7EA6;&#x6587;&#x4EF6;&#x5728;&#x5951;&#x7EA6;&#x4ED3;&#x5E93;&#x7684;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x3002;</td>
+</tr>
+<tr>
+<td>packageName</td>
+<td>&#x751F;&#x6210;&#x4EE3;&#x7801;&#x7684;&#x5305;&#x8DEF;&#x5F84;&#xFF0C;&#x4F18;&#x5148;&#x7EA7;&#x5C0F;&#x4E8E;service&#x91CC;&#x9762;&#x7684;packageName&#xFF0C;&#x5F53;&#x4E24;&#x8005;&#x90FD;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#xFF0C;&#x63D2;&#x4EF6;&#x8FD0;&#x884C;&#x4F1A;&#x62A5;&#x9519;&#x3002;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>consumer&#x6A21;&#x5757;&#x5F15;&#x5165;huawei-swagger-codegen-maven-plugin&#xFF0C;&#x63D2;&#x4EF6;&#x7248;&#x672C;&#x53F7;&#x662F;2.2.8&#x3002;schemaType&#x6307;&#x5B9A;&#x53C2;&#x6570;&#x201C;consumer&#x201D;&#xFF0C;&#x751F;&#x6210;&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;&#x6846;&#x67B6;&#x4EE3;&#x7801;&#x3002;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.swagger<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>huawei-swagger-codegen-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.2.8<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">executions</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">execution</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">goals</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>generate<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">goals</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">execution</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">executions</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">skip</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">skip</span>&gt;</span>
+          <span class="hljs-comment">&lt;!--&lt;skipOverwrite&gt;false&lt;/skipOverwrite&gt;--&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">repositories</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">repository</span>&gt;</span>
+                  <span class="hljs-comment">&lt;!--&lt;userName&gt;&lt;/userName&gt;--&gt;</span>
+                  <span class="hljs-comment">&lt;!--&lt;password&gt;&lt;/password&gt;--&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">repoUrl</span>&gt;</span> https://github.com/huaweicse/cse-codegen-schemas.git<span class="hljs-tag">&lt;/<span class="hljs-name">repoUrl</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">branch</span>&gt;</span>master<span class="hljs-tag">&lt;/<span class="hljs-name">branch</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">services</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">service</span>&gt;</span>
+                          <span class="hljs-comment">&lt;!--&lt;appId&gt;lala&lt;/appId&gt;--&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">serviceName</span>&gt;</span>myprovider<span class="hljs-tag">&lt;/<span class="hljs-name">serviceName</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">packageName</span>&gt;</span>com.huawei.paas.consumer<span class="hljs-tag">&lt;/<span class="hljs-name">packageName</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">schemaType</span>&gt;</span>consumer<span class="hljs-tag">&lt;/<span class="hljs-name">schemaType</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">schemas</span>&gt;</span>
+                              <span class="hljs-tag">&lt;<span class="hljs-name">schema</span>&gt;</span>
+                                  <span class="hljs-tag">&lt;<span class="hljs-name">schemaPath</span>&gt;</span>dir/myservice.yaml<span class="hljs-tag">&lt;/<span class="hljs-name">schemaPath</span>&gt;</span>
+                              <span class="hljs-tag">&lt;/<span class="hljs-name">schema</span>&gt;</span>
+                          <span class="hljs-tag">&lt;/<span class="hljs-name">schemas</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">service</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">services</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">repository</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">repositories</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">packageName</span>&gt;</span>com.huawei.paas.consumer<span class="hljs-tag">&lt;/<span class="hljs-name">packageName</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>provider&#x6A21;&#x5757;&#x5F15;&#x5165;huawei-swagger-codegen-maven-plugin&#xFF0C;&#x63D2;&#x4EF6;&#x7248;&#x672C;&#x53F7;&#x662F;2.2.8&#x3002;schemaType&#x6307;&#x5B9A;&#x53C2;&#x6570;&#x201C;provider&#x201D;&#xFF0C;&#x751F;&#x6210;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x6846;&#x67B6;&#x4EE3;&#x7801;&#x3002;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.swagger<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>huawei-swagger-codegen-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.2.8<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">executions</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">execution</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">goals</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>generate<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">goals</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">execution</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">executions</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">skip</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">skip</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">skipOverwrite</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">skipOverwrite</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">repositories</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">repository</span>&gt;</span>
+                  <span class="hljs-comment">&lt;!--&lt;userName&gt;&lt;/userName&gt;--&gt;</span>
+                  <span class="hljs-comment">&lt;!--&lt;password&gt;&lt;/password&gt;--&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">repoUrl</span>&gt;</span> https://github.com/huaweicse/cse-codegen-schemas.git<span class="hljs-tag">&lt;/<span class="hljs-name">repoUrl</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">branch</span>&gt;</span>master<span class="hljs-tag">&lt;/<span class="hljs-name">branch</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">services</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">service</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">serviceName</span>&gt;</span>myprovider<span class="hljs-tag">&lt;/<span class="hljs-name">serviceName</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">packageName</span>&gt;</span>com.huawei.paas.provider<span class="hljs-tag">&lt;/<span class="hljs-name">packageName</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">schemaType</span>&gt;</span>provider<span class="hljs-tag">&lt;/<span class="hljs-name">schemaType</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">schemas</span>&gt;</span>
+                              <span class="hljs-tag">&lt;<span class="hljs-name">schema</span>&gt;</span>
+                                  <span class="hljs-tag">&lt;<span class="hljs-name">schemaPath</span>&gt;</span>dir/myservice.yaml<span class="hljs-tag">&lt;/<span class="hljs-name">schemaPath</span>&gt;</span>
+                              <span class="hljs-tag">&lt;/<span class="hljs-name">schema</span>&gt;</span>
+                          <span class="hljs-tag">&lt;/<span class="hljs-name">schemas</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">service</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">services</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">repository</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">repositories</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">packageName</span>&gt;</span>com.huawei.paas.provider<span class="hljs-tag">&lt;/<span class="hljs-name">packageName</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+<h6 id="4-&#x8FD0;&#x884C;&#x63D2;&#x4EF6;&#xFF0C;&#x540C;&#x6B65;&#x5951;&#x7EA6;&#x5E76;&#x751F;&#x6210;&#x6846;&#x67B6;&#x4EE3;&#x7801;">4. &#x8FD0;&#x884C;&#x63D2;&#x4EF6;&#xFF0C;&#x540C;&#x6B65;&#x5951;&#x7EA6;&#x5E76;&#x751F;&#x6210;&#x6846;&#x67B6;&#x4EE3;&#x7801;</h6>
+<p>&#x6267;&#x884C;&#x547D;&#x4EE4;&#xFF0C;&#x8FD0;&#x884C;CSE-Codegen&#x63D2;&#x4EF6;&#xFF1A;mvn generate-sources<br>&#x6216;&#x8005;&#x76F4;&#x63A5;&#x7F16;&#x8BD1;&#x6574;&#x4E2A;&#x5FAE;&#x670D;&#x52A1;&#x5DE5;&#x7A0B;&#xFF0C;&#x8FD0;&#x884C;&#x63D2;&#x4EF6;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x4E0D;&#x662F;&#x8BF4;&#x6BCF;&#x6B21;&#x7F16;&#x8BD1;&#x90FD;&#x8981;&#x8FD0;&#x884C;&#x63D2;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x63D2;&#x4EF6;&#x914D;&#x7F6E;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;skip&#x53C2;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;skip&#x4E3A;false&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x8981;&#x963B;&#x6B62;&#x63D2;&#x4EF6;&#x8FD0;&#x884C;&#x5BFC;&#x81F4;&#x91CD;&#x590D;&#x751F;&#x6210;&#x6846;&#x67B6;&#x4EE3;&#x7801;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x5C06;skip&#x8BBE;&#x7F6E;&#x4E3A;true&#x3002;</p>
+<p>&#x540C;&#x6B65;&#x5951;&#x7EA6;&#xFF1A;</p>
+<ol>
+<li>&#x9996;&#x5148;&#x4F1A;&#x68C0;&#x67E5;&#x5DE5;&#x7A0B;&#x7684;gitRepo&#x76EE;&#x5F55;&#x4E0B;&#x662F;&#x5426;&#x5B58;&#x5728;&#x540C;&#x540D;&#x7684;Git&#x4ED3;&#x5E93;&#xFF0C;&#x5982;&#x679C;&#x5B58;&#x5728;&#x5219;&#x8FDB;&#x884C;&#x5220;&#x9664;&#x3002;</li>
+<li>&#x4E0B;&#x8F7D;&#x6574;&#x4E2A;Git&#x4ED3;&#x5E93;&#x5230;&#x5DE5;&#x7A0B;&#x7684;gitRepo&#x76EE;&#x5F55;&#x4E0B;&#x3002;</li>
+<li>&#x63D2;&#x4EF6;&#x6839;&#x636E;scchemaPath&#x67E5;&#x627E;gitRepo&#x91CC;&#x7684;&#x5951;&#x7EA6;&#x6587;&#x4EF6;&#xFF0C;&#x590D;&#x5236;&#x5230;&#x5951;&#x7EA6;&#x6587;&#x4EF6;&#x5230;&#x5DE5;&#x7A0B;&#x7684;microservices&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x5982;&#x76EE;&#x5F55;&#x4E2D;&#x5B58;&#x5728;&#x540C;&#x540D;&#x5951;&#x7EA6;&#x5219;&#x66FF;&#x6362;&#x6389;&#x3002;</li>
+</ol>
+<p>&#x751F;&#x6210;&#x6846;&#x67B6;&#x4EE3;&#x7801;&#xFF1A;</p>
+<ol>
+<li>&#x751F;&#x6210;consumer&#x7AEF;&#x6846;&#x67B6;&#x4EE3;&#x7801;&#xFF1A;model&#x7C7B;&#x3001;delegate&#x63A5;&#x53E3;&#x3001;impl&#x5B9E;&#x73B0;&#x7C7B;&#xFF08;&#x5177;&#x5907;RPC&#x8C03;&#x7528;&#x63A5;&#x53E3;&#xFF09;&#x3002;</li>
+<li>&#x751F;&#x6210;provider&#x7AEF;&#x6846;&#x67B6;&#x4EE3;&#x7801;&#xFF1A;model&#x7C7B;&#x3001;controller&#x7C7B;&#x3001;delegate&#x63A5;&#x53E3;&#x3001;impl&#x5B9E;&#x73B0;&#x7C7B;&#x3002;  </li>
+</ol>
+<h6 id="5-&#x6839;&#x636E;&#x6846;&#x67B6;&#x4EE3;&#x7801;&#xFF0C;&#x7528;&#x6237;&#x5B9E;&#x73B0;&#x81EA;&#x5DF1;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;">5. &#x6839;&#x636E;&#x6846;&#x67B6;&#x4EE3;&#x7801;&#xFF0C;&#x7528;&#x6237;&#x5B9E;&#x73B0;&#x81EA;&#x5DF1;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;</h6>
+<p>&#x5982;&#x679C;impl&#x76EE;&#x5F55;&#x4E0D;&#x5B58;&#x5728;&#x6216;&#x8005;impl&#x76EE;&#x5F55;&#x4E0B;&#x4E0D;&#x5B58;&#x5728;&#x5951;&#x7EA6;&#x5BF9;&#x5E94;&#x7684;impl&#x5B9E;&#x73B0;&#x7C7B;&#xFF0C;&#x5219;&#x751F;&#x6210;impl&#x5B9E;&#x73B0;&#x7C7B;&#xFF0C;&#x5426;&#x5219;&#x4E0D;&#x751F;&#x6210;&#xFF08;&#x907F;&#x514D;&#x8986;&#x76D6;&#x7528;&#x6237;&#x5DF2;&#x6709;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#xFF09;&#x3002;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x5728;impl&#x5B9E;&#x73B0;&#x7C7B;&#x4E2D;&#x589E;&#x52A0;&#x81EA;&#x5DF1;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x3002;&#x5982;&#x679C;&#x7528;&#x6237;&#x60F3;&#x8981;&#x4F7F;&#x7528;&#x6846;&#x67B6;&#x63D0;&#x4F9B;&#x7684;impl&#x5B9E;&#x73B0;&#x7C7B;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x5FC5;&#x987B;&#x5C06;&#x73B0;&#x6709;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x5220;&#x9664;&#xFF0C;&#x91CD;&#x65B0;&#x8FD0;&#x884C;&#x63D2;&#x4EF6;&#x3002;</p>
+<h6 id="6-&#x6D4B;&#x8BD5;consumer&#x548C;provider">6. &#x6D4B;&#x8BD5;consumer&#x548C;provider</h6>
+<p>&#x6D4B;&#x8BD5;consumer&#x548C;provider&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x901A;&#x4FE1;&#xFF0C;&#x53EF;&#x4EE5;&#x4E0B;&#x8F7D;<a href="https://console.huaweicloud.com/cse/?region=cn-north-1#/cse/tools" target="_blank">&#x672C;&#x5730;&#x670D;&#x52A1;&#x4E2D;&#x5FC3;</a>&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x3002;</p>
+<p><img src="https://github.com/huaweicse/cse-java-chassis-samples/blob/master/cse-codegen-doc/serviceCenterDownload.png" alt="serviceCenterDownload"></p>
+<p>&#x914D;&#x7F6E;&#x597D;&#x5DE5;&#x7A0B;&#x91CC;&#x7684;microservice.yaml&#xFF0C;&#x542F;&#x52A8;&#x670D;&#x52A1;&#x4E2D;&#x5FC3;&#xFF0C;&#x542F;&#x52A8;consumer&#x548C;provider&#xFF0C;&#x6D4B;&#x8BD5;consumer&#x548C;provider&#x662F;&#x5426;&#x6B63;&#x5E38;&#x901A;&#x4FE1;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="cse-codegen.html" class="navigation navigation-prev " aria-label="Previous page: 使用CSE-Codegen插件">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../tools/intruduction.html" class="navigation navigation-next " aria-label="Next page: 工具和插件">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"使用CSE-Codegen插件开发微服务","level":"1.6.1","depth":2,"next":{"title":"工具和插件","level":"1.7","depth":1,"path":"tools/intruduction.md","ref":"tools/intruduction.md","articles":[{"title":"契约开发工具","level":"1.7.1","depth":2,"path":"tools/contract-tool.md","ref":"tools/contract-tool.md","articles":[]},{"title":"代码生成插件","level":"1.7.2","depth":2,"path":"tools/maven-piugin.md","ref":"tools/maven-piugin.md","articles":[]},{"title":"加密工具","level":"1.7.3","depth":2,"path":"tools/ak-sk-encrypt.md","ref":"tools/ak-sk-encrypt.md","articles":[]}]},"previous":{"title":"使用CSE-Codegen插件","level":"1.6","depth":1,"path":"using-cse-codegen/cse-codegen.md","ref":"using-cse-codegen/cse-codegen.md","articles":[{"title":"使用CSE-Codegen插件开发微服务","level":"1.6.1","depth":2,"path":"using-cse-codegen/using-cse-codegen.md","ref":"using-cse-codegen/using-cse-codegen.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"introduction.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"using-cse-codegen/using-cse-codegen.md","mtime":"2018-11-24T07:33:28.575Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-24T09:10:26.564Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -2,7 +2,7 @@
 
 ## 概念阐述
 
-本节介绍如何在Maven插件方式下使用CSE-Codegen。
+本节介绍如何在Maven插件方式下使用CSE-Codegen，使用的插件版本是2.2.3。最新版本的CSE-Codegen 2.2.8改动较大，最新版的使用方法请参考“使用CSE-Codegen插件”章节。
 
 ## 使用方法
 
@@ -19,7 +19,7 @@
 <plugin>
     <groupId>io.swagger</groupId>
     <artifactId>huawei-swagger-codegen-maven-plugin</artifactId>
-    <version>2.2.2</version>
+    <version>2.2.3</version>
     <executions>
         <execution>
             <goals>
@@ -89,7 +89,4 @@ mvn generate-sources
 
 根据配置的output路径，例如：&lt;output&gt;target/swagger&lt;/output&gt;，代码会生成在当前项目target/swagger目录下。
 
-##### 
-
-
-
+#####
