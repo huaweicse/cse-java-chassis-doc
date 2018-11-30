@@ -36,4 +36,4 @@
 
 
 ## 版本
-&emsp;&emsp;目前CSE-Codegen插件最新版本是2.2.8，可以到华为镜像站的[huaweicloudsdk仓库](https://repo.huaweicloud.com/repository/maven/huaweicloudsdk/)获取。
+&emsp;&emsp;目前CSE-Codegen插件最新版本是2.2.9，可以到华为镜像站的[huaweicloudsdk仓库](https://repo.huaweicloud.com/repository/maven/huaweicloudsdk/)获取。
