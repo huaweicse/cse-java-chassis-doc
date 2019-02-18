@@ -124,7 +124,7 @@ public SessionInfo login(@RequestParam(name = "userName") String userName,
 #### 访问login接口的HTTP请求和响应
 
 #Request
-POST http://localhost:9090/api/user-service/login
+POST http://localhost:9090/api/user-service/v1/user/login
 
 Content-Type: application/x-www-form-urlencoded
 

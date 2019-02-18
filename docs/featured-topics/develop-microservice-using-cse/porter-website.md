@@ -1,12 +1,61 @@
-在技术选择上，界面完全由html/js/css等构成，不采用其他动态技术。因此只需要有一个可以支持静态页面的服务即可。在架构图中，界面的请求需要被网关转发，并且需要支持多实例部署，因此界面服务需要增加的功能是服务注册和发现。CSE提供了两种方法集成和使用J2EE：
+# 开发界面
+
+在技术选择上，界面完全由html+js+css等静态网页技术构成，不采用动态页面技术。采用静态页面技术构建界面，使得整个微服务系统更加具备弹性，能够非常容易的进行扩容，相关开发成果也能够更好的被其他应用继承。
+
+采用静态页面技术，也使得界面服务部署更加灵活多样：
+
+* 将静态页面部署到nginx，nginx将REST请求转发到gateway-service。
+* 将静态页面直接部署到gateway-service。
+* 静态页面通过Tomcat、Spring Boot等Web服务器部署，并注册到服务中心，gateway-service将请求转发到对应的应用服务器上。
+* 静态页面由第三方开发，第三方直接通过gateway-service访问REST接口。由第三方选择界面的开发技术。
+
+这几种方式都被广泛使用。
+
+## 将静态页面直接部署到gateway-service
+在[porter_lightweight](https://github.com/huaweicse/cse-java-chassis-samples/tree/master/porter)项目中，采用了将静态页面直接部署到gateway-service的方式，这种方式简洁高效。这种方式的核心代码是StaticWebpageDispatcher。它采用vert.x提供的静态页面功能，直接挂载了静态页面服务。
+
+```
+public class StaticWebpageDispatcher implements VertxHttpDispatcher {
+  private static final Logger LOGGER = LoggerFactory.getLogger(StaticWebpageDispatcher.class);
+
+  private static final String WEB_ROOT = DynamicPropertyFactory.getInstance()
+      .getStringProperty("gateway.webroot", "/var/static")
+      .get();
+
+  @Override
+  public int getOrder() {
+    return Integer.MAX_VALUE;
+  }
+
+  @Override
+  public void init(Router router) {
+    String regex = "/ui/(.*)";
+    StaticHandler webpageHandler = StaticHandler.create();
+    webpageHandler.setWebRoot(WEB_ROOT);
+    LOGGER.info("server static web page for WEB_ROOT={}", WEB_ROOT);
+    router.routeWithRegex(regex).failureHandler((context) -> {
+      LOGGER.error("", context.failure());
+    }).handler(webpageHandler);
+  }
+
+}
+```
+
+## 静态页面通过Tomcat、Spring Boot等Web容器部署，并注册
+
+在架构图中，界面的请求需要被网关转发，并且需要支持多实例部署，因此界面服务需要增加的功能是服务注册和发现。CSE提供了两种方法集成和使用J2EE：
 
 1. 运行于独立的web服务器中，如tomcat等；
 
-2. 运行于Spring Boot的Embeded Tomcat中。
+2. 运行于Spring Boot的Embedded Tomcat中。
 
 为了部署简单，我们的示例选择了第二种方式。第一种方式也是很简单的，可以参考示例：
 
 [https://github.com/huawei-microservice-demo/HouseApp/tree/master/customer-website](https://github.com/huawei-microservice-demo/HouseApp/tree/master/customer-website) 。
+
+采用Spring Boot的Embedded Tomcat的项目：
+[https://github.com/huawei-microservice-demo/porter](https://github.com/huawei-microservice-demo/porter).
+
 
 在Spring Boot中提供静态页面服务，核心问题是解决服务注册、发现能力。在Spring Boot的Embeded Tomcat中使用CSE的服务注册发现，需要完成如下步骤：
 
@@ -40,8 +89,6 @@
   <groupId>org.springframework.boot</groupId>
 
   <artifactId>spring-boot-starter-parent</artifactId>
-
-  <version>1.4.5.RELEASE</version>
 
 </parent>
 ```

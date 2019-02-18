@@ -693,32 +693,52 @@ public SessionInfo getSession(@RequestParam(name = &quot;sessionId&quot;) String
 <li>&#x901A;&#x8FC7;handler&#x6765;&#x8FDB;&#x884C;&#x8BA4;&#x8BC1;&#x548C;&#x4F1A;&#x8BDD;&#x7BA1;&#x7406;</li>
 </ul>
 <p>&#x5BF9;&#x4E8E;ui&#x754C;&#x9762;&#xFF0C;&#x4E0D;&#x63D0;&#x4F9B;&#x8BA4;&#x8BC1;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x3002;&#x5BF9;&#x4E8E;REST&#x63A5;&#x53E3;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x8BA4;&#x8BC1;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x5C06;&#x8BA4;&#x8BC1;&#x548C;&#x4F1A;&#x8BDD;&#x7BA1;&#x7406;&#x7684;&#x529F;&#x80FD;&#x5728;Hanlder&#x4E2D;&#x5B9E;&#x73B0;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5BF9;user-service&#x7684;login&#x63A5;&#x53E3;&#x76F4;&#x63A5;&#x8F6C;&#x53D1;&#x8BF7;&#x6C42;&#xFF0C;&#x5176;&#x4ED6;&#x8BF7;&#x6C42;&#x5148;&#x7ECF;&#x8FC7;&#x4F1A;&#x8BDD;&#x6821;&#x9A8C;&#xFF0C;&#x518D;&#x8FDB;&#x884C;&#x8F6C;&#x53D1;&#x3002;</p>
+<p><strong><em>&#x6CE8;&#x610F;</em></strong>: &#x5728;&#x7F51;&#x5173;&#x6267;&#x884C;&#x7684;Hanlder&#x903B;&#x8F91;&#xFF0C;&#x662F;reactive&#x6A21;&#x5F0F;&#x7684;&#xFF0C;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x963B;&#x585E;&#x8C03;&#x7528;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x5BFC;&#x81F4;&#x7EBF;&#x7A0B;&#x963B;&#x585E;&#x3002;</p>
 <pre><code>public class AuthHandler implements Handler {
-    private RestTemplate restTemplate = RestTemplateBuilder.create();
+  private CseAsyncRestTemplate restTemplate = new CseAsyncRestTemplate();
 
-    @Override
-    public void handle(Invocation invocation, AsyncResponse asyncResponse) throws Exception {
-        if (invocation.getMicroserviceName().equals(&quot;user-service&quot;)
-                &amp;&amp; (invocation.getOperationName().equals(&quot;login&quot;)
-                        || (invocation.getOperationName().equals(&quot;getSession&quot;)))) {
-            invocation.next(asyncResponse);
-        } else {
-            // check session
-            String sessionId = invocation.getContext(&quot;session-id&quot;);
-            if (sessionId == null) {
-                throw new InvocationException(405, &quot;&quot;, &quot;session is not valid.&quot;);
+  @Override
+  public void handle(Invocation invocation, AsyncResponse asyncResponse) throws Exception {
+    if (invocation.getMicroserviceName().equals(&quot;user-service&quot;)
+        &amp;&amp; (invocation.getOperationName().equals(&quot;login&quot;)
+            || (invocation.getOperationName().equals(&quot;getSession&quot;)))) {
+      // login&#xFF1A; &#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x8BA4;&#x8BC1;&#x7ED3;&#x679C;&#x3002;  &#x5F00;&#x53D1;&#x8005;&#x9700;&#x8981;&#x5728;JS&#x91CC;&#x9762;&#x8BBE;&#x7F6E;cookie&#x3002; 
+      invocation.next(asyncResponse);
+    } else {
+      // check session
+      String sessionId = invocation.getContext(&quot;session-id&quot;);
+      if (sessionId == null) {
+        throw new InvocationException(403, &quot;&quot;, &quot;session is not valid.&quot;);
+      }
+
+      // &#x5728;&#x7F51;&#x5173;&#x6267;&#x884C;&#x7684;Hanlder&#x903B;&#x8F91;&#xFF0C;&#x662F;reactive&#x6A21;&#x5F0F;&#x7684;&#xFF0C;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x963B;&#x585E;&#x8C03;&#x7528;&#x3002;
+      ListenableFuture&lt;ResponseEntity&lt;SessionInfo&gt;&gt; sessionInfoFuture =
+          restTemplate.getForEntity(&quot;cse://user-service/v1/user/session?sessionId=&quot; + sessionId, SessionInfo.class);
+      sessionInfoFuture.addCallback(
+          new ListenableFutureCallback&lt;ResponseEntity&lt;SessionInfo&gt;&gt;() {
+            @Override
+            public void onFailure(Throwable ex) {
+              asyncResponse.complete(Response.failResp(new InvocationException(403, &quot;&quot;, &quot;session is not valid.&quot;)));
             }
-            SessionInfo sessionInfo =
-                restTemplate.getForObject(&quot;cse://user-service/session?sessionId=&quot; + sessionId, SessionInfo.class);
-            if (sessionInfo == null) {
-                throw new InvocationException(405, &quot;&quot;, &quot;session is not valid.&quot;);
+
+            @Override
+            public void onSuccess(ResponseEntity&lt;SessionInfo&gt; result) {
+              SessionInfo sessionInfo = result.getBody();
+              if (sessionInfo == null) {
+                asyncResponse.complete(Response.failResp(new InvocationException(403, &quot;&quot;, &quot;session is not valid.&quot;)));
+              }
+              try {
+                // &#x5C06;&#x4F1A;&#x8BDD;&#x4FE1;&#x606F;&#x4F20;&#x9012;&#x7ED9;&#x540E;&#x9762;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x3002;&#x540E;&#x9762;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x53EF;&#x4EE5;&#x4ECE;context&#x83B7;&#x53D6;&#x5230;&#x4F1A;&#x8BDD;&#x4FE1;&#x606F;&#xFF0C;&#x4ECE;&#x800C;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x9274;&#x6743;&#x7B49;&#x3002; 
+                invocation.addContext(&quot;session-id&quot;, sessionId);
+                invocation.addContext(&quot;session-info&quot;, JsonUtils.writeValueAsString(sessionInfo));
+                invocation.next(asyncResponse);
+              } catch (Exception e) {
+                asyncResponse.complete(Response.failResp(new InvocationException(500, &quot;&quot;, e.getMessage())));
+              }
             }
-            // &#x5C06;&#x4F1A;&#x8BDD;&#x4FE1;&#x606F;&#x4F20;&#x9012;&#x7ED9;&#x540E;&#x9762;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x3002;&#x540E;&#x9762;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x53EF;&#x4EE5;&#x4ECE;context&#x83B7;&#x53D6;&#x5230;&#x4F1A;&#x8BDD;&#x4FE1;&#x606F;&#xFF0C;&#x4ECE;&#x800C;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x9274;&#x6743;&#x7B49;&#x3002; 
-            invocation.addContext(&quot;session-id&quot;, sessionId);
-            invocation.addContext(&quot;session-info&quot;, JsonUtils.writeValueAsString(sessionInfo));
-            invocation.next(asyncResponse);
-        }
+          });
     }
+  }
 }
 </code></pre><p>&#x542F;&#x7528;&#x8BE5;Hanlder&#xFF0C;&#x9700;&#x8981;&#x589E;&#x52A0;cse.handler.xml&#x6587;&#x4EF6;</p>
 <pre><code>&lt;config&gt;
@@ -839,7 +859,7 @@ session-id: 1be646c0-50cb-4c0a-968d-2a512775f5e8
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"进行认证和鉴权设计","level":"1.2.7","depth":2,"next":{"title":"网关HTTPS安全配置","level":"1.2.8","depth":2,"path":"featured-topics/develop-microservice-using-cse/https.md","ref":"featured-topics/develop-microservice-using-cse/https.md","articles":[]},"previous":{"title":"使用MyBatis访问数据库(user-service)","level":"1.2.6","depth":2,"path":"featured-topics/develop-microservice-using-cse/user-service.md","ref":"featured-topics/develop-microservice-using-cse/user-service.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"introduction.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"featured-topics/develop-microservice-using-cse/authentication.md","mtime":"2018-11-24T03:07:30.099Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-30T08:34:56.367Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"进行认证和鉴权设计","level":"1.2.7","depth":2,"next":{"title":"网关HTTPS安全配置","level":"1.2.8","depth":2,"path":"featured-topics/develop-microservice-using-cse/https.md","ref":"featured-topics/develop-microservice-using-cse/https.md","articles":[]},"previous":{"title":"使用MyBatis访问数据库(user-service)","level":"1.2.6","depth":2,"path":"featured-topics/develop-microservice-using-cse/user-service.md","ref":"featured-topics/develop-microservice-using-cse/user-service.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"introduction.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"featured-topics/develop-microservice-using-cse/authentication.md","mtime":"2019-02-18T12:15:15.739Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-18T12:24:18.931Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

@@ -651,39 +651,11 @@
 <li>&#x589E;&#x52A0;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;</li>
 </ul>
 <p>&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x5B9A;&#x4E49;&#x4E86;&#x5BF9;&#x4E8E;Spring Boot&#x7684;&#x4F9D;&#x8D56;&#x548C;CSE&#x7684;&#x4F9D;&#x8D56;&#x3002;&#x901A;&#x8FC7;dependencyManagement&#x673A;&#x5236;&#x7BA1;&#x7406;&#x4E86;CSE&#x4F9D;&#x8D56;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x4E0D;&#x9700;&#x8981;&#x5C06;CSE&#x7684;&#x9879;&#x76EE;&#x4F5C;&#x4E3A;&#x81EA;&#x5DF1;&#x7684;parent&#x3002;&#x542F;&#x7528;CSE&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5728;pom&#x4E2D;&#x5F15;&#x5165;cse-solution-service-engine&#x6A21;&#x5757;&#x3002;</p>
-<pre><code>&lt;dependencyManagement&gt;
-
-  &lt;dependencies&gt;
-
-    &lt;dependency&gt;
-
-      &lt;groupId&gt;com.huawei.paas.cse&lt;/groupId&gt;
-
-      &lt;artifactId&gt;cse-dependency&lt;/artifactId&gt;
-
-      &lt;version&gt;2.3.12&lt;/version&gt;
-
-      &lt;type&gt;pom&lt;/type&gt;
-
-      &lt;scope&gt;import&lt;/scope&gt;
-
-    &lt;/dependency&gt;
-
-  &lt;/dependencies&gt;
-
-&lt;/dependencyManagement&gt;
-
-
-&lt;dependencies&gt;
-
+<pre><code>&lt;dependencies&gt;
   &lt;dependency&gt;
-
     &lt;groupId&gt;com.huawei.paas.cse&lt;/groupId&gt;
-
     &lt;artifactId&gt;cse-solution-service-engine&lt;/artifactId&gt;
-
   &lt;/dependency&gt;
-
 &lt;/dependencies&gt;
 </code></pre><ul>
 <li>&#x5B9A;&#x4E49;&#x670D;&#x52A1;&#x63A5;&#x53E3;</li>
@@ -785,7 +757,7 @@ public class FileServiceEndpoint {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"开发文件上传功能(file-service)","level":"1.2.4","depth":2,"next":{"title":"开发网关(gateway-service)","level":"1.2.5","depth":2,"path":"featured-topics/develop-microservice-using-cse/gateway-service.md","ref":"featured-topics/develop-microservice-using-cse/gateway-service.md","articles":[]},"previous":{"title":"开发界面(porter-website)","level":"1.2.3","depth":2,"path":"featured-topics/develop-microservice-using-cse/porter-website.md","ref":"featured-topics/develop-microservice-using-cse/porter-website.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"introduction.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"featured-topics/develop-microservice-using-cse/file-service.md","mtime":"2018-11-24T03:07:30.099Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-30T08:34:56.367Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"开发文件上传功能(file-service)","level":"1.2.4","depth":2,"next":{"title":"开发网关(gateway-service)","level":"1.2.5","depth":2,"path":"featured-topics/develop-microservice-using-cse/gateway-service.md","ref":"featured-topics/develop-microservice-using-cse/gateway-service.md","articles":[]},"previous":{"title":"开发界面(porter-website)","level":"1.2.3","depth":2,"path":"featured-topics/develop-microservice-using-cse/porter-website.md","ref":"featured-topics/develop-microservice-using-cse/porter-website.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"introduction.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"featured-topics/develop-microservice-using-cse/file-service.md","mtime":"2019-02-18T12:09:27.604Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-18T12:24:18.931Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
