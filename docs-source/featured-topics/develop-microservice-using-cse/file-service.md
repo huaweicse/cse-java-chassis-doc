@@ -5,39 +5,11 @@
 依赖关系定义了对于Spring Boot的依赖和CSE的依赖。通过dependencyManagement机制管理了CSE依赖，开发者不需要将CSE的项目作为自己的parent。启用CSE，只需要在pom中引入cse-solution-service-engine模块。
 
 ```
-<dependencyManagement>
-
-  <dependencies>
-
-    <dependency>
-
-      <groupId>com.huawei.paas.cse</groupId>
-
-      <artifactId>cse-dependency</artifactId>
-
-      <version>2.3.12</version>
-
-      <type>pom</type>
-
-      <scope>import</scope>
-
-    </dependency>
-
-  </dependencies>
-
-</dependencyManagement>
-
-
 <dependencies>
-
   <dependency>
-
     <groupId>com.huawei.paas.cse</groupId>
-
     <artifactId>cse-solution-service-engine</artifactId>
-
   </dependency>
-
 </dependencies>
 ```
 

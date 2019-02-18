@@ -55,33 +55,54 @@ EdgeInvocation invoker = new EdgeInvocation() {
 
 对于ui界面，不提供认证，用户可以直接访问。对于REST接口需要进行认证，因此我们将认证和会话管理的功能在Hanlder中实现。下面的代码对user-service的login接口直接转发请求，其他请求先经过会话校验，再进行转发。
 
+***注意***: 在网关执行的Hanlder逻辑，是reactive模式的，不能使用阻塞调用，否则会导致线程阻塞。
+
 ```
 public class AuthHandler implements Handler {
-    private RestTemplate restTemplate = RestTemplateBuilder.create();
+  private CseAsyncRestTemplate restTemplate = new CseAsyncRestTemplate();
 
-    @Override
-    public void handle(Invocation invocation, AsyncResponse asyncResponse) throws Exception {
-        if (invocation.getMicroserviceName().equals("user-service")
-                && (invocation.getOperationName().equals("login")
-                        || (invocation.getOperationName().equals("getSession")))) {
-            invocation.next(asyncResponse);
-        } else {
-            // check session
-            String sessionId = invocation.getContext("session-id");
-            if (sessionId == null) {
-                throw new InvocationException(405, "", "session is not valid.");
+  @Override
+  public void handle(Invocation invocation, AsyncResponse asyncResponse) throws Exception {
+    if (invocation.getMicroserviceName().equals("user-service")
+        && (invocation.getOperationName().equals("login")
+            || (invocation.getOperationName().equals("getSession")))) {
+      // login： 直接返回认证结果。  开发者需要在JS里面设置cookie。 
+      invocation.next(asyncResponse);
+    } else {
+      // check session
+      String sessionId = invocation.getContext("session-id");
+      if (sessionId == null) {
+        throw new InvocationException(403, "", "session is not valid.");
+      }
+
+      // 在网关执行的Hanlder逻辑，是reactive模式的，不能使用阻塞调用。
+      ListenableFuture<ResponseEntity<SessionInfo>> sessionInfoFuture =
+          restTemplate.getForEntity("cse://user-service/v1/user/session?sessionId=" + sessionId, SessionInfo.class);
+      sessionInfoFuture.addCallback(
+          new ListenableFutureCallback<ResponseEntity<SessionInfo>>() {
+            @Override
+            public void onFailure(Throwable ex) {
+              asyncResponse.complete(Response.failResp(new InvocationException(403, "", "session is not valid.")));
             }
-            SessionInfo sessionInfo =
-                restTemplate.getForObject("cse://user-service/session?sessionId=" + sessionId, SessionInfo.class);
-            if (sessionInfo == null) {
-                throw new InvocationException(405, "", "session is not valid.");
+
+            @Override
+            public void onSuccess(ResponseEntity<SessionInfo> result) {
+              SessionInfo sessionInfo = result.getBody();
+              if (sessionInfo == null) {
+                asyncResponse.complete(Response.failResp(new InvocationException(403, "", "session is not valid.")));
+              }
+              try {
+                // 将会话信息传递给后面的微服务。后面的微服务可以从context获取到会话信息，从而可以进行鉴权等。 
+                invocation.addContext("session-id", sessionId);
+                invocation.addContext("session-info", JsonUtils.writeValueAsString(sessionInfo));
+                invocation.next(asyncResponse);
+              } catch (Exception e) {
+                asyncResponse.complete(Response.failResp(new InvocationException(500, "", e.getMessage())));
+              }
             }
-            // 将会话信息传递给后面的微服务。后面的微服务可以从context获取到会话信息，从而可以进行鉴权等。 
-            invocation.addContext("session-id", sessionId);
-            invocation.addContext("session-info", JsonUtils.writeValueAsString(sessionInfo));
-            invocation.next(asyncResponse);
-        }
+          });
     }
+  }
 }
 ```
 

@@ -10,11 +10,13 @@
 
 **用户管理：**提供认证、角色和权限管理等功能。
 
+**界面: ** 采用静态页面技术, html+js+css实现。界面可以作为一个单独的微服务，也可以直接放到网关服务里面。
+
 为了可靠性，这些服务都应该支持分布式集群部署。因此在业务逻辑中涉及到并发和负载均衡的场景，都需要考虑无状态设计。可以给网关配置域名或者在上层再挂一个弹性负载均衡器，实现网关的多实例部署。
 
 微服务设计好以后，可以通过已有项目快速搭建项目架子。可以从：
 
-[https://github.com/huawei-microservice-demo/porter](https://github.com/huawei-microservice-demo/porter。)
+[https://github.com/huaweicse/cse-java-chassis-samples/tree/master/porter](https://github.com/huaweicse/cse-java-chassis-samples/tree/master/porter)
 
 下载该项目。
 

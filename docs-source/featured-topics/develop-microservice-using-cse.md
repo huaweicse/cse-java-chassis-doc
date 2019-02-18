@@ -20,5 +20,5 @@
 
 在实际的代码中，我们还会遵循其他一些和微服务开发有关的原则，包括无状态设计等。这里的例子的目的是搭建一个商业可用的微服务，因此我们会在架构设计、方案设计上也给出一定的建议以及说明这样处理的目的。
 
-本专题的涉及的代码均托管在github： [https://github.com/huawei-microservice-demo/porter](https://github.com/huawei-microservice-demo/porter) 。开发者可以clone一份供学习使用，或者作为正式项目的模板。
+本专题的涉及的代码均托管在github： [https://github.com/huaweicse/cse-java-chassis-samples/tree/master/porter](https://github.com/huaweicse/cse-java-chassis-samples/tree/master/porter) 。开发者可以clone一份供学习使用，或者作为正式项目的模板。
 
