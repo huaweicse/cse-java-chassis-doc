@@ -30,7 +30,6 @@
 * [使用CSE-Codegen插件](using-cse-codegen/cse-codegen.md)
   * [使用CSE-Codegen插件开发微服务](using-cse-codegen/using-cse-codegen.md)
 * [工具和插件](tools/intruduction.md)
-  * [契约开发工具](tools/contract-tool.md)
   * [代码生成插件](tools/maven-piugin.md)
   * [加密工具](tools/ak-sk-encrypt.md)
 * [常见问题](question-and-answer/question_answer.md)
