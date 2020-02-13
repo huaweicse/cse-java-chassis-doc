@@ -53,5 +53,5 @@ CSE Java SDK 100% 兼容 [ServiceComb Java Chassis](https://github.com/apache/in
 ```
 
 ## 版本说明
-从华为云帮助中心可以获取[版本说明](https://support.huaweicloud.com/productdesc-cse/cse_productdesc_0008.html)。
+从华为云帮助中心可以获取[版本说明](https://support.huaweicloud.com/productdesc-servicestage/cse_productdesc_0008.html)。
 
